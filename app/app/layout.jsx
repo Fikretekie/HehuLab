@@ -1,15 +1,20 @@
+import Link from "next/link";
 import { KidProvider } from "../../components/KidState";
+import KidTopBar from "../../components/KidTopBar";
 
 export const metadata = { title: "HehuLab: learn and play" };
 
-// The kids' app: a phone-sized column, centered on big screens.
+// The kids' app on the web: a top bar with the child's language, stars and menu, then a wide page.
 export default function KidAppLayout({ children }) {
   return (
     <KidProvider>
-      <div className="min-h-screen bg-soft md:py-8">
-        <div className="mx-auto flex min-h-screen w-full max-w-md flex-col bg-white md:min-h-[820px] md:overflow-hidden md:rounded-[36px] md:border-[10px] md:border-ink">
-          {children}
-        </div>
+      <div className="min-h-screen bg-soft">
+        <KidTopBar />
+        <div className="wrap py-8">{children}</div>
+        <footer className="wrap pb-8 text-sm text-muted">
+          <Link href="/" className="hover:text-brand">HehuLab</Link> · Rodas and the animal friends are AI teachers. Every
+          voice is a real family voice.
+        </footer>
       </div>
     </KidProvider>
   );
