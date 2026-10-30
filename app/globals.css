@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1, h2, h3 { font-family: theme("fontFamily.display"); text-wrap: balance; }
+  :focus-visible { outline: 3px solid theme("colors.accent.DEFAULT"); outline-offset: 2px; }
+}
+
+@layer components {
+  /* the page's side gutter (keeps text off the screen edge on phones) */
+  .wrap { @apply mx-auto max-w-6xl; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-base font-extrabold transition; }
+  .btn-brand { @apply btn bg-brand text-white hover:bg-brand-dark; }
+  .btn-line { @apply btn border-2 border-line bg-white text-ink hover:border-brand; }
+  .btn-sun { @apply btn bg-sun text-ink hover:brightness-95; }
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full bg-soft px-3 py-1.5 text-sm font-extrabold; }
+  .card { @apply rounded-xl3 border-2 border-line bg-white; }
+  .eyebrow { @apply text-xs font-extrabold uppercase tracking-[0.08em]; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
