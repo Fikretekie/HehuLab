@@ -51,6 +51,18 @@ praises them. The child can also ask questions out loud, like talking to a real 
 girl/boy forms (e.g. ጽቡቕ ገይርኪ to a girl, ጽቡቕ ገይርካ to a boy). Start with a front-end demo (browser
 microphone + recorded audio); the real AI voice comes later.
 
+**How Rodas looks alive (decided 2026-11-01): way 1 = short video clips.**
+- About 5 looping clips of Rodas made from her photo with an AI photo-to-video tool: `listening`, `talking`,
+  `smiling`, `clapping` (celebrate), `thinking`. Put them in `public/rodas/` (e.g. `listening.mp4`).
+- The lesson is a small state machine that switches clips: Rodas talks (talking clip + her audio) → listens
+  (listening clip, microphone on) → child answers → right: smiling/clapping + a reaction sound; not sure: thinking,
+  then "say it again". Until real clips exist, use the photo with simple CSS animation (a gentle bob, a glow
+  while talking, a bounce when happy) behind the same state names, so clips can be dropped in later.
+- **Guided talk first:** each step knows the expected answers (say ሀ, yes/no, a color), so recognition is easy.
+- Reaction sounds: the Rodas woman records about 30 short reactions with feeling (እወ!, ኦ!, ጽቡቕ!, ሕራይ, a small
+  laugh). Answer fast (under 1 second) and let the child interrupt.
+- Later: a live lip-sync service (HeyGen / D-ID / Simli) or open source (LivePortrait / MuseTalk).
+
 ### Screens status
 1. Landing `/` ✅
 2. Pick language / math / teacher `/app/` ✅
