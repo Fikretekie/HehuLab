@@ -1,5 +1,7 @@
 # HehuLab — notes for Claude
 
+> Full history of decisions and the voices app: read `docs/HANDOFF.md` too.
+
 HehuLab (hehulab.org) is an AI learning website for Eritrean diaspora kids: Tigrinya (plus Tigre, Bilen, and
 Amharic "from Ethiopia") and math taught **in the chosen language** (Tigrinya → math in Tigrinya, Bilen → math in Bilen).
 The owner is Fik (GitHub: Fikretekie). He is learning, so explain simply.
