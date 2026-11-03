@@ -1,11 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { LANGS, useKid } from "../../../components/KidState";
 import { TEACHERS } from "../../../components/Avatars";
 import { LEARNERS, TRACKS } from "../../../components/courses";
 import { Check } from "../../../components/Icons";
 import { Speaker, say } from "../../../components/Voice";
+import Choice from "../../../components/Choice";
+import { REPORT_LANGS } from "../../../components/report";
 
 // Screen 8 (web): Settings, for grown-ups. A small math question keeps little fingers out.
 // The child's details on the left; teacher and parent options on the right. Every change saves right away.
@@ -18,28 +21,6 @@ const Lock = () => (
     <path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" strokeWidth="2.5" fill="none" />
   </svg>
 );
-
-// A row of big buttons where one is chosen (language, boy/girl, report language).
-function Choice({ options, value, onPick }) {
-  return (
-    <div className="flex flex-wrap gap-2">
-      {options.map(([id, label, sub]) => (
-        <button
-          key={id}
-          type="button"
-          onClick={() => onPick(id)}
-          aria-pressed={value === id}
-          className={`rounded-2xl border-[3px] px-4 py-2.5 text-left font-extrabold transition ${
-            value === id ? "border-brand bg-soft" : "border-line bg-white hover:border-brand/50"
-          }`}
-        >
-          {label}
-          {sub && <span className="ml-2 font-geez font-semibold text-muted">{sub}</span>}
-        </button>
-      ))}
-    </div>
-  );
-}
 
 function Field({ label, note, children }) {
   return (
@@ -188,12 +169,11 @@ export default function Settings() {
                 )}
               </div>
             </Field>
-            <Field label="Friday report language">
-              <Choice
-                options={[["ti", "Tigrinya", "ትግርኛ"], ["en", "English"]]}
-                value={kid.reportLang || "en"}
-                onPick={(reportLang) => update({ reportLang })}
-              />
+            <Field label="Friday report language" note="Every Friday the family gets an email about the week, in this language.">
+              <Choice options={REPORT_LANGS} value={kid.reportLang || "en"} onPick={(reportLang) => update({ reportLang })} />
+              <Link href="/app/report/" className="btn-line mt-4 inline-flex py-2">
+                See the report
+              </Link>
             </Field>
             <Field label="Start the path again" note="Every lesson goes back to the start and the stars are cleared.">
               {resetAsk ? (

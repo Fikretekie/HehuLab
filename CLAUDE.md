@@ -45,7 +45,7 @@ The owner is Fik (GitHub: Fikretekie). He is learning, so explain simply.
 | 6 | Bedtime stories, line-by-line player (draft stories) | `/app/stories/` | ✅ built |
 | 7 | Homework / practice sheets | `/app/homework/` | todo |
 | 8 | Settings (grown-ups) | `/app/settings/` | todo |
-| 9 | Friday parent report email — **written in Tigrinya** | — | todo |
+| 9 | Friday parent report email — family picks the language (English, Tigrinya, Tigre, Bilen, Saho, Amharic) | `/app/report/` | ✅ page built (sending needs the server) |
 
 Design reference (all 9 screens, 3 themes; Fik chose Ocean Blue): https://claude.ai/artifact/2qTtaBW5jJgG8yJHbNSnEi
 

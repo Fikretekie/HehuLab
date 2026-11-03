@@ -26,7 +26,7 @@
 10. Screen 6 Stories (each unit ends with a story from its words; watch or listen only).
 11. ✅ Homework follows the path (trace, match letters, pictures-and-words, count).
 12. ✅ Settings: learner, track, language, reset.
-13. Screen 9 Friday parent report email, written in Tigrinya.
+13. ✅ Screen 9 Friday report page (`/app/report/`): family picks English, Tigrinya, Tigre, Bilen, Saho or Amharic. Still: Fik checks the Tigrinya + Amharic drafts; find translators for Tigre, Bilen, Saho; sending the email every Friday needs the server.
 14. Hosting: S3 + CloudFront, then GitHub Actions deploy. ✅ PostCSS warning fixed (8.5.30). Next.js warning left: only hits servers, our site is static; fixing needs Next 14 → 16 (big change).
 
 ## B. Voices site (voices.hehulab.org) — live: update 55 (consent v3, idle sign-out)
