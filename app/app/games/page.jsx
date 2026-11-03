@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { langOf, useKid } from "../../../components/KidState";
 import { Camel, Goat, Kokob, Sheep } from "../../../components/Avatars";
@@ -448,6 +448,12 @@ function GamesPage() {
     [lessonId, kid.learner, kid.track, kid.lang],
   );
   const [gameId, setGameId] = useState(course?.themes?.length || english ? "pics" : "goat");
+  const stageRef = useRef(null);
+  // Picking a game shows it: on a narrow screen the list is below the game, so scroll up to it.
+  function pick(id) {
+    setGameId(id);
+    stageRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
   const game = GAMES.find((g) => g.id === gameId);
   const geez = usesGeez(kid.lang);
   const words = NUMBER_WORDS[kid.lang];
@@ -485,7 +491,7 @@ function GamesPage() {
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
         {/* The game being played */}
-        <section className={`card flex min-h-[560px] flex-col p-8 ${game.id === "goat" ? "bg-[#F1F8EC]" : "bg-[#FFF6E9]"}`}>
+        <section ref={stageRef} className={`card flex min-h-[560px] scroll-mt-40 flex-col p-8 ${game.id === "goat" ? "bg-[#F1F8EC]" : "bg-[#FFF6E9]"}`}>
           <h2 className="text-2xl font-bold">{game.title}</h2>
           <p className="text-muted">{game.note}</p>
           {ready &&
@@ -508,7 +514,7 @@ function GamesPage() {
               key={g.id}
               type="button"
               disabled={g.soon}
-              onClick={() => setGameId(g.id)}
+              onClick={() => pick(g.id)}
               aria-pressed={g.id === gameId}
               className={`card flex w-full items-center gap-4 p-4 text-left transition ${
                 g.id === gameId ? "border-brand bg-soft" : g.soon ? "opacity-60" : "hover:border-brand/50"
