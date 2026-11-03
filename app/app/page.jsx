@@ -26,7 +26,7 @@ export default function PickTeacher() {
           {["Eritrean", "From Ethiopia"].map((group) => (
             <div key={group} className="mb-5">
               <p className="eyebrow mb-2 text-muted">{group === "Eritrean" ? "Eritrean languages" : group}</p>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-4 gap-3">
                 {LANGS.filter((l) => l.group === group).map((l) => (
                   <button
                     key={l.id}

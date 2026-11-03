@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usesGeez } from "./curriculum";
 
 // The grade cards follow the language tab: every subject, math included, is taught in that language.
 const LANGS = [
   { id: "ti", name: "Tigrinya", group: "Eritrean" },
   { id: "tig", name: "Tigre", group: "Eritrean" },
   { id: "byn", name: "Bilen", group: "Eritrean" },
+  { id: "ssy", name: "Saho", group: "Eritrean" },
   { id: "am", name: "Amharic", group: "From Ethiopia" },
 ];
 
@@ -50,7 +52,7 @@ export default function GradePicker() {
         {GRADES.map((g) => (
           <Link key={g.name} href="/app/" className="card overflow-hidden transition hover:border-brand">
             <div className={`${g.bg} flex h-32 items-center justify-center text-4xl font-bold ${g.geez ? "font-geez" : "font-display"}`}>
-              {lang === "byn" && g.geez ? "a b c" : g.art}
+              {g.geez && !usesGeez(lang) ? "a b c" : g.art}
             </div>
             <div className="p-4">
               <p className="text-lg font-extrabold">{g.name}</p>

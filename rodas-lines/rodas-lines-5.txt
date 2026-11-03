@@ -1,0 +1,100 @@
+"Head" ብትግርኛ እንታይ ይበሃል? | What is "head" called in Tigrinya?
+"Head" ብትግርኛ "ርእሲ" ይበሃል። | In Tigrinya, "head" is called "ርእሲ".
+"Heart" ብትግርኛ እንታይ ይበሃል? | What is "heart" called in Tigrinya?
+"Heart" ብትግርኛ "ልቢ" ይበሃል። | In Tigrinya, "heart" is called "ልቢ".
+"Tooth" ብትግርኛ እንታይ ይበሃል? | What is "tooth" called in Tigrinya?
+"Tooth" ብትግርኛ "ስኒ" ይበሃል። | In Tigrinya, "tooth" is called "ስኒ".
+"Face" ብትግርኛ እንታይ ይበሃል? | What is "face" called in Tigrinya?
+"Face" ብትግርኛ "ገጽ" ይበሃል። | In Tigrinya, "face" is called "ገጽ".
+"Neck" ብትግርኛ እንታይ ይበሃል? | What is "neck" called in Tigrinya?
+"Neck" ብትግርኛ "ክሳድ" ይበሃል። | In Tigrinya, "neck" is called "ክሳድ".
+"Ear" ብትግርኛ እንታይ ይበሃል? | What is "ear" called in Tigrinya?
+"Ear" ብትግርኛ "እዝኒ" ይበሃል። | In Tigrinya, "ear" is called "እዝኒ".
+"Ball" ብትግርኛ እንታይ ይበሃል? | What is "ball" called in Tigrinya?
+"Ball" ብትግርኛ "ኳዕሶ" ይበሃል። | In Tigrinya, "ball" is called "ኳዕሶ".
+"Pen" ብትግርኛ እንታይ ይበሃል? | What is "pen" called in Tigrinya?
+"Pen" ብትግርኛ "ፒሮ" ይበሃል። | In Tigrinya, "pen" is called "ፒሮ".
+ድምጺ ከልቢ ስምዒ። | Listen to the sound of the dog. (to a girl)
+ድምጺ ከልቢ ስማዕ። | Listen to the sound of the dog. (to a boy)
+ድምጺ ድሙ ስምዒ። | Listen to the sound of the cat. (to a girl)
+ድምጺ ድሙ ስማዕ። | Listen to the sound of the cat. (to a boy)
+ድምጺ ላም ስምዒ። | Listen to the sound of the cow. (to a girl)
+ድምጺ ላም ስማዕ። | Listen to the sound of the cow. (to a boy)
+ድምጺ ደርሆ ስምዒ። | Listen to the sound of the hen. (to a girl)
+ድምጺ ደርሆ ስማዕ። | Listen to the sound of the hen. (to a boy)
+ድምጺ ኣድጊ ስምዒ። | Listen to the sound of the donkey. (to a girl)
+ድምጺ ኣድጊ ስማዕ። | Listen to the sound of the donkey. (to a boy)
+ድምጺ ፈረስ ስምዒ። | Listen to the sound of the horse. (to a girl)
+ድምጺ ፈረስ ስማዕ። | Listen to the sound of the horse. (to a boy)
+ድምጺ ገመል ስምዒ። | Listen to the sound of the camel. (to a girl)
+ድምጺ ገመል ስማዕ። | Listen to the sound of the camel. (to a boy)
+ድምጺ በጊዕ ስምዒ። | Listen to the sound of the sheep. (to a girl)
+ድምጺ በጊዕ ስማዕ። | Listen to the sound of the sheep. (to a boy)
+ድምጺ ጤል ስምዒ። | Listen to the sound of the goat. (to a girl)
+ድምጺ ጤል ስማዕ። | Listen to the sound of the goat. (to a boy)
+ኣነ ባኒ እፈቱ። | I like bread.
+ባኒ ትፈትዊ ዶ? | Do you like bread? (to a girl)
+ባኒ ትፈቱ ዶ? | Do you like bread? (to a boy)
+ኣነ ጸባ እፈቱ። | I like milk.
+ጸባ ትፈትዊ ዶ? | Do you like milk? (to a girl)
+ጸባ ትፈቱ ዶ? | Do you like milk? (to a boy)
+ኣነ ሻሂ እፈቱ። | I like tea.
+ሻሂ ትፈትዊ ዶ? | Do you like tea? (to a girl)
+ሻሂ ትፈቱ ዶ? | Do you like tea? (to a boy)
+ኣነ ሕምባሻ እፈቱ። | I like hmbasha bread.
+ሕምባሻ ትፈትዊ ዶ? | Do you like hmbasha bread? (to a girl)
+ሕምባሻ ትፈቱ ዶ? | Do you like hmbasha bread? (to a boy)
+ኣነ ባናና እፈቱ። | I like bananas.
+ባናና ትፈትዊ ዶ? | Do you like bananas? (to a girl)
+ባናና ትፈቱ ዶ? | Do you like bananas? (to a boy)
+ኣነ መዓር እፈቱ። | I like honey.
+መዓር ትፈትዊ ዶ? | Do you like honey? (to a girl)
+መዓር ትፈቱ ዶ? | Do you like honey? (to a boy)
+ኣነ ብርቱኳን እፈቱ። | I like oranges.
+ብርቱኳን ትፈትዊ ዶ? | Do you like oranges? (to a girl)
+ብርቱኳን ትፈቱ ዶ? | Do you like oranges? (to a boy)
+ኣነ እንጀራ እፈቱ። | I like injera.
+እንጀራ ትፈትዊ ዶ? | Do you like injera? (to a girl)
+እንጀራ ትፈቱ ዶ? | Do you like injera? (to a boy)
+ምሳይ ዘምሪ። | Sing with me. (to a girl)
+ምሳይ ዘምር። | Sing with me. (to a boy)
+ምሳይ ኣንብቢ። | Read with me. (to a girl)
+ምሳይ ኣንብብ። | Read with me. (to a boy)
+ምሳይ ተጻወቲ። | Play with me. (to a girl)
+ምሳይ ተጻወት። | Play with me. (to a boy)
+ናባይ ነዒ። | Come to me. (to a girl)
+ናባይ ነዓ። | Come to me. (to a boy)
+ማይ ስተዪ። | Drink water. (to a girl)
+ማይ ስተ። | Drink water. (to a boy)
+ብልዒ። | Eat. (to a girl)
+ብላዕ። | Eat. (to a boy)
+ሕጂ ደቅሲ። | Now go to sleep. (to a girl)
+ሕጂ ደቅስ። | Now go to sleep. (to a boy)
+ብትግርኛ ተዛረቢ። | Speak in Tigrinya. (to a girl)
+ብትግርኛ ተዛረብ። | Speak in Tigrinya. (to a boy)
+ደጊምኪ ስምዒ። | Listen again. (to a girl)
+ደጊምካ ስማዕ። | Listen again. (to a boy)
+ኣብዚ ጠውቕ። | Tap here. (to a boy)
+ቅድም ስምዒ፡ ድሕሪኡ በሊ። | First listen, then say it. (to a girl)
+ቅድም ስማዕ፡ ድሕሪኡ በል። | First listen, then say it. (to a boy)
+ሓንሳብ ጥራይ ፈትኒ። | Try just once. (to a girl)
+ሓንሳብ ጥራይ ፈትን። | Try just once. (to a boy)
+ኣይትፍርሒ። | Don't be afraid. (to a girl)
+ኣይትፍራሕ። | Don't be afraid. (to a boy)
+ዓሚቝ ኣስተንፍሲ። | Take a deep breath. (to a girl)
+ዓሚቝ ኣስተንፍስ። | Take a deep breath. (to a boy)
+ኣብ ስእሊ ርኣዪ። | Look at the picture. (to a girl)
+ኣብ ስእሊ ርአ። | Look at the picture. (to a boy)
+ብጣዕሚ ጎበዝ ኢኺ! | You are very clever! (to a girl)
+ብጣዕሚ ጎበዝ ኢኻ! | You are very clever! (to a boy)
+ሎሚ ኣዝዩ ጽቡቕ ሰሪሕኪ! | You did very good work today! (to a girl)
+ሎሚ ኣዝዩ ጽቡቕ ሰሪሕካ! | You did very good work today! (to a boy)
+ጽቡቕ ሰሚዕኪ! | You listened well! (to a girl)
+ጽቡቕ ሰሚዕካ! | You listened well! (to a boy)
+ኩሎም ፊደላት ወዲእኪ! | You finished all the letters! (to a girl)
+ኩሎም ፊደላት ወዲእካ! | You finished all the letters! (to a boy)
+ሎሚ ሰኑይ እዩ። | Today is Monday.
+ሎሚ ሰሉስ እዩ። | Today is Tuesday.
+ሎሚ ረቡዕ እዩ። | Today is Wednesday.
+ሎሚ ሓሙስ እዩ። | Today is Thursday.
+ሎሚ ዓርቢ እዩ። | Today is Friday.

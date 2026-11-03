@@ -1,0 +1,100 @@
+እዚ ፊደል "ጴ" እዩ። | This is the letter "ጴ".
+"ጵ" ደጊምና ንበሎ። | Let's say "ጵ" again.
+እዚ ፊደል "ጶ" እዩ። | This is the letter "ጶ".
+"ጸ" ደጊምና ንበሎ። | Let's say "ጸ" again.
+እዚ ፊደል "ጹ" እዩ። | This is the letter "ጹ".
+"ጺ" ደጊምና ንበሎ። | Let's say "ጺ" again.
+እዚ ፊደል "ጻ" እዩ። | This is the letter "ጻ".
+"ጼ" ደጊምና ንበሎ። | Let's say "ጼ" again.
+እዚ ፊደል "ጽ" እዩ። | This is the letter "ጽ".
+"ጾ" ደጊምና ንበሎ። | Let's say "ጾ" again.
+እዚ ፊደል "ፈ" እዩ። | This is the letter "ፈ".
+"ፉ" ደጊምና ንበሎ። | Let's say "ፉ" again.
+እዚ ፊደል "ፊ" እዩ። | This is the letter "ፊ".
+"ፋ" ደጊምና ንበሎ። | Let's say "ፋ" again.
+እዚ ፊደል "ፌ" እዩ። | This is the letter "ፌ".
+"ፍ" ደጊምና ንበሎ። | Let's say "ፍ" again.
+እዚ ፊደል "ፎ" እዩ። | This is the letter "ፎ".
+"ፐ" ደጊምና ንበሎ። | Let's say "ፐ" again.
+እዚ ፊደል "ፑ" እዩ። | This is the letter "ፑ".
+"ፒ" ደጊምና ንበሎ። | Let's say "ፒ" again.
+እዚ ፊደል "ፓ" እዩ። | This is the letter "ፓ".
+"ፔ" ደጊምና ንበሎ። | Let's say "ፔ" again.
+እዚ ፊደል "ፕ" እዩ። | This is the letter "ፕ".
+"ፖ" ደጊምና ንበሎ። | Let's say "ፖ" again.
+እዚ ዓቢ ከልቢ እዩ። | This is a big dog.
+እዚ ንእሽቶ ከልቢ እዩ። | This is a small dog.
+እዚ ዓቢ ፈረስ እዩ። | This is a big horse.
+እዚ ንእሽቶ ፈረስ እዩ። | This is a small horse.
+እዚ ዓቢ ገመል እዩ። | This is a big camel.
+እዚ ንእሽቶ ገመል እዩ። | This is a small camel.
+እዚ ዓቢ ዓሳ እዩ። | This is a big fish.
+እዚ ንእሽቶ ዓሳ እዩ። | This is a small fish.
+እዚ ዓቢ ኣድጊ እዩ። | This is a big donkey.
+እዚ ንእሽቶ ኣድጊ እዩ። | This is a small donkey.
+እዚ ዓቢ ገዛ እዩ። | This is a big house.
+እዚ ንእሽቶ ገዛ እዩ። | This is a small house.
+እዚ ዓቢ መጽሓፍ እዩ። | This is a big book.
+እዚ ንእሽቶ መጽሓፍ እዩ። | This is a small book.
+እዚ ዓቢ ኳዕሶ እዩ። | This is a big ball.
+እዚ ንእሽቶ ኳዕሶ እዩ። | This is a small ball.
+እዚ ዓቢ ዓራት እዩ። | This is a big bed.
+እዚ ንእሽቶ ዓራት እዩ። | This is a small bed.
+እዚ ዓቢ ጣውላ እዩ። | This is a big table.
+እዚ ንእሽቶ ጣውላ እዩ። | This is a small table.
+እዚ ዓቢ ቦርሳ እዩ። | This is a big bag.
+እዚ ንእሽቶ ቦርሳ እዩ። | This is a small bag.
+እዚ ዓቢ መፍትሕ እዩ። | This is a big key.
+እዚ ንእሽቶ መፍትሕ እዩ። | This is a small key.
+እዚ ዓቢ ማዕጾ እዩ። | This is a big door.
+እዚ ንእሽቶ ማዕጾ እዩ። | This is a small door.
+እዚ ዓቢ ርሳስ እዩ። | This is a big pencil.
+እዚ ንእሽቶ ርሳስ እዩ። | This is a small pencil.
+እዚ ዓቢ ድሙ እዩ። | This is a big cat.
+እዚ ንእሽቶ ድሙ እዩ። | This is a small cat.
+እዚ ዓቢ ፒሮ እዩ። | This is a big pen.
+እዚ ንእሽቶ ፒሮ እዩ። | This is a small pen.
+እዚ ዓቢ ኣፍ እዩ። | This is a big mouth.
+እዚ ንእሽቶ ኣፍ እዩ። | This is a small mouth.
+እዚ ዓቢ ገጽ እዩ። | This is a big face.
+እዚ ንእሽቶ ገጽ እዩ። | This is a small face.
+እዚ ዓቢ ስኒ እዩ። | This is a big tooth.
+እዚ ንእሽቶ ስኒ እዩ። | This is a small tooth.
+እዚ ዓቢ ልቢ እዩ። | This is a big heart.
+እዚ ንእሽቶ ልቢ እዩ። | This is a small heart.
+መጽሓፍ ኣብ ልዕሊ ጣውላ ኣሎ። | The book is on the table.
+መጽሓፍ ኣብ ትሕቲ ጣውላ ኣሎ። | The book is under the table.
+መጽሓፍ ኣብ ውሽጢ ቦርሳ ኣሎ። | The book is inside the bag.
+መጽሓፍ ኣበይ ኣሎ? | Where is the book?
+ርሳስ ኣብ ልዕሊ ጣውላ ኣሎ። | The pencil is on the table.
+ርሳስ ኣብ ትሕቲ ጣውላ ኣሎ። | The pencil is under the table.
+ርሳስ ኣብ ውሽጢ ቦርሳ ኣሎ። | The pencil is inside the bag.
+ርሳስ ኣበይ ኣሎ? | Where is the pencil?
+ፒሮ ኣብ ልዕሊ ጣውላ ኣሎ። | The pen is on the table.
+ፒሮ ኣብ ትሕቲ ጣውላ ኣሎ። | The pen is under the table.
+ፒሮ ኣብ ውሽጢ ቦርሳ ኣሎ። | The pen is inside the bag.
+ፒሮ ኣበይ ኣሎ? | Where is the pen?
+ኳዕሶ ኣብ ልዕሊ ጣውላ ኣሎ። | The ball is on the table.
+ኳዕሶ ኣብ ትሕቲ ጣውላ ኣሎ። | The ball is under the table.
+ኳዕሶ ኣብ ውሽጢ ቦርሳ ኣሎ። | The ball is inside the bag.
+ኳዕሶ ኣበይ ኣሎ? | Where is the ball?
+መፍትሕ ኣብ ልዕሊ ጣውላ ኣሎ። | The key is on the table.
+መፍትሕ ኣብ ትሕቲ ጣውላ ኣሎ። | The key is under the table.
+መፍትሕ ኣብ ውሽጢ ቦርሳ ኣሎ። | The key is inside the bag.
+መፍትሕ ኣበይ ኣሎ? | Where is the key?
+ወረቀት ኣብ ልዕሊ ጣውላ ኣሎ። | The paper is on the table.
+ወረቀት ኣብ ትሕቲ ጣውላ ኣሎ። | The paper is under the table.
+ወረቀት ኣብ ውሽጢ ቦርሳ ኣሎ። | The paper is inside the bag.
+ወረቀት ኣበይ ኣሎ? | Where is the paper?
+ባኒ ኣብ ልዕሊ ጣውላ ኣሎ። | The bread is on the table.
+ባኒ ኣብ ትሕቲ ጣውላ ኣሎ። | The bread is under the table.
+ባኒ ኣብ ውሽጢ ቦርሳ ኣሎ። | The bread is inside the bag.
+ባኒ ኣበይ ኣሎ? | Where is the bread?
+ትማሊ ሰኑይ ነይሩ። | Yesterday was Monday.
+ጽባሕ ሰኑይ እዩ። | Tomorrow is Monday.
+ትማሊ ሰሉስ ነይሩ። | Yesterday was Tuesday.
+ጽባሕ ሰሉስ እዩ። | Tomorrow is Tuesday.
+ትማሊ ረቡዕ ነይሩ። | Yesterday was Wednesday.
+ጽባሕ ረቡዕ እዩ። | Tomorrow is Wednesday.
+ትማሊ ሓሙስ ነይሩ። | Yesterday was Thursday.
+ጽባሕ ሓሙስ እዩ። | Tomorrow is Thursday.

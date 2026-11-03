@@ -1,0 +1,100 @@
+እዚ ፈረስ እዩ። | This is a horse.
+እዚ ገመል እዩ። | This is a camel.
+እዚ ዓሳ እዩ። | This is a fish.
+እዚ ኣድጊ እዩ። | This is a donkey.
+እዚ ቡን እዩ። | This is coffee.
+እዚ ሻሂ እዩ። | This is tea.
+እዚ ወረቀት እዩ። | This is paper.
+እዚ ዓራት እዩ። | This is a bed.
+እዚ መፍትሕ እዩ። | This is a key.
+እዚ ማዕጾ እዩ። | This is a door.
+እዚ ጣውላ እዩ። | This is a table.
+እዚ ቦርሳ እዩ። | This is a bag.
+እዚ ኣፍ እዩ። | This is a mouth.
+እዚ ልቢ እዩ። | This is a heart.
+እዚ ስኒ እዩ። | This is a tooth.
+እዚ ገጽ እዩ። | This is a face.
+እዚ ክሳድ እዩ። | This is a neck.
+እዚ እዝኒ እዩ። | This is an ear.
+እዚ ኳዕሶ እዩ። | This is a ball.
+እዚ ፒሮ እዩ። | This is a pen.
+እዚ ገዛ ድዩ? | Is this a house?
+እዚ መጽሓፍ ድዩ? | Is this a book?
+እዚ ርሳስ ድዩ? | Is this a pencil?
+እዚ ባኒ ድዩ? | Is this bread?
+እዚ ማይ ድዩ? | Is this water?
+እዚ ጸባ ድዩ? | Is this milk?
+እዚ ከልቢ ድዩ? | Is this a dog?
+እዚ ፈረስ ድዩ? | Is this a horse?
+እዚ ገመል ድዩ? | Is this a camel?
+እዚ ዓሳ ድዩ? | Is this a fish?
+እዚ ኣድጊ ድዩ? | Is this a donkey?
+እዚ ቡን ድዩ? | Is this coffee?
+እዚ ሻሂ ድዩ? | Is this tea?
+እዚ ወረቀት ድዩ? | Is this paper?
+እዚ ዓራት ድዩ? | Is this a bed?
+እዚ መፍትሕ ድዩ? | Is this a key?
+እዚ ማዕጾ ድዩ? | Is this a door?
+እዚ ጣውላ ድዩ? | Is this a table?
+እዚ ቦርሳ ድዩ? | Is this a bag?
+እዚ ኣፍ ድዩ? | Is this a mouth?
+እዚ ርእሲ ድዩ? | Is this a head?
+እዚ ልቢ ድዩ? | Is this a heart?
+እዚ ስኒ ድዩ? | Is this a tooth?
+እዚ ገጽ ድዩ? | Is this a face?
+እዚ ክሳድ ድዩ? | Is this a neck?
+እዚ እዝኒ ድዩ? | Is this an ear?
+እዚ ኳዕሶ ድዩ? | Is this a ball?
+እዚ ፒሮ ድዩ? | Is this a pen?
+እቲ ገዛ ኣበይ ኣሎ? | Where is the house?
+እቲ መጽሓፍ ኣበይ ኣሎ? | Where is the book?
+እቲ ርሳስ ኣበይ ኣሎ? | Where is the pencil?
+እቲ ባኒ ኣበይ ኣሎ? | Where is the bread?
+እቲ ማይ ኣበይ ኣሎ? | Where is the water?
+እቲ ጸባ ኣበይ ኣሎ? | Where is the milk?
+እቲ ከልቢ ኣበይ ኣሎ? | Where is the dog?
+እቲ ፈረስ ኣበይ ኣሎ? | Where is the horse?
+እቲ ገመል ኣበይ ኣሎ? | Where is the camel?
+እቲ ዓሳ ኣበይ ኣሎ? | Where is the fish?
+እቲ ኣድጊ ኣበይ ኣሎ? | Where is the donkey?
+እቲ ቡን ኣበይ ኣሎ? | Where is the coffee?
+እቲ ሻሂ ኣበይ ኣሎ? | Where is the tea?
+እቲ ወረቀት ኣበይ ኣሎ? | Where is the paper?
+እቲ ዓራት ኣበይ ኣሎ? | Where is the bed?
+እቲ መፍትሕ ኣበይ ኣሎ? | Where is the key?
+እቲ ማዕጾ ኣበይ ኣሎ? | Where is the door?
+እቲ ጣውላ ኣበይ ኣሎ? | Where is the table?
+እቲ ቦርሳ ኣበይ ኣሎ? | Where is the bag?
+እቲ ኣፍ ኣበይ ኣሎ? | Where is the mouth?
+እቲ ርእሲ ኣበይ ኣሎ? | Where is the head?
+እቲ ልቢ ኣበይ ኣሎ? | Where is the heart?
+እቲ ስኒ ኣበይ ኣሎ? | Where is the tooth?
+እቲ ገጽ ኣበይ ኣሎ? | Where is the face?
+እቲ ክሳድ ኣበይ ኣሎ? | Where is the neck?
+እቲ እዝኒ ኣበይ ኣሎ? | Where is the ear?
+እቲ ኳዕሶ ኣበይ ኣሎ? | Where is the ball?
+እቲ ፒሮ ኣበይ ኣሎ? | Where is the pen?
+እቲ ገዛ ኣርእይኒ። | Show me the house. (to a girl)
+እቲ ገዛ ኣርእየኒ። | Show me the house. (to a boy)
+እቲ መጽሓፍ ኣርእይኒ። | Show me the book. (to a girl)
+እቲ መጽሓፍ ኣርእየኒ። | Show me the book. (to a boy)
+እቲ ርሳስ ኣርእይኒ። | Show me the pencil. (to a girl)
+እቲ ርሳስ ኣርእየኒ። | Show me the pencil. (to a boy)
+እቲ ባኒ ኣርእይኒ። | Show me the bread. (to a girl)
+እቲ ባኒ ኣርእየኒ። | Show me the bread. (to a boy)
+እቲ ማይ ኣርእይኒ። | Show me the water. (to a girl)
+እቲ ማይ ኣርእየኒ። | Show me the water. (to a boy)
+እቲ ጸባ ኣርእይኒ። | Show me the milk. (to a girl)
+እቲ ጸባ ኣርእየኒ። | Show me the milk. (to a boy)
+እቲ ከልቢ ኣርእይኒ። | Show me the dog. (to a girl)
+እቲ ከልቢ ኣርእየኒ። | Show me the dog. (to a boy)
+እቲ ፈረስ ኣርእይኒ። | Show me the horse. (to a girl)
+እቲ ፈረስ ኣርእየኒ። | Show me the horse. (to a boy)
+እቲ ገመል ኣርእይኒ። | Show me the camel. (to a girl)
+እቲ ገመል ኣርእየኒ። | Show me the camel. (to a boy)
+እቲ ዓሳ ኣርእይኒ። | Show me the fish. (to a girl)
+እቲ ዓሳ ኣርእየኒ። | Show me the fish. (to a boy)
+እቲ ኣድጊ ኣርእይኒ። | Show me the donkey. (to a girl)
+እቲ ኣድጊ ኣርእየኒ። | Show me the donkey. (to a boy)
+እቲ ቡን ኣርእይኒ። | Show me the coffee. (to a girl)
+እቲ ቡን ኣርእየኒ። | Show me the coffee. (to a boy)

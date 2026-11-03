@@ -1,14 +1,17 @@
 // What each language's learning path teaches. Letters first (one stop = one letter family),
 // then math taught in the same language. Change a list here and the path changes everywhere.
 
-// Ge'ez letter families in teaching order. Bilen is taught with its Latin alphabet.
+// Ge'ez letter families in teaching order. Bilen and Saho are taught with the Latin alphabet.
 const GEEZ_TI = ["ሀ", "ለ", "ሐ", "መ", "ረ", "ሰ", "ሸ", "ቀ", "ቐ", "በ", "ቨ", "ተ", "ቸ", "ነ", "ኘ", "አ",
   "ከ", "ኸ", "ወ", "ዐ", "ዘ", "ዠ", "የ", "ደ", "ጀ", "ገ", "ጠ", "ጨ", "ጰ", "ጸ", "ፈ", "ፐ"];
 const GEEZ_AM = ["ሀ", "ለ", "ሐ", "መ", "ሠ", "ረ", "ሰ", "ሸ", "ቀ", "በ", "ቨ", "ተ", "ቸ", "ኀ", "ነ", "ኘ", "አ",
   "ከ", "ኸ", "ወ", "ዐ", "ዘ", "ዠ", "የ", "ደ", "ጀ", "ገ", "ጠ", "ጨ", "ጰ", "ጸ", "ፀ", "ፈ", "ፐ"];
 const LATIN = "a b c d e f g h i j k l m n o p q r s t u v w x y z".split(" ");
 
-export const LETTERS = { ti: GEEZ_TI, tig: GEEZ_TI, am: GEEZ_AM, byn: LATIN };
+export const LETTERS = { ti: GEEZ_TI, tig: GEEZ_TI, am: GEEZ_AM, byn: LATIN, ssy: LATIN };
+
+// True when the language is written in Ge'ez letters (Bilen and Saho use Latin letters).
+export const usesGeez = (lang) => LETTERS[lang] !== LATIN;
 
 // The 7 forms of a Ge'ez letter family, e.g. ሀ -> ሀ ሁ ሂ ሃ ሄ ህ ሆ (Unicode keeps them side by side).
 export function family(letter) {

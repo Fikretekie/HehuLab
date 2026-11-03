@@ -1,0 +1,237 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
+import { langOf, useKid } from "../../../components/KidState";
+import { Camel, Goat, Sheep } from "../../../components/Avatars";
+import { Check, GamePad, Star } from "../../../components/Icons";
+import { NUMBER_WORDS, letterUnits, usesGeez } from "../../../components/curriculum";
+import { SpeakButton, stop, useVoice } from "../../../components/Voice";
+
+// Screen 5 (web): Games. The game you're playing is big on the left; all games are listed on the right.
+// Every game uses the child's language: letters from their path, numbers said with their number words.
+
+const ROUNDS = 5;
+
+const Cup = () => (
+  <svg width="52" height="52" viewBox="0 0 48 48" aria-hidden="true">
+    <path d="M10 18h24l-3 18a4 4 0 0 1-4 3H17a4 4 0 0 1-4-3z" fill="#FFFFFF" stroke="#102542" strokeWidth="2.5" />
+    <path d="M34 22h3a4 4 0 0 1 0 8h-4" stroke="#102542" strokeWidth="2.5" fill="none" />
+    <path d="M14 22h16" stroke="#B8441C" strokeWidth="3" />
+    <path d="M19 8c-2 3 2 4 0 7M26 8c-2 3 2 4 0 7" stroke="#4D5E78" strokeWidth="2" fill="none" strokeLinecap="round" />
+  </svg>
+);
+
+const GAMES = [
+  { id: "goat", title: "Feed the goat", note: "Find the letter Fiyel asks for", Pic: Goat, kind: "letters" },
+  { id: "cups", title: "Count the coffee cups", note: "How many cups for the coffee ceremony?", Pic: Camel, kind: "math" },
+  { id: "race", title: "Race the sheep", note: "Coming soon", Pic: Sheep, soon: true },
+];
+
+function shuffle(list) {
+  return [...list].sort(() => Math.random() - 0.5);
+}
+
+// One round: the answer plus three other choices.
+function makeRound(pool) {
+  const answer = pool[Math.floor(Math.random() * pool.length)];
+  return { answer, options: shuffle([answer, ...shuffle(pool.filter((x) => x.key !== answer.key)).slice(0, 3)]) };
+}
+
+// The playing area for "Feed the goat" and "Count the coffee cups". Same rules: 5 rounds, tap the right one.
+function Stage({ game, pool, geez, words }) {
+  // The first round is fixed so the server and the browser draw the same page; it's mixed once the page loads.
+  const [round, setRound] = useState({ answer: pool[0], options: pool.slice(0, 4) });
+  const [score, setScore] = useState(0);
+  const [wrong, setWrong] = useState(null);
+  const [ok, setOk] = useState(false);
+  const won = score >= ROUNDS;
+
+  useEffect(() => setRound(makeRound(pool)), [pool]);
+
+  // Rodas reads each question out loud (the letter in her recorded voice) and cheers.
+  const { kid } = useKid();
+  const voice = useVoice();
+  const talk = (line, text) => voice({ line, text });
+  const ask = () =>
+    game.id === "goat"
+      ? voice({ word: round.answer.key, text: "Fiyel wants this letter! Can you find it?" })
+      : talk("howmany", "How many cups?");
+
+  useEffect(() => {
+    if (won) talk("welldone", game.id === "goat" ? "Fiyel is full! Thank you!" : "The coffee is ready! Well done!");
+    else ask();
+    return stop;
+  }, [round, won]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  function choose(item) {
+    if (ok || won) return;
+    if (item.key !== round.answer.key) {
+      talk("again", "Not that one. Try again!");
+      return setWrong(item.key);
+    }
+    talk("welldone", game.id === "goat" ? "Yum! Thank you!" : "Yes, that's right!");
+    setWrong(null);
+    setOk(true);
+    setTimeout(() => {
+      setScore((s) => s + 1);
+      setOk(false);
+      setRound(makeRound(pool));
+    }, 800);
+  }
+
+  function again() {
+    setScore(0);
+    setRound(makeRound(pool));
+  }
+
+  if (won) {
+    return (
+      <div className="flex flex-1 flex-col items-center justify-center gap-5 text-center">
+        <game.Pic size={150} />
+        <div className="flex gap-2">
+          {Array.from({ length: ROUNDS }, (_, i) => (
+            <Star key={i} width="40" height="40" />
+          ))}
+        </div>
+        <h2 className="text-4xl font-bold">{game.id === "goat" ? "Fiyel is full!" : "The coffee is ready!"}</h2>
+        <p className="text-lg text-muted">You got all {ROUNDS} right.</p>
+        <button type="button" onClick={again} className="btn-brand text-lg">
+          Play again
+        </button>
+      </div>
+    );
+  }
+
+  const question =
+    game.id === "goat" ? (
+      <>
+        Fiyel wants <span className={geez ? "font-geez" : ""}>{round.answer.big}</span>!
+      </>
+    ) : (
+      "How many cups?"
+    );
+
+  return (
+    <div className="flex flex-1 flex-col items-center justify-between gap-6">
+      {/* Score: one star per right answer */}
+      <div className="flex gap-2 self-end" aria-label={`${score} of ${ROUNDS}`}>
+        {Array.from({ length: ROUNDS }, (_, i) => (
+          <span key={i} className={i < score ? "" : "opacity-25 grayscale"}>
+            <Star width="28" height="28" />
+          </span>
+        ))}
+      </div>
+
+      {/* The animal asks, in a speech bubble */}
+      <div className="flex items-center gap-6">
+        <div className={`transition ${ok ? "scale-110" : ""}`}>
+          <game.Pic size={140} />
+        </div>
+        <div className="relative rounded-3xl bg-white px-7 py-5 text-3xl font-bold">
+          <span className="absolute -left-2 top-1/2 h-5 w-5 -translate-y-1/2 rotate-45 bg-white" aria-hidden="true" />
+          {ok ? (game.id === "goat" ? "Yum! Thank you!" : "Yes, that's right!") : question}
+        </div>
+        <SpeakButton onClick={ask} label="Hear the question again" />
+      </div>
+
+      {game.id === "cups" && (
+        <div className="flex min-h-[64px] flex-wrap justify-center gap-2 rounded-3xl bg-white/70 px-6 py-3">
+          {Array.from({ length: round.answer.count }, (_, i) => (
+            <Cup key={i} />
+          ))}
+        </div>
+      )}
+
+      {/* The choices: bundles of grass with letters, or numbers */}
+      <div className="grid grid-cols-4 gap-4">
+        {round.options.map((item) => (
+          <button
+            key={item.key}
+            type="button"
+            onClick={() => choose(item)}
+            className={`flex h-28 w-28 flex-col items-center justify-center rounded-3xl border-4 font-bold transition hover:-translate-y-1 ${
+              ok && item.key === round.answer.key
+                ? "border-good bg-good-soft text-good"
+                : wrong === item.key
+                  ? "border-accent bg-accent-soft text-accent"
+                  : game.id === "goat"
+                    ? "border-[#7DBE6A] bg-[#E6F4DC]"
+                    : "border-line bg-white"
+            }`}
+          >
+            <span className={`text-5xl ${geez && game.id === "goat" ? "font-geez" : "font-display"}`}>{item.big}</span>
+            {game.id === "cups" && words && <span className="mt-1 font-geez text-sm text-muted">{words[item.count - 1]}</span>}
+          </button>
+        ))}
+      </div>
+      <p className="min-h-[1.5em] font-bold text-accent">{wrong ? "Not that one. Try again!" : ""}</p>
+    </div>
+  );
+}
+
+export default function Games() {
+  const { kid } = useKid();
+  const lang = langOf(kid);
+  const [gameId, setGameId] = useState("goat");
+  const game = GAMES.find((g) => g.id === gameId);
+  const geez = usesGeez(kid.lang);
+  const words = NUMBER_WORDS[kid.lang];
+
+  // Letters come from the first unit of the child's path; numbers are 1 to 5.
+  const pools = useMemo(
+    () => ({
+      letters: letterUnits(kid.lang)[0].letters.map((l) => ({ key: l, big: l })),
+      math: Array.from({ length: 5 }, (_, i) => ({ key: String(i + 1), big: String(i + 1), count: i + 1 })),
+    }),
+    [kid.lang],
+  );
+
+  return (
+    <main>
+      <div className="mb-8">
+        <p className="eyebrow text-brand">Games</p>
+        <h1 className="mt-1 text-4xl font-bold">Play and learn in {lang.name}</h1>
+        <p className="mt-2 text-lg text-muted">Every game uses the letters and numbers from your path.</p>
+      </div>
+
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
+        {/* The game being played */}
+        <section className={`card flex min-h-[560px] flex-col p-8 ${game.id === "goat" ? "bg-[#F1F8EC]" : "bg-[#FFF6E9]"}`}>
+          <h2 className="text-2xl font-bold">{game.title}</h2>
+          <p className="text-muted">{game.note}</p>
+          <Stage key={`${game.id}-${kid.lang}`} game={game} pool={pools[game.kind]} geez={geez} words={words} />
+        </section>
+
+        {/* All games */}
+        <aside className="space-y-4">
+          <h2 className="flex items-center gap-2 text-xl font-bold">
+            <span className="text-brand"><GamePad width="24" height="24" /></span> All games
+          </h2>
+          {GAMES.map((g) => (
+            <button
+              key={g.id}
+              type="button"
+              disabled={g.soon}
+              onClick={() => setGameId(g.id)}
+              aria-pressed={g.id === gameId}
+              className={`card flex w-full items-center gap-4 p-4 text-left transition ${
+                g.id === gameId ? "border-brand bg-soft" : g.soon ? "opacity-60" : "hover:border-brand/50"
+              }`}
+            >
+              <g.Pic size={60} />
+              <span className="flex-1">
+                <b className="block text-lg leading-tight">{g.title}</b>
+                <span className="text-sm text-muted">{g.soon ? "Coming soon" : g.kind === "math" ? `Numbers in ${lang.name}` : `${lang.name} letters`}</span>
+              </span>
+              {g.id === gameId && (
+                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-brand text-white">
+                  <Check width="16" height="16" />
+                </span>
+              )}
+            </button>
+          ))}
+        </aside>
+      </div>
+    </main>
+  );
+}

@@ -8,6 +8,7 @@ export const LANGS = [
   { id: "ti", name: "Tigrinya", native: "ትግርኛ", group: "Eritrean" },
   { id: "tig", name: "Tigre", native: "ትግረ", group: "Eritrean" },
   { id: "byn", name: "Bilen", native: "", group: "Eritrean" },
+  { id: "ssy", name: "Saho", native: "", group: "Eritrean" },
   { id: "am", name: "Amharic", native: "አማርኛ", group: "From Ethiopia" },
 ];
 

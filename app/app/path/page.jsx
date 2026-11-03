@@ -4,7 +4,8 @@ import Link from "next/link";
 import { langOf, useKid } from "../../../components/KidState";
 import { TEACHERS } from "../../../components/Avatars";
 import { Check, GamePad, Moon, Star } from "../../../components/Icons";
-import { MATH, NUMBER_WORDS, cheer, family, letterUnits } from "../../../components/curriculum";
+import { MATH, NUMBER_WORDS, cheer, family, letterUnits, usesGeez } from "../../../components/curriculum";
+import { SpeakButton, useVoice } from "../../../components/Voice";
 
 // Screen 3 (web): the learning path. Letter units in the chosen language, then math in the same language.
 // Each stop is done (green check), current (big blue, "Start"), or locked (grey).
@@ -79,7 +80,8 @@ export default function LearningPath() {
   const yay = cheer(kid.lang, kid.gender);
   const stateOf = (n) => (n < done ? "done" : n === done ? "current" : "locked");
   const total = letterUnits(kid.lang).reduce((n, u) => n + u.letters.length, 0); // all letters, not only the units shown
-  const geez = kid.lang !== "byn";
+  const geez = usesGeez(kid.lang);
+  const voice = useVoice();
 
   let n = 0;
   const letterBlocks = units.map((u, ui) => ({
@@ -142,10 +144,21 @@ export default function LearningPath() {
       {/* Right side: the teacher cheering, today's goal, quick links */}
       <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
         <div className="card overflow-hidden">
-          <div className="flex flex-col items-center bg-soft px-6 pb-5 pt-6 text-center">
+          <div className="relative flex flex-col items-center bg-soft px-6 pb-5 pt-6 text-center">
             <teacher.Pic size={112} />
             <p className="mt-3 text-lg font-extrabold">{teacher.name}</p>
             <span className="chip mt-1 bg-white">AI teacher</span>
+            {/* The teacher cheers out loud */}
+            <SpeakButton
+              onClick={() =>
+                voice({
+                  line: "welldone",
+                  text: `${yay.english} You learned ${done} letters, ${kid.name}. Let's learn the next one together!`,
+                })
+              }
+              label={`Hear ${teacher.short || teacher.name}`}
+              className="absolute right-4 top-4"
+            />
           </div>
           <div className="p-6 text-center">
             {yay.native && <p className="font-geez text-3xl font-bold text-brand">{yay.native}</p>}

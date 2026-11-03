@@ -1,0 +1,6 @@
+ትማሊ ዓርቢ ነይሩ። | Yesterday was Friday.
+ጽባሕ ዓርቢ እዩ። | Tomorrow is Friday.
+ትማሊ ቀዳም ነይሩ። | Yesterday was Saturday.
+ጽባሕ ቀዳም እዩ። | Tomorrow is Saturday.
+ትማሊ ሰንበት ነይሩ። | Yesterday was Sunday.
+ጽባሕ ሰንበት እዩ። | Tomorrow is Sunday.

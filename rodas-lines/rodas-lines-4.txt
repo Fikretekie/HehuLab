@@ -1,0 +1,100 @@
+እቲ ሻሂ ኣርእይኒ። | Show me the tea. (to a girl)
+እቲ ሻሂ ኣርእየኒ። | Show me the tea. (to a boy)
+እቲ ወረቀት ኣርእይኒ። | Show me the paper. (to a girl)
+እቲ ወረቀት ኣርእየኒ። | Show me the paper. (to a boy)
+እቲ ዓራት ኣርእይኒ። | Show me the bed. (to a girl)
+እቲ ዓራት ኣርእየኒ። | Show me the bed. (to a boy)
+እቲ መፍትሕ ኣርእይኒ። | Show me the key. (to a girl)
+እቲ መፍትሕ ኣርእየኒ። | Show me the key. (to a boy)
+እቲ ማዕጾ ኣርእይኒ። | Show me the door. (to a girl)
+እቲ ማዕጾ ኣርእየኒ። | Show me the door. (to a boy)
+እቲ ጣውላ ኣርእይኒ። | Show me the table. (to a girl)
+እቲ ጣውላ ኣርእየኒ። | Show me the table. (to a boy)
+እቲ ቦርሳ ኣርእይኒ። | Show me the bag. (to a girl)
+እቲ ቦርሳ ኣርእየኒ። | Show me the bag. (to a boy)
+እቲ ኣፍ ኣርእይኒ። | Show me the mouth. (to a girl)
+እቲ ኣፍ ኣርእየኒ። | Show me the mouth. (to a boy)
+እቲ ርእሲ ኣርእይኒ። | Show me the head. (to a girl)
+እቲ ርእሲ ኣርእየኒ። | Show me the head. (to a boy)
+እቲ ልቢ ኣርእይኒ። | Show me the heart. (to a girl)
+እቲ ልቢ ኣርእየኒ። | Show me the heart. (to a boy)
+እቲ ስኒ ኣርእይኒ። | Show me the tooth. (to a girl)
+እቲ ስኒ ኣርእየኒ። | Show me the tooth. (to a boy)
+እቲ ገጽ ኣርእይኒ። | Show me the face. (to a girl)
+እቲ ገጽ ኣርእየኒ። | Show me the face. (to a boy)
+እቲ ክሳድ ኣርእይኒ። | Show me the neck. (to a girl)
+እቲ ክሳድ ኣርእየኒ። | Show me the neck. (to a boy)
+እቲ እዝኒ ኣርእይኒ። | Show me the ear. (to a girl)
+እቲ እዝኒ ኣርእየኒ። | Show me the ear. (to a boy)
+እቲ ኳዕሶ ኣርእይኒ። | Show me the ball. (to a girl)
+እቲ ኳዕሶ ኣርእየኒ። | Show me the ball. (to a boy)
+እቲ ፒሮ ኣርእይኒ። | Show me the pen. (to a girl)
+እቲ ፒሮ ኣርእየኒ። | Show me the pen. (to a boy)
+እዚ ገዛ ድዩ ወይስ መጽሓፍ? | Is this a house or a book?
+እዚ መጽሓፍ ድዩ ወይስ ርሳስ? | Is this a book or a pencil?
+እዚ ርሳስ ድዩ ወይስ ባኒ? | Is this a pencil or bread?
+እዚ ባኒ ድዩ ወይስ ማይ? | Is this bread or water?
+እዚ ማይ ድዩ ወይስ ጸባ? | Is this water or milk?
+እዚ ጸባ ድዩ ወይስ ከልቢ? | Is this milk or a dog?
+እዚ ከልቢ ድዩ ወይስ ፈረስ? | Is this a dog or a horse?
+እዚ ፈረስ ድዩ ወይስ ገመል? | Is this a horse or a camel?
+እዚ ገመል ድዩ ወይስ ዓሳ? | Is this a camel or a fish?
+እዚ ዓሳ ድዩ ወይስ ኣድጊ? | Is this a fish or a donkey?
+እዚ ኣድጊ ድዩ ወይስ ቡን? | Is this a donkey or coffee?
+እዚ ቡን ድዩ ወይስ ሻሂ? | Is this coffee or tea?
+እዚ ሻሂ ድዩ ወይስ ወረቀት? | Is this tea or paper?
+እዚ ወረቀት ድዩ ወይስ ዓራት? | Is this paper or a bed?
+እዚ ዓራት ድዩ ወይስ መፍትሕ? | Is this a bed or a key?
+እዚ መፍትሕ ድዩ ወይስ ማዕጾ? | Is this a key or a door?
+እዚ ማዕጾ ድዩ ወይስ ጣውላ? | Is this a door or a table?
+እዚ ጣውላ ድዩ ወይስ ቦርሳ? | Is this a table or a bag?
+እዚ ቦርሳ ድዩ ወይስ ኣፍ? | Is this a bag or a mouth?
+እዚ ኣፍ ድዩ ወይስ ርእሲ? | Is this a mouth or a head?
+እዚ ርእሲ ድዩ ወይስ ልቢ? | Is this a head or a heart?
+እዚ ልቢ ድዩ ወይስ ስኒ? | Is this a heart or a tooth?
+እዚ ስኒ ድዩ ወይስ ገጽ? | Is this a tooth or a face?
+እዚ ገጽ ድዩ ወይስ ክሳድ? | Is this a face or a neck?
+እዚ ክሳድ ድዩ ወይስ እዝኒ? | Is this a neck or an ear?
+እዚ እዝኒ ድዩ ወይስ ኳዕሶ? | Is this an ear or a ball?
+እዚ ኳዕሶ ድዩ ወይስ ፒሮ? | Is this a ball or a pen?
+እዚ ፒሮ ድዩ ወይስ ገዛ? | Is this a pen or a house?
+"House" ብትግርኛ እንታይ ይበሃል? | What is "house" called in Tigrinya?
+"House" ብትግርኛ "ገዛ" ይበሃል። | In Tigrinya, "house" is called "ገዛ".
+"Book" ብትግርኛ እንታይ ይበሃል? | What is "book" called in Tigrinya?
+"Book" ብትግርኛ "መጽሓፍ" ይበሃል። | In Tigrinya, "book" is called "መጽሓፍ".
+"Pencil" ብትግርኛ እንታይ ይበሃል? | What is "pencil" called in Tigrinya?
+"Pencil" ብትግርኛ "ርሳስ" ይበሃል። | In Tigrinya, "pencil" is called "ርሳስ".
+"Bread" ብትግርኛ እንታይ ይበሃል? | What is "bread" called in Tigrinya?
+"Bread" ብትግርኛ "ባኒ" ይበሃል። | In Tigrinya, "bread" is called "ባኒ".
+"Water" ብትግርኛ እንታይ ይበሃል? | What is "water" called in Tigrinya?
+"Water" ብትግርኛ "ማይ" ይበሃል። | In Tigrinya, "water" is called "ማይ".
+"Milk" ብትግርኛ እንታይ ይበሃል? | What is "milk" called in Tigrinya?
+"Milk" ብትግርኛ "ጸባ" ይበሃል። | In Tigrinya, "milk" is called "ጸባ".
+"Dog" ብትግርኛ እንታይ ይበሃል? | What is "dog" called in Tigrinya?
+"Dog" ብትግርኛ "ከልቢ" ይበሃል። | In Tigrinya, "dog" is called "ከልቢ".
+"Horse" ብትግርኛ እንታይ ይበሃል? | What is "horse" called in Tigrinya?
+"Horse" ብትግርኛ "ፈረስ" ይበሃል። | In Tigrinya, "horse" is called "ፈረስ".
+"Camel" ብትግርኛ እንታይ ይበሃል? | What is "camel" called in Tigrinya?
+"Camel" ብትግርኛ "ገመል" ይበሃል። | In Tigrinya, "camel" is called "ገመል".
+"Fish" ብትግርኛ እንታይ ይበሃል? | What is "fish" called in Tigrinya?
+"Fish" ብትግርኛ "ዓሳ" ይበሃል። | In Tigrinya, "fish" is called "ዓሳ".
+"Donkey" ብትግርኛ እንታይ ይበሃል? | What is "donkey" called in Tigrinya?
+"Donkey" ብትግርኛ "ኣድጊ" ይበሃል። | In Tigrinya, "donkey" is called "ኣድጊ".
+"Coffee" ብትግርኛ እንታይ ይበሃል? | What is "coffee" called in Tigrinya?
+"Coffee" ብትግርኛ "ቡን" ይበሃል። | In Tigrinya, "coffee" is called "ቡን".
+"Tea" ብትግርኛ እንታይ ይበሃል? | What is "tea" called in Tigrinya?
+"Tea" ብትግርኛ "ሻሂ" ይበሃል። | In Tigrinya, "tea" is called "ሻሂ".
+"Paper" ብትግርኛ እንታይ ይበሃል? | What is "paper" called in Tigrinya?
+"Paper" ብትግርኛ "ወረቀት" ይበሃል። | In Tigrinya, "paper" is called "ወረቀት".
+"Bed" ብትግርኛ እንታይ ይበሃል? | What is "bed" called in Tigrinya?
+"Bed" ብትግርኛ "ዓራት" ይበሃል። | In Tigrinya, "bed" is called "ዓራት".
+"Key" ብትግርኛ እንታይ ይበሃል? | What is "key" called in Tigrinya?
+"Key" ብትግርኛ "መፍትሕ" ይበሃል። | In Tigrinya, "key" is called "መፍትሕ".
+"Door" ብትግርኛ እንታይ ይበሃል? | What is "door" called in Tigrinya?
+"Door" ብትግርኛ "ማዕጾ" ይበሃል። | In Tigrinya, "door" is called "ማዕጾ".
+"Table" ብትግርኛ እንታይ ይበሃል? | What is "table" called in Tigrinya?
+"Table" ብትግርኛ "ጣውላ" ይበሃል። | In Tigrinya, "table" is called "ጣውላ".
+"Bag" ብትግርኛ እንታይ ይበሃል? | What is "bag" called in Tigrinya?
+"Bag" ብትግርኛ "ቦርሳ" ይበሃል። | In Tigrinya, "bag" is called "ቦርሳ".
+"Mouth" ብትግርኛ እንታይ ይበሃል? | What is "mouth" called in Tigrinya?
+"Mouth" ብትግርኛ "ኣፍ" ይበሃል። | In Tigrinya, "mouth" is called "ኣፍ".

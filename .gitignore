@@ -3,3 +3,9 @@ node_modules/
 out/
 .DS_Store
 *.log
+
+# Family voice recordings (73 MB): copied from S3, served from S3/CloudFront in production
+public/voices/*/
+
+# Voices-site update zips (they go to CloudShell, not into this repo)
+hehulab-update*.zip

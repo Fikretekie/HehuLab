@@ -1,0 +1,100 @@
+ሰለስተ ኣጻብዕ ኣርእየኒ። | Show me three fingers. (to a boy)
+ኣርባዕተ ኣጻብዕ ኣርእይኒ። | Show me four fingers. (to a girl)
+ኣርባዕተ ኣጻብዕ ኣርእየኒ። | Show me four fingers. (to a boy)
+ሓሙሽተ ኣጻብዕ ኣርእይኒ። | Show me five fingers. (to a girl)
+ሓሙሽተ ኣጻብዕ ኣርእየኒ። | Show me five fingers. (to a boy)
+ሽዱሽተ ኣጻብዕ ኣርእይኒ። | Show me six fingers. (to a girl)
+ሽዱሽተ ኣጻብዕ ኣርእየኒ። | Show me six fingers. (to a boy)
+ሸውዓተ ኣጻብዕ ኣርእይኒ። | Show me seven fingers. (to a girl)
+ሸውዓተ ኣጻብዕ ኣርእየኒ። | Show me seven fingers. (to a boy)
+ሸሞንተ ኣጻብዕ ኣርእይኒ። | Show me eight fingers. (to a girl)
+ሸሞንተ ኣጻብዕ ኣርእየኒ። | Show me eight fingers. (to a boy)
+ትሽዓተ ኣጻብዕ ኣርእይኒ። | Show me nine fingers. (to a girl)
+ትሽዓተ ኣጻብዕ ኣርእየኒ። | Show me nine fingers. (to a boy)
+ዓሰርተ ኣጻብዕ ኣርእይኒ። | Show me ten fingers. (to a girl)
+ዓሰርተ ኣጻብዕ ኣርእየኒ። | Show me ten fingers. (to a boy)
+ሓደ ኮኾብ ረኺብኪ! | You got one star! (to a girl)
+ሓደ ኮኾብ ረኺብካ! | You got one star! (to a boy)
+ክልተ ኮኾብ ረኺብኪ! | You got two stars! (to a girl)
+ክልተ ኮኾብ ረኺብካ! | You got two stars! (to a boy)
+ሰለስተ ኮኾብ ረኺብኪ! | You got three stars! (to a girl)
+ሰለስተ ኮኾብ ረኺብካ! | You got three stars! (to a boy)
+ኣርባዕተ ኮኾብ ረኺብኪ! | You got four stars! (to a girl)
+ኣርባዕተ ኮኾብ ረኺብካ! | You got four stars! (to a boy)
+ሓሙሽተ ኮኾብ ረኺብኪ! | You got five stars! (to a girl)
+ሓሙሽተ ኮኾብ ረኺብካ! | You got five stars! (to a boy)
+ሽዱሽተ ኮኾብ ረኺብኪ! | You got six stars! (to a girl)
+ሽዱሽተ ኮኾብ ረኺብካ! | You got six stars! (to a boy)
+ሸውዓተ ኮኾብ ረኺብኪ! | You got seven stars! (to a girl)
+ሸውዓተ ኮኾብ ረኺብካ! | You got seven stars! (to a boy)
+ሸሞንተ ኮኾብ ረኺብኪ! | You got eight stars! (to a girl)
+ሸሞንተ ኮኾብ ረኺብካ! | You got eight stars! (to a boy)
+ትሽዓተ ኮኾብ ረኺብኪ! | You got nine stars! (to a girl)
+ትሽዓተ ኮኾብ ረኺብካ! | You got nine stars! (to a boy)
+ዓሰርተ ኮኾብ ረኺብኪ! | You got ten stars! (to a girl)
+ዓሰርተ ኮኾብ ረኺብካ! | You got ten stars! (to a boy)
+ሓደ ምስ ክልተ ሰለስተ ይኸውን። | one and two make three.
+ሓደ ምስ ሰለስተ ኣርባዕተ ይኸውን። | one and three make four.
+ሓደ ምስ ኣርባዕተ ሓሙሽተ ይኸውን። | one and four make five.
+ሓደ ምስ ሓሙሽተ ሽዱሽተ ይኸውን። | one and five make six.
+ክልተ ምስ ሓደ ሰለስተ ይኸውን። | two and one make three.
+ክልተ ምስ ሰለስተ ሓሙሽተ ይኸውን። | two and three make five.
+ክልተ ምስ ኣርባዕተ ሽዱሽተ ይኸውን። | two and four make six.
+ክልተ ምስ ሓሙሽተ ሸውዓተ ይኸውን። | two and five make seven.
+ሰለስተ ምስ ሓደ ኣርባዕተ ይኸውን። | three and one make four.
+ሰለስተ ምስ ክልተ ሓሙሽተ ይኸውን። | three and two make five.
+ሰለስተ ምስ ሰለስተ ሽዱሽተ ይኸውን። | three and three make six.
+ሰለስተ ምስ ኣርባዕተ ሸውዓተ ይኸውን። | three and four make seven.
+ሰለስተ ምስ ሓሙሽተ ሸሞንተ ይኸውን። | three and five make eight.
+ኣርባዕተ ምስ ሓደ ሓሙሽተ ይኸውን። | four and one make five.
+ኣርባዕተ ምስ ክልተ ሽዱሽተ ይኸውን። | four and two make six.
+ኣርባዕተ ምስ ሰለስተ ሸውዓተ ይኸውን። | four and three make seven.
+ኣርባዕተ ምስ ኣርባዕተ ሸሞንተ ይኸውን። | four and four make eight.
+ኣርባዕተ ምስ ሓሙሽተ ትሽዓተ ይኸውን። | four and five make nine.
+ሓሙሽተ ምስ ሓደ ሽዱሽተ ይኸውን። | five and one make six.
+ሓሙሽተ ምስ ክልተ ሸውዓተ ይኸውን። | five and two make seven.
+ሓሙሽተ ምስ ሰለስተ ሸሞንተ ይኸውን። | five and three make eight.
+ሓሙሽተ ምስ ኣርባዕተ ትሽዓተ ይኸውን። | five and four make nine.
+ሓሙሽተ ምስ ሓሙሽተ ዓሰርተ ይኸውን። | five and five make ten.
+ካብ ክልተ ሓደ እንተ ኣውጺእና ሓደ ይተርፍ። | If we take one away from two, one is left.
+ካብ ሰለስተ ሓደ እንተ ኣውጺእና ክልተ ይተርፍ። | If we take one away from three, two is left.
+ካብ ኣርባዕተ ሓደ እንተ ኣውጺእና ሰለስተ ይተርፍ። | If we take one away from four, three is left.
+ካብ ሓሙሽተ ሓደ እንተ ኣውጺእና ኣርባዕተ ይተርፍ። | If we take one away from five, four is left.
+ካብ ሽዱሽተ ሓደ እንተ ኣውጺእና ሓሙሽተ ይተርፍ። | If we take one away from six, five is left.
+ካብ ሸውዓተ ሓደ እንተ ኣውጺእና ሽዱሽተ ይተርፍ። | If we take one away from seven, six is left.
+ካብ ሸሞንተ ሓደ እንተ ኣውጺእና ሸውዓተ ይተርፍ። | If we take one away from eight, seven is left.
+ካብ ትሽዓተ ሓደ እንተ ኣውጺእና ሸሞንተ ይተርፍ። | If we take one away from nine, eight is left.
+ካብ ዓሰርተ ሓደ እንተ ኣውጺእና ትሽዓተ ይተርፍ። | If we take one away from ten, nine is left.
+ካብ ሓደ ክሳብ ዓሰርተ ቁጸሪ። | Count from one to ten. (to a girl)
+ካብ ሓደ ክሳብ ዓሰርተ ቁጸር። | Count from one to ten. (to a boy)
+ምሳይ ቁጸሪ። | Count with me. (to a girl)
+ምሳይ ቁጸር። | Count with me. (to a boy)
+እዚ ኳዕሶ ቀይሕ እዩ። | This ball is red.
+እዚ ኳዕሶ ሰማያዊ እዩ። | This ball is blue.
+እዚ ኳዕሶ ቀጠልያ እዩ። | This ball is green.
+እዚ ኳዕሶ ብጫ እዩ። | This ball is yellow.
+እዚ ኳዕሶ ጻዕዳ እዩ። | This ball is white.
+እዚ ኳዕሶ ጸሊም እዩ። | This ball is black.
+እዚ ኳዕሶ ቡናዊ እዩ። | This ball is brown.
+እቲ ቀይሕ ጠውቒ። | Tap the red one. (to a girl)
+እቲ ቀይሕ ጠውቕ። | Tap the red one. (to a boy)
+እቲ ሰማያዊ ጠውቒ። | Tap the blue one. (to a girl)
+እቲ ሰማያዊ ጠውቕ። | Tap the blue one. (to a boy)
+እቲ ቀጠልያ ጠውቒ። | Tap the green one. (to a girl)
+እቲ ቀጠልያ ጠውቕ። | Tap the green one. (to a boy)
+እቲ ብጫ ጠውቒ። | Tap the yellow one. (to a girl)
+እቲ ብጫ ጠውቕ። | Tap the yellow one. (to a boy)
+እቲ ጻዕዳ ጠውቒ። | Tap the white one. (to a girl)
+እቲ ጻዕዳ ጠውቕ። | Tap the white one. (to a boy)
+እቲ ጸሊም ጠውቒ። | Tap the black one. (to a girl)
+እቲ ጸሊም ጠውቕ። | Tap the black one. (to a boy)
+እቲ ቡናዊ ጠውቒ። | Tap the brown one. (to a girl)
+እቲ ቡናዊ ጠውቕ። | Tap the brown one. (to a boy)
+እዚ ኳዕሶ እንታይ ሕብሪ እዩ? | What color is this ball?
+እዚ ገዛ እዩ። | This is a house.
+እዚ መጽሓፍ እዩ። | This is a book.
+እዚ ርሳስ እዩ። | This is a pencil.
+እዚ ባኒ እዩ። | This is bread.
+እዚ ማይ እዩ። | This is water.
+እዚ ጸባ እዩ። | This is milk.
+እዚ ከልቢ እዩ። | This is a dog.

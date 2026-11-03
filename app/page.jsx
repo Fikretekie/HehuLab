@@ -33,7 +33,7 @@ export default function Home() {
               <a href="#grades" className="btn-line">Explore the curriculum</a>
             </div>
             <div className="flex flex-wrap gap-2 text-sm font-extrabold">
-              <span className="chip bg-white">Eritrean: Tigrinya · Tigre · Bilen</span>
+              <span className="chip bg-white">Eritrean: Tigrinya · Tigre · Bilen · Saho</span>
               <span className="chip bg-white">From Ethiopia: Amharic</span>
               <span className="chip bg-white">Math in the same language</span>
             </div>
@@ -60,7 +60,7 @@ export default function Home() {
             Homework that adapts to each child: trace the fidel, match words, count. Print it or do it on screen.
           </Feature>
           <Feature color="bg-accent-soft text-accent" Icon={Moon} title="Bedtime stories">
-            Our folk tales as short movies, or audio only for sleepy eyes, told by Grandma Abeba.
+            Our folk tales as short movies, or audio only for sleepy eyes, told by Grandma Didi.
           </Feature>
         </div>
       </section>
@@ -88,7 +88,7 @@ export default function Home() {
             </p>
             <p className="eyebrow mb-3 text-muted">Or learn with an animal friend</p>
             <div className="flex flex-wrap gap-3">
-              {[["Fiyel the goat", Goat], ["Bebe the sheep", Sheep], ["Gemel the camel", Camel], ["Grandma Abeba", Grandma]].map(([n, Pic]) => (
+              {[["Fiyel the goat", Goat], ["Bebe the sheep", Sheep], ["Gemel the camel", Camel], ["Grandma Didi", Grandma]].map(([n, Pic]) => (
                 <span key={n} className="flex items-center gap-2 rounded-2xl bg-white py-1.5 pl-1.5 pr-4 font-extrabold">
                   <Pic size={40} /> {n}
                 </span>
@@ -153,7 +153,7 @@ export default function Home() {
           <div className="rounded-xl3 bg-ink p-8 text-white">
             <h3 className="text-2xl font-bold">Full access</h3>
             <p className="my-3 font-display text-5xl font-bold">$19.99 <span className="text-lg">/ month per child</span></p>
-            <p className="mb-6 text-white/85">Every grade, all four languages and math, games, practice sheets, bedtime stories, Friday reports.</p>
+            <p className="mb-6 text-white/85">Every grade, all five languages and math, games, practice sheets, bedtime stories, Friday reports.</p>
             <Link href="/signup/" className="btn-sun w-full">Start learning</Link>
           </div>
         </div>

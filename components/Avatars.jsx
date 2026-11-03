@@ -79,7 +79,7 @@ export function Grandma({ size = 64 }) {
 
 export const TEACHERS = [
   { id: "rodas", name: "Rodas", note: "AI teacher", Pic: Rodas },
-  { id: "abeba", name: "Grandma Abeba", short: "Grandma", note: "Stories and songs", Pic: Grandma },
+  { id: "abeba", name: "Grandma Didi", short: "Grandma", note: "Stories and songs", Pic: Grandma },
   { id: "fiyel", name: "Fiyel the goat", short: "Fiyel", note: "Games and jokes", Pic: Goat },
   { id: "bebe", name: "Bebe the sheep", short: "Bebe", note: "Calm, for little ones", Pic: Sheep },
   { id: "gemel", name: "Gemel the camel", short: "Gemel", note: "Counting and math", Pic: Camel },

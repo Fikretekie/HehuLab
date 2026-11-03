@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "HehuLab: Tigrinya, Tigre, Bilen, Amharic and math for kids",
+  title: "HehuLab: Tigrinya, Tigre, Bilen, Saho, Amharic and math for kids",
   description:
     "Games, bedtime stories and short lessons with Rodas, a friendly AI teacher, in the real voices of Eritrean families.",
 };

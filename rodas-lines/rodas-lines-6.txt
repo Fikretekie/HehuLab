@@ -1,0 +1,6 @@
+ሎሚ ቀዳም እዩ። | Today is Saturday.
+ሎሚ ሰንበት እዩ። | Today is Sunday.
+ሎሚ እንታይ መዓልቲ እዩ? | What day is it today?
+ሎሚ ጸሓይ ኣላ። | Today it is sunny.
+ሎሚ ዝሑል እዩ። | Today it is cold.
+ሎሚ ሙቐት እዩ። | Today it is hot.

@@ -1,0 +1,42 @@
+# HehuLab — open tasks (updated 2026-11-02)
+
+## A. Kids/learners website (this repo)
+1. Screen 4 lesson: Fik approves → commit + push.
+2. Screen 4 lesson: test the microphone in Chrome (http://localhost:3001/app/lesson/?letter=ሀ).
+3. Screen 4 lesson: trim the silence at the end of Rodas's letter recordings (~4.5 s each) so she answers faster.
+4. Copy Adiam's new recordings (the 11 lesson lines: በሊ, ጽቡቕ ገይርኪ!, ደጊምኪ በሊ…) into `public/voices` once she records them.
+5. Commit the older uncommitted work (Voice.jsx, Avatars, games/homework/settings/stories folders).
+6. **New curriculum structure**: levels → units → lessons (letters, words, phrases, story, game, review).
+   Kids: Pre-K, K, Grade 1, 2, 3. Adults: Beginner, Everyday talk, Reading & writing, Culture.
+7. **Tracks** (pick on the start screen):
+   - Learn your language (diaspora kids and adults): Tigrinya, Tigre, Bilen, Saho (+ Amharic).
+   - **Learn English** from Tigrinya, Tigre, Bilen, Saho, Amharic (instructions in your language).
+8. **Characters with real recorders** (one character = one person's voice, always the same):
+   Rodas = Adiam Abraham. Grandma Abeba, Gemel the camel, Goat, Sheep = Fik picks a recorder for each.
+9. Screen 5 Games (letter pop, memory match, build the word, speed round, star map).
+10. Screen 6 Stories (each unit ends with a story from its words; watch or listen only).
+11. Screen 7 Homework / practice sheets.
+12. Screen 8 Settings (grown-ups).
+13. Screen 9 Friday parent report email, written in Tigrinya.
+14. Hosting: S3 + CloudFront, then GitHub Actions deploy. Fix the 2 `npm audit` warnings safely first.
+
+## B. Voices site (voices.hehulab.org) — live: update 55 (consent v3, idle sign-out)
+15. Push local commits (updates 49–55) to GitHub; sync CloudShell's copy.
+16. Next update (waiting for Fik's yes): "Please re-record" goes back to the same person, not someone new.
+17. Move the Bible verses from Adiam's folder: #12–#40 → Aki, the rest → Ruth G. (Fik is doing it).
+18. Adiam records the 11 lesson lines (#1–#11 in her folder).
+19. Fik checks, then adds Rodas teacher lines to Adiam's folder: chat batches 1–3 (~140) +
+    `rodas-lines/rodas-lines-1..10.txt` (812 lines).
+20. Run `python3 ~/hehulab-voices/check_duplicates.py` in CloudShell and look at the result.
+21. Fix Bible text errors: doubled apostrophes (Naomi''s), "5:" at the start of one English line, "ahweh",
+    one English verse that doesn't match its Tigrinya.
+22. Find recorders for **Tigre, Bilen, Saho, Amharic** (0 recordings each). Needed before those tracks can talk.
+23. Check why Tigre/Bilen/Amharic/Saho each show 1,190 "to record" (probably the shared English Translate list).
+24. ✅ Consent v3 live (update 55). Still: have a lawyer read it once.
+25. Optional: "🤖 Draft teacher lines" button (AI drafts 50 lines, Fik ticks the good ones).
+
+## C. Later projects
+26. Voice conversion: other readers' recordings turned into Rodas's voice (RVC free / ElevenLabs paid).
+27. Rodas's AI voice (text-to-speech from 30–60 min of Adiam), then general Tigrinya text-to-speech.
+28. Speech recognition, so the lesson knows the child really said ሀ (today it only checks something was said).
+29. Rodas video clips (listening, talking, smiling, clapping, thinking) into `public/rodas/`.
