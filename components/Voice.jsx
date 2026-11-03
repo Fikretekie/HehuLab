@@ -32,12 +32,18 @@ const WOMEN = /female|woman|zira|aria|jenny|michelle|hazel|susan|samantha|victor
 let playing = null;
 const indexes = {};
 
-// Load a language's list of recordings once (an empty list when the language has none yet).
-function recordings(lang) {
-  indexes[lang] ||= fetch(`${BASE}/${lang}.json`)
+// Every character has one recorder and their own recordings, never mixed:
+//   Rodas (Adiam)  public/voices/ti.json        + public/voices/ti/<recId>.webm
+//   Kokob (Aki)    public/voices/kokob/ti.json  + public/voices/kokob/ti/<recId>.webm
+const dir = (who) => (who && who !== "rodas" ? `${BASE}/${who}` : BASE);
+
+// Load a character's list of recordings for a language once (an empty list when there are none yet).
+function recordings(lang, who) {
+  const key = `${who || "rodas"}:${lang}`;
+  indexes[key] ||= fetch(`${dir(who)}/${lang}.json`)
     .then((r) => (r.ok ? r.json() : {}))
     .catch(() => ({}));
-  return indexes[lang];
+  return indexes[key];
 }
 
 function synth() {
@@ -62,10 +68,10 @@ export function stop() {
   synth()?.cancel();
 }
 
-// The address of Rodas's recording of `word`, or null if she hasn't recorded it yet.
-export async function recordingUrl(lang, word) {
-  const id = (await recordings(lang))[word];
-  return id ? `${BASE}/${lang}/${id}.webm` : null;
+// The address of a character's recording of `word` (Rodas if `who` is left out), or null if not recorded yet.
+export async function recordingUrl(lang, word, who) {
+  const id = (await recordings(lang, who))[word];
+  return id ? `${dir(who)}/${lang}/${id}.webm` : null;
 }
 
 // The recordings have up to 3 seconds of quiet before and after Rodas speaks. Find where her voice starts and
@@ -123,9 +129,9 @@ export async function playClip(url, keep) {
   });
 }
 
-// Play Rodas's recording of `word` (a letter, a word, a sentence, or "#3" for a number).
-async function playRecording(lang, word) {
-  const url = await recordingUrl(lang, word);
+// Play a character's recording of `word` (a letter, a word, a sentence, or "#3" for a number).
+async function playRecording(lang, word, who) {
+  const url = await recordingUrl(lang, word, who);
   if (!url) return false;
   const b = await voiceBounds(url);
   try {
@@ -172,6 +178,21 @@ export function useVoice() {
       return say({ lang: kid.lang, word, ...opts });
     },
     [on, kid.lang, kid.gender],
+  );
+}
+
+// The voice of a friend who isn't Rodas (Kokob = Aki). Only their own recordings play: a line they haven't
+// recorded stays silent, never another person's voice or the browser's.
+export function useFriendVoice(who) {
+  const { kid } = useKid();
+  const on = kid.voice !== false;
+  return useCallback(
+    (word) => {
+      if (!on || !word) return Promise.resolve(false);
+      stop();
+      return playRecording(kid.lang, word, who);
+    },
+    [on, kid.lang, who],
   );
 }
 

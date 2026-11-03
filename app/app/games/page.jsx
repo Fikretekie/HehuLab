@@ -6,7 +6,8 @@ import { langOf, useKid } from "../../../components/KidState";
 import { Camel, Goat, Kokob, Sheep } from "../../../components/Avatars";
 import { Check, GamePad, Star } from "../../../components/Icons";
 import { NUMBER_WORDS, letterUnits, usesGeez } from "../../../components/curriculum";
-import { SpeakButton, stop, useVoice } from "../../../components/Voice";
+import { SpeakButton, stop, useFriendVoice, useVoice } from "../../../components/Voice";
+import { KOKOB } from "../../../components/kokobLines";
 import { findLesson, lessonItems, levelsFor } from "../../../components/courses";
 
 // Screen 5 (web): Games. The game you're playing is big on the left; all games are listed on the right.
@@ -188,10 +189,13 @@ function Stage({ game, pool, geez, words, english, onWin }) {
 }
 
 // "Memory match": 6 words of the unit become 12 cards, a picture and its word. Turn two; if they belong together
-// they stay open. Kokob hosts it. She has no recorder yet, so the game is silent (never another person's voice).
+// they stay open. Kokob hosts it in her own voice (Aki): she says the word of every card you turn. Words Aki hasn't
+// recorded yet stay silent (never another person's voice).
 const PAIRS = 6;
 
 function Memory({ game, pool, english, onWin }) {
+  const { kid } = useKid();
+  const kokob = useFriendVoice("kokob");
   const [cards, setCards] = useState([]);
   const [open, setOpen] = useState([]); // the 1 or 2 cards turned right now
   const [found, setFound] = useState([]); // keys of the pairs found
@@ -207,11 +211,15 @@ function Memory({ game, pool, english, onWin }) {
   useEffect(deal, [pool]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    if (won) onWin?.();
+    if (!won) return;
+    kokob(KOKOB.allFound[kid.gender === "boy" ? "boy" : "girl"][0]);
+    onWin?.();
   }, [won]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => stop, []);
 
   function turn(card) {
     if (open.length === 2 || open.includes(card) || found.includes(card.w.key)) return;
+    if (!english) kokob(card.w.word); // Aki records the words in Tigrinya; the English track stays silent for now
     const now = [...open, card];
     setOpen(now);
     if (now.length < 2) return;

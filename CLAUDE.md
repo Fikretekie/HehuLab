@@ -32,7 +32,7 @@ The owner is Fik (GitHub: Fikretekie). He is learning, so explain simply.
 ### Teachers
 - **Rodas** = AI-generated Eritrean woman (23, in a zuria), photo `public/images/rodas.jpg`. Always labeled
   **"AI teacher"**. Greets "Selam! I'm Rodas." / "ሰላም! ኣነ ሮዳስ እየ።"
-- Animal friends + Kokob (ኮኾብ, "star", a young girl with headphones; hosts Memory match) are AI teachers too. Grandma was removed. Rodas tells the bedtime stories. Footer says every voice is a real family voice.
+- Animal friends + Kokob (ኮኾብ, "star", a young girl with headphones, voice = Aki, own recordings in `public/voices/kokob/`; hosts Memory match) are AI teachers too. Grandma was removed. Rodas tells the bedtime stories. Footer says every voice is a real family voice.
 
 ## Screens (web first)
 | # | Screen | Route | Status |
