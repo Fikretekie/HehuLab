@@ -1,0 +1,100 @@
+ኣብ ስእሊ ጠውቒ። | Tap the picture. (to a girl)
+ኣብ ስእሊ ጠውቕ። | Tap the picture. (to a boy)
+ቁጽሪ ምረጺ። | Pick a number. (to a girl)
+ቁጽሪ ምረጽ። | Pick a number. (to a boy)
+ሕብሪ ምረጺ። | Pick a color. (to a girl)
+ሕብሪ ምረጽ። | Pick a color. (to a boy)
+ስእሊ ምረጺ። | Pick a picture. (to a girl)
+ስእሊ ምረጽ። | Pick a picture. (to a boy)
+ፊደል ምረጺ። | Pick a letter. (to a girl)
+ፊደል ምረጽ። | Pick a letter. (to a boy)
+ካርድ ምረጺ። | Pick a card. (to a girl)
+ካርድ ምረጽ። | Pick a card. (to a boy)
+ተጠንቀቒ። | Be careful. (to a girl)
+ተጠንቀቕ። | Be careful. (to a boy)
+ረኺብክዮ! | You found it! (to a girl)
+ረኺብካዮ! | You found it! (to a boy)
+ተዓወትኪ! | You won! (to a girl)
+ተዓወትካ! | You won! (to a boy)
+ኣሸናፊት ኢኺ! | You're a winner! (to a girl)
+ኣሸናፊ ኢኻ! | You're a winner! (to a boy)
+ብልጥቲ ኢኺ! | You're clever! (to a girl)
+ብልጡይ ኢኻ! | You're clever! (to a boy)
+ቅልጥፍቲ ኢኺ! | You're fast! (to a girl)
+ቅልጡፍ ኢኻ! | You're fast! (to a boy)
+ሓቅኺ! | You're right! (to a girl)
+ሓቅኻ! | You're right! (to a boy)
+ኮኾብ ረኺብኪ! | You got a star! (to a girl)
+ኮኾብ ረኺብካ! | You got a star! (to a boy)
+ብኣኺ ሕጉስቲ እየ። | I'm happy with you. (to a girl)
+ብኣኻ ሕጉስቲ እየ። | I'm happy with you. (to a boy)
+ሓገዝ ትደልዪ ዶ? | Do you need help? (to a girl)
+ሓገዝ ትደሊ ዶ? | Do you need help? (to a boy)
+ክሕግዘኪ። | Let me help you. (to a girl)
+ክሕግዘካ። | Let me help you. (to a boy)
+ቀጽሊ! | Keep going! (to a girl)
+ቀጽል! | Keep going! (to a boy)
+ኣይተቋርጺ! | Don't give up! (to a girl)
+ኣይተቋርጽ! | Don't give up! (to a boy)
+ዕረፍቲ ውሰዲ። | Take a break. (to a girl)
+ዕረፍቲ ውሰድ። | Take a break. (to a boy)
+ማይ ስተዪ። | Drink some water. (to a girl)
+ማይ ስተ። | Drink some water. (to a boy)
+ኢድኪ ኣልዕሊ። | Raise your hand. (to a girl)
+ኢድካ ኣልዕል። | Raise your hand. (to a boy)
+ኣጣቕዒ! | Clap! (to a girl)
+ኣጣቕዕ! | Clap! (to a boy)
+ስእሊ ሳእሊ። | Draw a picture. (to a girl)
+ስእሊ ስኣል። | Draw a picture. (to a boy)
+ኣየናይ ትፈትዊ? | Which one do you like? (to a girl)
+ኣየናይ ትፈቱ? | Which one do you like? (to a boy)
+ትፈልጥዮ ዶ? | Do you know it? (to a girl)
+ትፈልጦ ዶ? | Do you know it? (to a boy)
+ኣይኮነን፣ ካልእ ፈትኒ። | No, try another one. (to a girl)
+ኣይኮነን፣ ካልእ ፈትን። | No, try another one. (to a boy)
+ኣብ ገዛ ተለማመዲ። | Practice at home. (to a girl)
+ኣብ ገዛ ተለማመድ። | Practice at home. (to a boy)
+ጽባሕ ተመለሲ! | Come back tomorrow! (to a girl)
+ጽባሕ ተመለስ! | Come back tomorrow! (to a boy)
+ቁጽሪ ጽሓፊ። | Write the number. (to a girl)
+ቁጽሪ ጽሓፍ። | Write the number. (to a boy)
+ፊደል ጽሓፊ። | Write the letter. (to a girl)
+ፊደል ጽሓፍ። | Write the letter. (to a boy)
+ንዒ | come (to a girl)
+ኪዲ | go (to a girl)
+ብልዒ | eat (to a girl)
+ደቅሲ | sleep (to a girl)
+ተጻወቲ | play (to a girl)
+ዘምሪ | sing (to a girl)
+ተዛረቢ | speak (to a girl)
+ኮፍ በሊ! | sit down! (to a girl)
+ጠጠው በሊ! | stop! (to a girl)
+ፊደል "ሀ" ኣበይ ኣሎ? | Where is the letter "ሀ"?
+እዚ ፊደል "ሀ" እዩ። | This is the letter "ሀ".
+ፊደል "ለ" ኣበይ ኣሎ? | Where is the letter "ለ"?
+እዚ ፊደል "ለ" እዩ። | This is the letter "ለ".
+ፊደል "ሐ" ኣበይ ኣሎ? | Where is the letter "ሐ"?
+እዚ ፊደል "ሐ" እዩ። | This is the letter "ሐ".
+ፊደል "መ" ኣበይ ኣሎ? | Where is the letter "መ"?
+እዚ ፊደል "መ" እዩ። | This is the letter "መ".
+ፊደል "ረ" ኣበይ ኣሎ? | Where is the letter "ረ"?
+እዚ ፊደል "ረ" እዩ። | This is the letter "ረ".
+ፊደል "ሰ" ኣበይ ኣሎ? | Where is the letter "ሰ"?
+እዚ ፊደል "ሰ" እዩ። | This is the letter "ሰ".
+ፊደል "ሸ" ኣበይ ኣሎ? | Where is the letter "ሸ"?
+እዚ ፊደል "ሸ" እዩ። | This is the letter "ሸ".
+ፊደል "ቀ" ኣበይ ኣሎ? | Where is the letter "ቀ"?
+እዚ ፊደል "ቀ" እዩ። | This is the letter "ቀ".
+ፊደል "ቐ" ኣበይ ኣሎ? | Where is the letter "ቐ"?
+እዚ ፊደል "ቐ" እዩ። | This is the letter "ቐ".
+ፊደል "በ" ኣበይ ኣሎ? | Where is the letter "በ"?
+እዚ ፊደል "በ" እዩ። | This is the letter "በ".
+ፊደል "ቨ" ኣበይ ኣሎ? | Where is the letter "ቨ"?
+እዚ ፊደል "ቨ" እዩ። | This is the letter "ቨ".
+ፊደል "ተ" ኣበይ ኣሎ? | Where is the letter "ተ"?
+እዚ ፊደል "ተ" እዩ። | This is the letter "ተ".
+ፊደል "ቸ" ኣበይ ኣሎ? | Where is the letter "ቸ"?
+እዚ ፊደል "ቸ" እዩ። | This is the letter "ቸ".
+ፊደል "ነ" ኣበይ ኣሎ? | Where is the letter "ነ"?
+እዚ ፊደል "ነ" እዩ። | This is the letter "ነ".
+ፊደል "ኘ" ኣበይ ኣሎ? | Where is the letter "ኘ"?

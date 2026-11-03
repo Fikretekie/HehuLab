@@ -1,0 +1,100 @@
+ሎሚ | today
+ጽባሕ | tomorrow
+ትማሊ | yesterday
+ሕጂ | now
+መዓልቲ | day
+ለይቲ | night
+ወርሒ | moon / month
+ዳሕራይ | later
+ፋሲካ | Easter
+በዓል ልደት | Christmas
+ኣውደእመት | New Year
+መርዓ | wedding
+መዝሙር | song
+ጸሎት | prayer
+ታሪኽ | story
+ስመይ ሰላም ይበሃል። | My name is Selam.
+ኣነ ጽቡቕ ኣሎኹ የቀንየለይ። | I am fine, thank you.
+ንስኻ ኸ ከመይ ኣሎኻ? | And you, how are you? (to a boy)
+ንስኺ ኸ ከመይ ኣሎኺ? | And you, how are you? (to a girl)
+እበይ ቦታ ኢኺ ትነብሪ? | Where do you live? (to a girl)
+ኣነ ክልተ የሕዋት ኣሎዉኒ። | I have two sisters.
+እዚ ኣቦይ እዩ። | This is my father.
+ኣደይ ኣበይ ኣላ? | Where is my mother?
+ኣቦይ ኣበይ ኣሎ? | Where is my father?
+ዓባየይ ኣብ ኣስመራ ትነብር። | My grandmother lives in Asmara.
+መምህረይ ለዋህ እዩ። | My teacher is kind.
+ካምቻይ ቀያሕ እያ። | My shirt is red.
+ከመይ ኣምሲኻ። | Good evening. (to a boy)
+ከመይ ዊዒልካ? | How was your day? (to a boy)
+ከመይ ዊዒልኪ? | How was your day? (to a girl)
+ብኣኻ ሕቡን እየ። | I am proud of you. (to a boy)
+ኣነ የፍቅረካ እየ። | I love you. (to a boy)
+ሓደ | one
+ክልተ | two
+ሰለስተ | three
+ኣርባዕተ | four
+ሓሙሽተ | five
+ሽዱሽተ | six
+ሸውዓተ | seven
+ሸሞንተ | eight
+ትሽዓተ | nine
+ዓሰርተ | ten
+ሰላም! ከመይ ኣሎኹም? | Hello! How are you all?
+ኣነ ኮኾብ እየ፣ ናይ ጸወታ መሓዛኹም። | I'm Kokob, your game friend.
+ንጻወት! | Let's play!
+ካልእ ጸወታ ንጻወት። | Let's play another game.
+ብሓባር ንጻወት። | Let's play together.
+ጸወታታት ኣዝየ እፈቱ! | I love games!
+ስእልታት ምርኣይ ደስ ይብለኒ። | I like looking at pictures.
+ቁጽርታት ደስ ይብሉኒ። | I like numbers.
+ኣዝዩ ጽቡቕ! | Very good!
+ብጣዕሚ ጽቡቕ! | Excellent!
+ጎበዝ! | Great job!
+ዋው! | Wow!
+ኮኾብ ረኺብና! | We got a star!
+ሰለስተ ኮኾብ! | Three stars!
+ብሓባር ንቑጸር። | Let's count together.
+ብሓባር ንበሎ። | Let's say it together.
+ዝቕጽል ሕቶ። | Next question.
+ዝቕጽል ጸወታ። | Next game.
+ሓንቲ ሕቶ ጥራይ ተሪፋ። | Only one question left.
+ጸወታ ተወዲኡ። | The game is over.
+እዚ ቀሊል እዩ። | This is easy.
+እዚ ቁሩብ ከቢድ እዩ። | This one is a bit hard.
+ሕጂ ቁጽርታት ንመሃር። | Now let's learn numbers.
+ሕጂ ሕብርታት ንመሃር። | Now let's learn colors.
+ሕጂ ፊደላት ንመሃር። | Now let's learn letters.
+ሕጂ ቃላት ንመሃር። | Now let's learn words.
+እዚ ሕብሪ እንታይ እዩ? | What color is this?
+ክንደይ ኣለዉ? | How many are there?
+ኣየናይ ይዓቢ? | Which one is bigger?
+ኣየናይ ይንእስ? | Which one is smaller?
+ክልቲኦም ካርድታት ሓደ እዮም። | The two cards are the same.
+ክልቲኦም ሓደ ኣይኮኑን። | The two are not the same.
+ካልእ ግዜ ክንጻወት ኢና። | We will play again another time.
+ጽባሕ ንራኸብ! | See you tomorrow!
+ሰናይ መዓልቲ! | Have a good day!
+ቻው ቻው! | Bye-bye!
+ጽቡቕ ገይርኪ! | Well done! (to a girl)
+ጽቡቕ ገይርካ! | Well done! (to a boy)
+እንደገና ፈትኒ። | Try again. (to a girl)
+እንደገና ፈትን። | Try again. (to a boy)
+ኣይትጨነቂ። | Don't worry. (to a girl)
+ኣይትጨነቕ። | Don't worry. (to a boy)
+ድልውቲ ዲኺ? | Are you ready? (to a girl)
+ድሉው ዲኻ? | Are you ready? (to a boy)
+ስምዕኒ። | Listen to me. (to a girl)
+ስምዓኒ። | Listen to me. (to a boy)
+ጽን ኢልኪ ስምዒ። | Listen carefully. (to a girl)
+ጽን ኢልካ ስምዕ። | Listen carefully. (to a boy)
+ደድሕረይ በሊ። | Say it after me. (to a girl)
+ደድሕረይ በል። | Say it after me. (to a boy)
+ብዓውታ በሊ። | Say it out loud. (to a girl)
+ብዓውታ በል። | Say it out loud. (to a boy)
+ቁጸሪ። | Count. (to a girl)
+ቁጸር። | Count. (to a boy)
+ክልተ ካርድታት ገልብጢ። | Turn over two cards. (to a girl)
+ክልተ ካርድታት ገልብጥ። | Turn over two cards. (to a boy)
+ስእሉን ቃሉን ኣራኽቢ። | Match the picture and its word. (to a girl)
+ስእሉን ቃሉን ኣራኽብ። | Match the picture and its word. (to a boy)

@@ -1,0 +1,100 @@
+እዚ ፊደል "ኘ" እዩ። | This is the letter "ኘ".
+ፊደል "አ" ኣበይ ኣሎ? | Where is the letter "አ"?
+እዚ ፊደል "አ" እዩ። | This is the letter "አ".
+ፊደል "ከ" ኣበይ ኣሎ? | Where is the letter "ከ"?
+እዚ ፊደል "ከ" እዩ። | This is the letter "ከ".
+ፊደል "ኸ" ኣበይ ኣሎ? | Where is the letter "ኸ"?
+እዚ ፊደል "ኸ" እዩ። | This is the letter "ኸ".
+ፊደል "ወ" ኣበይ ኣሎ? | Where is the letter "ወ"?
+እዚ ፊደል "ወ" እዩ። | This is the letter "ወ".
+ፊደል "ዐ" ኣበይ ኣሎ? | Where is the letter "ዐ"?
+እዚ ፊደል "ዐ" እዩ። | This is the letter "ዐ".
+ፊደል "ዘ" ኣበይ ኣሎ? | Where is the letter "ዘ"?
+እዚ ፊደል "ዘ" እዩ። | This is the letter "ዘ".
+ፊደል "ዠ" ኣበይ ኣሎ? | Where is the letter "ዠ"?
+እዚ ፊደል "ዠ" እዩ። | This is the letter "ዠ".
+ፊደል "የ" ኣበይ ኣሎ? | Where is the letter "የ"?
+እዚ ፊደል "የ" እዩ። | This is the letter "የ".
+ፊደል "ደ" ኣበይ ኣሎ? | Where is the letter "ደ"?
+እዚ ፊደል "ደ" እዩ። | This is the letter "ደ".
+ፊደል "ጀ" ኣበይ ኣሎ? | Where is the letter "ጀ"?
+እዚ ፊደል "ጀ" እዩ። | This is the letter "ጀ".
+ፊደል "ገ" ኣበይ ኣሎ? | Where is the letter "ገ"?
+እዚ ፊደል "ገ" እዩ። | This is the letter "ገ".
+ፊደል "ጠ" ኣበይ ኣሎ? | Where is the letter "ጠ"?
+እዚ ፊደል "ጠ" እዩ። | This is the letter "ጠ".
+ፊደል "ጨ" ኣበይ ኣሎ? | Where is the letter "ጨ"?
+እዚ ፊደል "ጨ" እዩ። | This is the letter "ጨ".
+ፊደል "ጰ" ኣበይ ኣሎ? | Where is the letter "ጰ"?
+እዚ ፊደል "ጰ" እዩ። | This is the letter "ጰ".
+ፊደል "ጸ" ኣበይ ኣሎ? | Where is the letter "ጸ"?
+እዚ ፊደል "ጸ" እዩ። | This is the letter "ጸ".
+ፊደል "ፈ" ኣበይ ኣሎ? | Where is the letter "ፈ"?
+እዚ ፊደል "ፈ" እዩ። | This is the letter "ፈ".
+ፊደል "ፐ" ኣበይ ኣሎ? | Where is the letter "ፐ"?
+እዚ ፊደል "ፐ" እዩ። | This is the letter "ፐ".
+ዓሰርተ ሓደ | eleven
+ዓሰርተ ክልተ | twelve
+ዓሰርተ ሰለስተ | thirteen
+ዓሰርተ ኣርባዕተ | fourteen
+ዓሰርተ ሓሙሽተ | fifteen
+ዓሰርተ ሽዱሽተ | sixteen
+ዓሰርተ ሸውዓተ | seventeen
+ዓሰርተ ሸሞንተ | eighteen
+ዓሰርተ ትሽዓተ | nineteen
+ዕስራ | twenty
+ሓደ ኣሎ። | There is one.
+ክልተ ኣለዉ። | There are two.
+ሰለስተ ኣለዉ። | There are three.
+ኣርባዕተ ኣለዉ። | There are four.
+ሓሙሽተ ኣለዉ። | There are five.
+ሽዱሽተ ኣለዉ። | There are six.
+ሸውዓተ ኣለዉ። | There are seven.
+ሸሞንተ ኣለዉ። | There are eight.
+ትሽዓተ ኣለዉ። | There are nine.
+ዓሰርተ ኣለዉ። | There are ten.
+ዓሰርተ ሓደ ኣለዉ። | There are eleven.
+ዓሰርተ ክልተ ኣለዉ። | There are twelve.
+ዓሰርተ ሰለስተ ኣለዉ። | There are thirteen.
+ዓሰርተ ኣርባዕተ ኣለዉ። | There are fourteen.
+ዓሰርተ ሓሙሽተ ኣለዉ። | There are fifteen.
+ዓሰርተ ሽዱሽተ ኣለዉ። | There are sixteen.
+ዓሰርተ ሸውዓተ ኣለዉ። | There are seventeen.
+ዓሰርተ ሸሞንተ ኣለዉ። | There are eighteen.
+ዓሰርተ ትሽዓተ ኣለዉ። | There are nineteen.
+ዕስራ ኣለዉ። | There are twenty.
+ሎሚ ሰኑይ እዩ። | Today is Monday.
+ሎሚ ሰሉስ እዩ። | Today is Tuesday.
+ሎሚ ረቡዕ እዩ። | Today is Wednesday.
+ሎሚ ሓሙስ እዩ። | Today is Thursday.
+ሎሚ ዓርቢ እዩ። | Today is Friday.
+ሎሚ ቀዳም እዩ። | Today is Saturday.
+ሎሚ ሰንበት እዩ። | Today is Sunday.
+ናይ ከልቢ ስእሊ ኣበይ ኣሎ? | Where is the picture of the dog?
+ናይ ድሙ ስእሊ ኣበይ ኣሎ? | Where is the picture of the cat?
+ናይ ላም ስእሊ ኣበይ ኣሎ? | Where is the picture of the cow?
+ናይ ፈረስ ስእሊ ኣበይ ኣሎ? | Where is the picture of the horse?
+ናይ ገመል ስእሊ ኣበይ ኣሎ? | Where is the picture of the camel?
+ናይ ኣድጊ ስእሊ ኣበይ ኣሎ? | Where is the picture of the donkey?
+ናይ በጊዕ ስእሊ ኣበይ ኣሎ? | Where is the picture of the sheep?
+ናይ ጤል ስእሊ ኣበይ ኣሎ? | Where is the picture of the goat?
+ናይ ዶርሆ ስእሊ ኣበይ ኣሎ? | Where is the picture of the chicken?
+ናይ ዓሳ ስእሊ ኣበይ ኣሎ? | Where is the picture of the fish?
+ናይ ርግቢት ስእሊ ኣበይ ኣሎ? | Where is the picture of the dove?
+ናይ ርእሲ ስእሊ ኣበይ ኣሎ? | Where is the picture of the head?
+ናይ ገጽ ስእሊ ኣበይ ኣሎ? | Where is the picture of the face?
+ናይ ዓይኒ ስእሊ ኣበይ ኣሎ? | Where is the picture of the eye?
+ናይ እዝኒ ስእሊ ኣበይ ኣሎ? | Where is the picture of the ear?
+ናይ ኣፍንጫ ስእሊ ኣበይ ኣሎ? | Where is the picture of the nose?
+ናይ ኣፍ ስእሊ ኣበይ ኣሎ? | Where is the picture of the mouth?
+ናይ ስኒ ስእሊ ኣበይ ኣሎ? | Where is the picture of the tooth?
+ናይ መልሓስ ስእሊ ኣበይ ኣሎ? | Where is the picture of the tongue?
+ናይ ጨጉሪ ስእሊ ኣበይ ኣሎ? | Where is the picture of the hair?
+ናይ ክሳድ ስእሊ ኣበይ ኣሎ? | Where is the picture of the neck?
+ናይ ልቢ ስእሊ ኣበይ ኣሎ? | Where is the picture of the heart?
+ናይ ባኒ ስእሊ ኣበይ ኣሎ? | Where is the picture of the bread?
+ናይ ማይ ስእሊ ኣበይ ኣሎ? | Where is the picture of the water?
+ናይ ጸባ ስእሊ ኣበይ ኣሎ? | Where is the picture of the milk?
+ናይ ቡን ስእሊ ኣበይ ኣሎ? | Where is the picture of the coffee?
+ናይ ሻሂ ስእሊ ኣበይ ኣሎ? | Where is the picture of the tea?
+ናይ መዓር ስእሊ ኣበይ ኣሎ? | Where is the picture of the honey?

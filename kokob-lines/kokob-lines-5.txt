@@ -1,0 +1,100 @@
+ናይ ሽኮር ስእሊ ኣበይ ኣሎ? | Where is the picture of the sugar?
+ናይ ጨው ስእሊ ኣበይ ኣሎ? | Where is the picture of the salt?
+ናይ ባናና ስእሊ ኣበይ ኣሎ? | Where is the picture of the banana?
+ናይ እንቋቑሖ ስእሊ ኣበይ ኣሎ? | Where is the picture of the egg?
+ናይ ገዛ ስእሊ ኣበይ ኣሎ? | Where is the picture of the house?
+ናይ ማዕጾ ስእሊ ኣበይ ኣሎ? | Where is the picture of the door?
+ናይ ዓራት ስእሊ ኣበይ ኣሎ? | Where is the picture of the bed?
+ናይ ጣውላ ስእሊ ኣበይ ኣሎ? | Where is the picture of the table?
+ናይ ሰድያ ስእሊ ኣበይ ኣሎ? | Where is the picture of the chair?
+ናይ መፍትሕ ስእሊ ኣበይ ኣሎ? | Where is the picture of the key?
+ናይ ክሽነ ስእሊ ኣበይ ኣሎ? | Where is the picture of the kitchen?
+ናይ ቤትትምህርቲ ስእሊ ኣበይ ኣሎ? | Where is the picture of the school?
+ናይ መጽሓፍ ስእሊ ኣበይ ኣሎ? | Where is the picture of the book?
+ናይ ርሳስ ስእሊ ኣበይ ኣሎ? | Where is the picture of the pencil?
+ናይ ወረቀት ስእሊ ኣበይ ኣሎ? | Where is the picture of the paper?
+ናይ ቦርሳ ስእሊ ኣበይ ኣሎ? | Where is the picture of the bag?
+ናይ መምህር ስእሊ ኣበይ ኣሎ? | Where is the picture of the teacher?
+ናይ ኣደ ስእሊ ኣበይ ኣሎ? | Where is the picture of the mother?
+ናይ ኣቦ ስእሊ ኣበይ ኣሎ? | Where is the picture of the father?
+ናይ ሓፍቲ ስእሊ ኣበይ ኣሎ? | Where is the picture of the sister?
+ናይ ኣባሓጎ ስእሊ ኣበይ ኣሎ? | Where is the picture of the grandfather?
+ናይ ዓባየይ ስእሊ ኣበይ ኣሎ? | Where is the picture of my grandmother?
+ናይ ኣሞ ስእሊ ኣበይ ኣሎ? | Where is the picture of the aunt?
+ናይ ወዲ ሓዎቦ ስእሊ ኣበይ ኣሎ? | Where is the picture of the cousin?
+ናይ ዉሉድ ስእሊ ኣበይ ኣሎ? | Where is the picture of the children?
+ናይ ከተማ ስእሊ ኣበይ ኣሎ? | Where is the picture of the city?
+ናይ ዓዲ ስእሊ ኣበይ ኣሎ? | Where is the picture of the village?
+ናይ ሃገር ስእሊ ኣበይ ኣሎ? | Where is the picture of the country?
+ናይ ድኳን ስእሊ ኣበይ ኣሎ? | Where is the picture of the shop?
+ናይ ጎደና ስእሊ ኣበይ ኣሎ? | Where is the picture of the street?
+ናይ ክፍሊ ስእሊ ኣበይ ኣሎ? | Where is the picture of the classroom?
+ናይ ማዕርፎ ነፈርቲ ስእሊ ኣበይ ኣሎ? | Where is the picture of the airport?
+ቀይሕ ኣበይ ኣሎ? | Where is red?
+ሰማያዊ ኣበይ ኣሎ? | Where is blue?
+ቀጠልያ ኣበይ ኣሎ? | Where is green?
+ብጫ ኣበይ ኣሎ? | Where is yellow?
+ጻዕዳ ኣበይ ኣሎ? | Where is white?
+ጸሊም ኣበይ ኣሎ? | Where is black?
+ቡናዊ ኣበይ ኣሎ? | Where is brown?
+ሮዛ ኣበይ ኣሎ? | Where is pink?
+ድሕሪ ሓደ እንታይ ይመጽእ? | What comes after one?
+ድሕሪ ሓደ ክልተ ይመጽእ። | After one comes two.
+ድሕሪ ክልተ እንታይ ይመጽእ? | What comes after two?
+ድሕሪ ክልተ ሰለስተ ይመጽእ። | After two comes three.
+ድሕሪ ሰለስተ እንታይ ይመጽእ? | What comes after three?
+ድሕሪ ሰለስተ ኣርባዕተ ይመጽእ። | After three comes four.
+ድሕሪ ኣርባዕተ እንታይ ይመጽእ? | What comes after four?
+ድሕሪ ኣርባዕተ ሓሙሽተ ይመጽእ። | After four comes five.
+ድሕሪ ሓሙሽተ እንታይ ይመጽእ? | What comes after five?
+ድሕሪ ሓሙሽተ ሽዱሽተ ይመጽእ። | After five comes six.
+ድሕሪ ሽዱሽተ እንታይ ይመጽእ? | What comes after six?
+ድሕሪ ሽዱሽተ ሸውዓተ ይመጽእ። | After six comes seven.
+ድሕሪ ሸውዓተ እንታይ ይመጽእ? | What comes after seven?
+ድሕሪ ሸውዓተ ሸሞንተ ይመጽእ። | After seven comes eight.
+ድሕሪ ሸሞንተ እንታይ ይመጽእ? | What comes after eight?
+ድሕሪ ሸሞንተ ትሽዓተ ይመጽእ። | After eight comes nine.
+ድሕሪ ትሽዓተ እንታይ ይመጽእ? | What comes after nine?
+ድሕሪ ትሽዓተ ዓሰርተ ይመጽእ። | After nine comes ten.
+ድሕሪ ዓሰርተ እንታይ ይመጽእ? | What comes after ten?
+ድሕሪ ዓሰርተ ዓሰርተ ሓደ ይመጽእ። | After ten comes eleven.
+ድሕሪ ዓሰርተ ሓደ እንታይ ይመጽእ? | What comes after eleven?
+ድሕሪ ዓሰርተ ሓደ ዓሰርተ ክልተ ይመጽእ። | After eleven comes twelve.
+ድሕሪ ዓሰርተ ክልተ እንታይ ይመጽእ? | What comes after twelve?
+ድሕሪ ዓሰርተ ክልተ ዓሰርተ ሰለስተ ይመጽእ። | After twelve comes thirteen.
+ድሕሪ ዓሰርተ ሰለስተ እንታይ ይመጽእ? | What comes after thirteen?
+ድሕሪ ዓሰርተ ሰለስተ ዓሰርተ ኣርባዕተ ይመጽእ። | After thirteen comes fourteen.
+ድሕሪ ዓሰርተ ኣርባዕተ እንታይ ይመጽእ? | What comes after fourteen?
+ድሕሪ ዓሰርተ ኣርባዕተ ዓሰርተ ሓሙሽተ ይመጽእ። | After fourteen comes fifteen.
+ድሕሪ ዓሰርተ ሓሙሽተ እንታይ ይመጽእ? | What comes after fifteen?
+ድሕሪ ዓሰርተ ሓሙሽተ ዓሰርተ ሽዱሽተ ይመጽእ። | After fifteen comes sixteen.
+ድሕሪ ዓሰርተ ሽዱሽተ እንታይ ይመጽእ? | What comes after sixteen?
+ድሕሪ ዓሰርተ ሽዱሽተ ዓሰርተ ሸውዓተ ይመጽእ። | After sixteen comes seventeen.
+ድሕሪ ዓሰርተ ሸውዓተ እንታይ ይመጽእ? | What comes after seventeen?
+ድሕሪ ዓሰርተ ሸውዓተ ዓሰርተ ሸሞንተ ይመጽእ። | After seventeen comes eighteen.
+ድሕሪ ዓሰርተ ሸሞንተ እንታይ ይመጽእ? | What comes after eighteen?
+ድሕሪ ዓሰርተ ሸሞንተ ዓሰርተ ትሽዓተ ይመጽእ። | After eighteen comes nineteen.
+ድሕሪ ዓሰርተ ትሽዓተ እንታይ ይመጽእ? | What comes after nineteen?
+ድሕሪ ዓሰርተ ትሽዓተ ዕስራ ይመጽእ። | After nineteen comes twenty.
+ሓደን ሓደን ክልተ እዩ። | One plus one is two.
+ሓደን ክልተን ሰለስተ እዩ። | One plus two is three.
+ሓደን ሰለስተን ኣርባዕተ እዩ። | One plus three is four.
+ሓደን ኣርባዕተን ሓሙሽተ እዩ። | One plus four is five.
+ሓደን ሓሙሽተን ሽዱሽተ እዩ። | One plus five is six.
+ክልተን ሓደን ሰለስተ እዩ። | Two plus one is three.
+ክልተን ክልተን ኣርባዕተ እዩ። | Two plus two is four.
+ክልተን ሰለስተን ሓሙሽተ እዩ። | Two plus three is five.
+ክልተን ኣርባዕተን ሽዱሽተ እዩ። | Two plus four is six.
+ክልተን ሓሙሽተን ሸውዓተ እዩ። | Two plus five is seven.
+ሰለስተን ሓደን ኣርባዕተ እዩ። | Three plus one is four.
+ሰለስተን ክልተን ሓሙሽተ እዩ። | Three plus two is five.
+ሰለስተን ሰለስተን ሽዱሽተ እዩ። | Three plus three is six.
+ሰለስተን ኣርባዕተን ሸውዓተ እዩ። | Three plus four is seven.
+ሰለስተን ሓሙሽተን ሸሞንተ እዩ። | Three plus five is eight.
+ኣርባዕተን ሓደን ሓሙሽተ እዩ። | Four plus one is five.
+ኣርባዕተን ክልተን ሽዱሽተ እዩ። | Four plus two is six.
+ኣርባዕተን ሰለስተን ሸውዓተ እዩ። | Four plus three is seven.
+ኣርባዕተን ኣርባዕተን ሸሞንተ እዩ። | Four plus four is eight.
+ኣርባዕተን ሓሙሽተን ትሽዓተ እዩ። | Four plus five is nine.
+ሓሙሽተን ሓደን ሽዱሽተ እዩ። | Five plus one is six.
+ሓሙሽተን ክልተን ሸውዓተ እዩ። | Five plus two is seven.
