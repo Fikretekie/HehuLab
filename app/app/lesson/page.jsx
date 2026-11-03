@@ -8,6 +8,7 @@ import { Star } from "../../../components/Icons";
 import RodasLive from "../../../components/RodasLive";
 import { LINES, REACTIONS, AUDIO, line } from "../../../components/rodasLines";
 import { MATH, NUMBER_WORDS, family, letterUnits, usesGeez } from "../../../components/curriculum";
+import { findLesson, lessonItems, levelsFor } from "../../../components/courses";
 import { recordingUrl, stop as stopVoice } from "../../../components/Voice";
 
 // Screen 4 (web): a guided talk with Rodas. For each letter of one family (ሀ ሁ ሂ ሃ ሄ ህ ሆ):
@@ -33,9 +34,26 @@ function hasFile(url) {
   return exists[url];
 }
 
-// The letters (or numbers) of this lesson. `word` is the name of Rodas's recording for it.
+// The letters (or numbers, or words) of this lesson. `word` is the name of Rodas's recording for it.
+// A word lesson from the course (?lesson=k0u1-w-animals): in "Learn my language" the big text is the word and the
+// English is under it; in "Learn English" the big text is English (said by the browser's English voice) and the
+// child's language is under it (said by Rodas).
 function useLesson(kid, params) {
   return useMemo(() => {
+    const id = params.get("lesson");
+    const course = id && findLesson(levelsFor(kid.learner, kid.track, kid.lang), id);
+    if (course && course.type !== "letters") {
+      const english = kid.track === "english";
+      const items = lessonItems(course, kid.track).map((x) => ({
+        big: english ? x.english : x.native,
+        sub: english ? x.native : x.english + (x.note ? ` ${x.note}` : ""),
+        word: x.word,
+        say: english ? x.english : x.native,
+        en: english ? x.english : null,
+        pic: x.pic,
+      }));
+      return { kind: "words", id, english, title: course.type === "review" ? "Review" : course.title, items };
+    }
     const mathId = params.get("math");
     if (mathId) {
       const m = MATH.find((x) => x.id === mathId) || MATH[0];
@@ -50,8 +68,26 @@ function useLesson(kid, params) {
     const letters = letterUnits(kid.lang).flatMap((u) => u.letters);
     const letter = params.get("letter") || letters[kid.done ?? 4] || letters[0];
     const items = family(letter).map((f) => ({ big: f, sub: "", word: f, say: f }));
-    return { kind: "letter", title: usesGeez(kid.lang) ? `The ${letter} family` : `Letter ${letter.toUpperCase()}`, letter, index: letters.indexOf(letter), items };
-  }, [kid.lang, kid.done, params]);
+    return { kind: "letter", id, title: usesGeez(kid.lang) ? `The ${letter} family` : `Letter ${letter.toUpperCase()}`, letter, index: letters.indexOf(letter), items };
+  }, [kid.lang, kid.done, kid.learner, kid.track, params]);
+}
+
+// The browser's English voice (a woman's when it has one), for the "Learn English" words. Resolves when done.
+const WOMEN = /female|woman|zira|aria|jenny|michelle|hazel|susan|samantha|victoria|karen|moira|tessa|fiona|google us english/i;
+function speakEnglish(text) {
+  return new Promise((done) => {
+    const s = typeof window !== "undefined" && window.speechSynthesis;
+    if (!s || !text) return done(false);
+    const voices = s.getVoices().filter((v) => v.lang.toLowerCase().startsWith("en"));
+    const u = new SpeechSynthesisUtterance(text);
+    u.voice = voices.find((v) => WOMEN.test(v.name)) || voices[0] || null;
+    u.lang = "en-US";
+    u.rate = 0.85;
+    u.onend = u.onerror = () => done(true);
+    s.cancel();
+    s.speak(u);
+    setTimeout(() => done(true), 6000); // some browsers never fire onend
+  });
 }
 
 // The microphone: a live sound level, recording one answer, and noticing when the child cuts in.
@@ -157,7 +193,7 @@ function Lesson() {
   const params = useSearchParams();
   const lang = langOf(kid);
   const lesson = useLesson(kid, params);
-  const geez = lesson.kind === "letter" ? usesGeez(kid.lang) : false;
+  const geez = (lesson.kind === "letter" && usesGeez(kid.lang)) || (lesson.kind === "words" && !lesson.english);
   const n = lesson.items.length;
   const mic = useMic();
 
@@ -205,7 +241,8 @@ function Lesson() {
     let spoke = false;
     for (const url of voiceOn ? parts : []) {
       if (!alive() || cut.current) break;
-      if (url && (await play(url))) spoke = true;
+      if (url?.en) spoke = (await speakEnglish(url.en)) || spoke; // an English word, in the browser's English voice
+      else if (url && (await play(url))) spoke = true;
     }
     // Lines she hasn't recorded yet stay on screen long enough to read.
     if (!spoke && alive() && !cut.current) await pause(1700);
@@ -248,14 +285,16 @@ function Lesson() {
       const letterUrl = await recordingUrl(kid.lang, item.word);
       if (!alive()) return;
 
-      // 1. Rodas says the letter.  2. "ሀ በሊ".
-      let cutIn = await talk(id, { text: item.say, english: item.sub ? `${item.big} · ${item.sub}` : "" }, [letterUrl]);
+      // 1. Rodas says the letter (or word).  2. "ሀ በሊ".
+      // Learn English: the English word first (English voice), then Rodas says it in the child's language.
+      const first = item.en ? [{ en: item.en }, letterUrl] : [letterUrl];
+      let cutIn = await talk(id, { text: item.say, english: item.sub ? (item.en ? item.sub : `${item.big} · ${item.sub}`) : "" }, first);
       if (!alive()) return;
       if (!cutIn) {
         const ask = line("sayIt", kid.gender, item.say);
         // Until Rodas records "በሊ", the line only shows (no need to play the letter a second time).
         const beli = await sound(ask.file, ask.text.replace(item.say, "").trim()); // "በሊ" / "በል"
-        cutIn = await talk(id, ask, beli ? [letterUrl, beli] : []);
+        cutIn = await talk(id, ask, beli ? [item.en ? { en: item.en } : letterUrl, beli] : []);
         if (!alive()) return;
       }
 
@@ -317,6 +356,14 @@ function Lesson() {
 
   useEffect(() => () => hush(), []); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // A finished course lesson keeps its stars (3 = every one said, 2 = at least half, 1 = finished): the path
+  // shows it done and opens the next stop.
+  useEffect(() => {
+    if (phase !== "done" || !lesson.id) return;
+    const got = stars.length >= n ? 3 : stars.length >= n / 2 ? 2 : 1;
+    if ((kid.stars?.[lesson.id] || 0) < got) update({ stars: { ...(kid.stars || {}), [lesson.id]: got } });
+  }, [phase]); // eslint-disable-line react-hooks/exhaustive-deps
+
   function backToPath() {
     // Finishing the current letter opens the next stop on the path.
     if (lesson.kind === "letter" && lesson.index === (kid.done ?? 4)) update({ done: (kid.done ?? 4) + 1 });
@@ -324,6 +371,10 @@ function Lesson() {
 
   const item = lesson.items[idx];
   const font = geez ? "font-geez" : "font-display";
+  // Letters are huge; words and sentences get smaller so they fit.
+  const len = [...(item?.big || "")].length;
+  const size = len <= 2 ? "text-[9rem]" : len <= 6 ? "text-8xl" : len <= 14 ? "text-6xl" : "text-4xl";
+  const subject = lesson.kind === "math" ? `Math in ${lang.name}` : lesson.english ? `English from ${lang.name}` : lesson.kind === "words" ? `${lang.name} words` : `${lang.name} letters`;
 
   return (
     <main>
@@ -346,8 +397,8 @@ function Lesson() {
         <section className="card flex flex-col p-8">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <div>
-              <p className="eyebrow text-brand">{lesson.kind === "math" ? `Math in ${lang.name}` : `${lang.name} letters`}</p>
-              <h1 className={`mt-1 text-3xl font-bold ${geez ? "font-geez" : ""}`}>{lesson.title}</h1>
+              <p className="eyebrow text-brand">{subject}</p>
+              <h1 className={`mt-1 text-3xl font-bold ${lesson.kind === "letter" && geez ? "font-geez" : ""}`}>{lesson.title}</h1>
             </div>
             <span className="chip">
               <Star width="18" height="18" /> {stars.length} of {n}
@@ -358,12 +409,13 @@ function Lesson() {
           <ol className="mt-6 flex flex-wrap gap-2.5" aria-label="Letters in this lesson">
             {lesson.items.map((x, k) => (
               <li
-                key={x.big}
+                key={x.big + k}
+                title={x.big}
                 className={`relative flex h-14 w-14 items-center justify-center rounded-2xl border-[3px] text-2xl font-bold ${font} ${
                   k === idx && phase === "live" ? "border-brand bg-soft" : stars.includes(k) ? "border-good bg-good-soft" : "border-line bg-white"
                 }`}
               >
-                {x.big}
+                {x.pic && lesson.kind === "words" ? x.pic : x.big}
                 {stars.includes(k) && <Star width="22" height="22" className="absolute -right-2 -top-2" />}
               </li>
             ))}
@@ -392,18 +444,22 @@ function Lesson() {
               </div>
             ) : phase === "ready" || phase === "paused" ? (
               <div className="flex flex-col items-center gap-6 text-center">
-                <span className={`text-[9rem] font-bold leading-none ${font}`}>{item.big}</span>
+                {item.pic && <span className="text-7xl" aria-hidden="true">{item.pic}</span>}
+                <span className={`${size} text-balance font-bold leading-none ${font}`}>{item.big}</span>
+                {item.sub && <span className={`text-xl text-muted ${lesson.english ? "font-geez" : ""}`}>{item.sub}</span>}
                 <button type="button" onClick={phase === "ready" ? begin : () => lessonFrom(idx)} className="btn-brand px-10 py-5 text-2xl">
                   {phase === "ready" ? "▶ Start with Rodas" : "▶ Keep going"}
                 </button>
                 <p className="max-w-sm text-muted">
-                  Rodas will listen with the microphone. Say each letter after her, out loud. You can talk any time, even
+                  Rodas will listen with the microphone. Say each {lesson.kind === "words" ? "word" : "letter"} after her, out loud. You can talk any time, even
                   while she is talking.
                 </p>
               </div>
             ) : (
               <>
-                <span className={`text-[10rem] font-bold leading-none ${font} ${listening ? "text-good" : "text-ink"}`}>{item.big}</span>
+                {item.pic && <span className="text-7xl" aria-hidden="true">{item.pic}</span>}
+                <span className={`${size} text-balance text-center font-bold leading-tight ${font} ${listening ? "text-good" : "text-ink"}`}>{item.big}</span>
+                {item.sub && <span className={`text-xl text-muted ${lesson.english ? "font-geez" : ""}`}>{item.sub}</span>}
                 {mic.ok ? (
                   <>
                     <SoundBar level={mic.level} on={listening} />
