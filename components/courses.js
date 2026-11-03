@@ -340,7 +340,9 @@ export function findLesson(levels, id) {
 export function lessonItems(lesson, track) {
   const themes = lesson.type === "words" ? [lesson.theme] : lesson.themes || [];
   let words = themes.flatMap((t) => THEMES[t].words);
-  if (lesson.type === "review" || lesson.type === "game") words = [...words].sort(() => Math.random() - 0.5).slice(0, 8);
+  // A review takes 8 words spread over the unit's themes. Always the same 8 (no shuffling here), so the page drawn on
+  // the server and in the browser match; the game mixes its rounds after the page loads.
+  if (lesson.type === "review" && words.length > 8) words = Array.from({ length: 8 }, (_, i) => words[Math.floor((i * words.length) / 8)]);
   return words.map(([ti, en, pic, key]) => ({
     native: ti,
     english: en.replace(/ \(to a (girl|boy)\)/, ""),

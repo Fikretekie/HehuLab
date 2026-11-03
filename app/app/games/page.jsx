@@ -1,14 +1,17 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { langOf, useKid } from "../../../components/KidState";
 import { Camel, Goat, Sheep } from "../../../components/Avatars";
 import { Check, GamePad, Star } from "../../../components/Icons";
 import { NUMBER_WORDS, letterUnits, usesGeez } from "../../../components/curriculum";
 import { SpeakButton, stop, useVoice } from "../../../components/Voice";
+import { findLesson, lessonItems, levelsFor } from "../../../components/courses";
 
 // Screen 5 (web): Games. The game you're playing is big on the left; all games are listed on the right.
-// Every game uses the child's language: letters from their path, numbers said with their number words.
+// Every game uses the child's language: letters from their path, numbers said with their number words, and the words
+// of the unit ("Find the picture"). A "Play" stop on the path opens here with ?lesson=… and keeps the stars.
 
 const ROUNDS = 5;
 
@@ -24,21 +27,23 @@ const Cup = () => (
 const GAMES = [
   { id: "goat", title: "Feed the goat", note: "Find the letter Fiyel asks for", Pic: Goat, kind: "letters" },
   { id: "cups", title: "Count the coffee cups", note: "How many cups for the coffee ceremony?", Pic: Camel, kind: "math" },
-  { id: "race", title: "Race the sheep", note: "Coming soon", Pic: Sheep, soon: true },
+  { id: "pics", title: "Find the picture", note: "Bebe says a word. Tap its picture!", Pic: Sheep, kind: "words" },
+  { id: "race", title: "Race the camel", note: "Coming soon", Pic: Camel, soon: true },
 ];
 
 function shuffle(list) {
   return [...list].sort(() => Math.random() - 0.5);
 }
 
-// One round: the answer plus three other choices.
-function makeRound(pool) {
-  const answer = pool[Math.floor(Math.random() * pool.length)];
+// One round: the answer plus three other choices (never the same answer twice in a row).
+function makeRound(pool, last) {
+  const fresh = pool.filter((x) => x.key !== last?.key);
+  const answer = fresh[Math.floor(Math.random() * fresh.length)] || pool[0];
   return { answer, options: shuffle([answer, ...shuffle(pool.filter((x) => x.key !== answer.key)).slice(0, 3)]) };
 }
 
 // The playing area for "Feed the goat" and "Count the coffee cups". Same rules: 5 rounds, tap the right one.
-function Stage({ game, pool, geez, words }) {
+function Stage({ game, pool, geez, words, english, onWin }) {
   // The first round is fixed so the server and the browser draw the same page; it's mixed once the page loads.
   const [round, setRound] = useState({ answer: pool[0], options: pool.slice(0, 4) });
   const [score, setScore] = useState(0);
@@ -55,11 +60,17 @@ function Stage({ game, pool, geez, words }) {
   const ask = () =>
     game.id === "goat"
       ? voice({ word: round.answer.key, text: "Fiyel wants this letter! Can you find it?" })
-      : talk("howmany", "How many cups?");
+      : game.id === "pics"
+        ? voice(english ? { text: round.answer.english } : { word: round.answer.word, text: round.answer.english })
+        : talk("howmany", "How many cups?");
+  const cheerText = { goat: "Yum! Thank you!", pics: "Yes! That's it!", cups: "Yes, that's right!" }[game.id];
+  const wonText = { goat: "Fiyel is full!", pics: "Bebe is so happy!", cups: "The coffee is ready!" }[game.id];
 
   useEffect(() => {
-    if (won) talk("welldone", game.id === "goat" ? "Fiyel is full! Thank you!" : "The coffee is ready! Well done!");
-    else ask();
+    if (won) {
+      talk("welldone", `${wonText} Well done!`);
+      onWin?.();
+    } else ask();
     return stop;
   }, [round, won]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -69,13 +80,13 @@ function Stage({ game, pool, geez, words }) {
       talk("again", "Not that one. Try again!");
       return setWrong(item.key);
     }
-    talk("welldone", game.id === "goat" ? "Yum! Thank you!" : "Yes, that's right!");
+    talk("welldone", cheerText);
     setWrong(null);
     setOk(true);
     setTimeout(() => {
       setScore((s) => s + 1);
       setOk(false);
-      setRound(makeRound(pool));
+      setRound((r) => makeRound(pool, r.answer));
     }, 800);
   }
 
@@ -93,7 +104,7 @@ function Stage({ game, pool, geez, words }) {
             <Star key={i} width="40" height="40" />
           ))}
         </div>
-        <h2 className="text-4xl font-bold">{game.id === "goat" ? "Fiyel is full!" : "The coffee is ready!"}</h2>
+        <h2 className="text-4xl font-bold">{wonText}</h2>
         <p className="text-lg text-muted">You got all {ROUNDS} right.</p>
         <button type="button" onClick={again} className="btn-brand text-lg">
           Play again
@@ -106,6 +117,10 @@ function Stage({ game, pool, geez, words }) {
     game.id === "goat" ? (
       <>
         Fiyel wants <span className={geez ? "font-geez" : ""}>{round.answer.big}</span>!
+      </>
+    ) : game.id === "pics" ? (
+      <>
+        Find: <span className={english ? "" : "font-geez"}>{english ? round.answer.english : round.answer.native}</span>
       </>
     ) : (
       "How many cups?"
@@ -129,7 +144,7 @@ function Stage({ game, pool, geez, words }) {
         </div>
         <div className="relative rounded-3xl bg-white px-7 py-5 text-3xl font-bold">
           <span className="absolute -left-2 top-1/2 h-5 w-5 -translate-y-1/2 rotate-45 bg-white" aria-hidden="true" />
-          {ok ? (game.id === "goat" ? "Yum! Thank you!" : "Yes, that's right!") : question}
+          {ok ? cheerText : question}
         </div>
         <SpeakButton onClick={ask} label="Hear the question again" />
       </div>
@@ -156,7 +171,9 @@ function Stage({ game, pool, geez, words }) {
                   ? "border-accent bg-accent-soft text-accent"
                   : game.id === "goat"
                     ? "border-[#7DBE6A] bg-[#E6F4DC]"
-                    : "border-line bg-white"
+                    : game.id === "pics"
+                      ? "border-[#B9C8E8] bg-white"
+                      : "border-line bg-white"
             }`}
           >
             <span className={`text-5xl ${geez && game.id === "goat" ? "font-geez" : "font-display"}`}>{item.big}</span>
@@ -169,10 +186,17 @@ function Stage({ game, pool, geez, words }) {
   );
 }
 
-export default function Games() {
-  const { kid } = useKid();
+function GamesPage() {
+  const { kid, update } = useKid();
   const lang = langOf(kid);
-  const [gameId, setGameId] = useState("goat");
+  const params = useSearchParams();
+  const lessonId = params.get("lesson");
+  const english = kid.track === "english";
+  const course = useMemo(
+    () => (lessonId ? findLesson(levelsFor(kid.learner, kid.track, kid.lang), lessonId) : null),
+    [lessonId, kid.learner, kid.track, kid.lang],
+  );
+  const [gameId, setGameId] = useState(course?.themes?.length || english ? "pics" : "goat");
   const game = GAMES.find((g) => g.id === gameId);
   const geez = usesGeez(kid.lang);
   const words = NUMBER_WORDS[kid.lang];
@@ -182,9 +206,23 @@ export default function Games() {
     () => ({
       letters: letterUnits(kid.lang)[0].letters.map((l) => ({ key: l, big: l })),
       math: Array.from({ length: 5 }, (_, i) => ({ key: String(i + 1), big: String(i + 1), count: i + 1 })),
+      // The unit's words (from the path), or animals and colors. The picture is what you tap.
+      words: lessonItems(course?.themes?.length ? course : { type: "words", themes: ["animals", "colors", "food"] }, kid.track)
+        .filter((x, i, all) => all.findIndex((y) => y.pic === x.pic) === i)
+        .map((x) => ({ ...x, key: x.word, big: x.pic })),
     }),
-    [kid.lang],
+    [kid.lang, kid.track, course],
   );
+
+  // The game is drawn only in the browser: it depends on the lesson in the address and the child's saved choices,
+  // which the server can't see (so the first round would not match).
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
+
+  // Winning a game from the path finishes that stop (3 stars).
+  function onWin() {
+    if (lessonId && !(kid.stars || {})[lessonId]) update({ stars: { ...(kid.stars || {}), [lessonId]: 3 } });
+  }
 
   return (
     <main>
@@ -199,7 +237,7 @@ export default function Games() {
         <section className={`card flex min-h-[560px] flex-col p-8 ${game.id === "goat" ? "bg-[#F1F8EC]" : "bg-[#FFF6E9]"}`}>
           <h2 className="text-2xl font-bold">{game.title}</h2>
           <p className="text-muted">{game.note}</p>
-          <Stage key={`${game.id}-${kid.lang}`} game={game} pool={pools[game.kind]} geez={geez} words={words} />
+          {ready && <Stage key={`${game.id}-${kid.lang}-${kid.track}`} game={game} pool={pools[game.kind]} geez={geez} words={words} english={english} onWin={onWin} />}
         </section>
 
         {/* All games */}
@@ -221,7 +259,9 @@ export default function Games() {
               <g.Pic size={60} />
               <span className="flex-1">
                 <b className="block text-lg leading-tight">{g.title}</b>
-                <span className="text-sm text-muted">{g.soon ? "Coming soon" : g.kind === "math" ? `Numbers in ${lang.name}` : `${lang.name} letters`}</span>
+                <span className="text-sm text-muted">
+                  {g.soon ? "Coming soon" : g.kind === "math" ? `Numbers in ${lang.name}` : g.kind === "words" ? (english ? "English words" : `${lang.name} words`) : `${lang.name} letters`}
+                </span>
               </span>
               {g.id === gameId && (
                 <span className="flex h-7 w-7 items-center justify-center rounded-full bg-brand text-white">
@@ -233,5 +273,14 @@ export default function Games() {
         </aside>
       </div>
     </main>
+  );
+}
+
+// useSearchParams needs a Suspense wrapper when the site is built as static files.
+export default function Games() {
+  return (
+    <Suspense fallback={null}>
+      <GamesPage />
+    </Suspense>
   );
 }
