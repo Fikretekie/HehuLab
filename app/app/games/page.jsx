@@ -3,7 +3,7 @@
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { langOf, useKid } from "../../../components/KidState";
-import { Camel, Goat, Sheep } from "../../../components/Avatars";
+import { Camel, Goat, Grandma, Sheep } from "../../../components/Avatars";
 import { Check, GamePad, Star } from "../../../components/Icons";
 import { NUMBER_WORDS, letterUnits, usesGeez } from "../../../components/curriculum";
 import { SpeakButton, stop, useVoice } from "../../../components/Voice";
@@ -28,6 +28,7 @@ const GAMES = [
   { id: "goat", title: "Feed the goat", note: "Find the letter Fiyel asks for", Pic: Goat, kind: "letters" },
   { id: "cups", title: "Count the coffee cups", note: "How many cups for the coffee ceremony?", Pic: Camel, kind: "math" },
   { id: "pics", title: "Find the picture", note: "Bebe says a word. Tap its picture!", Pic: Sheep, kind: "words" },
+  { id: "memory", title: "Memory match", note: "Turn two cards: find each picture and its word", Pic: Grandma, kind: "words" },
   { id: "race", title: "Race the camel", note: "Coming soon", Pic: Camel, soon: true },
 ];
 
@@ -186,6 +187,115 @@ function Stage({ game, pool, geez, words, english, onWin }) {
   );
 }
 
+// "Memory match": 6 words of the unit become 12 cards, a picture and its word. Turn two; if they belong together
+// they stay open. Rodas says the word of every card you turn.
+const PAIRS = 6;
+
+function Memory({ game, pool, english, onWin }) {
+  const voice = useVoice();
+  const [cards, setCards] = useState([]);
+  const [open, setOpen] = useState([]); // the 1 or 2 cards turned right now
+  const [found, setFound] = useState([]); // keys of the pairs found
+  const [miss, setMiss] = useState(false);
+  const won = cards.length > 0 && found.length === cards.length / 2;
+
+  function deal() {
+    const words = shuffle(pool).slice(0, PAIRS);
+    setCards(shuffle(words.flatMap((w) => [{ id: `${w.key}-pic`, side: "pic", w }, { id: `${w.key}-word`, side: "word", w }])));
+    setOpen([]);
+    setFound([]);
+  }
+  useEffect(deal, [pool]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (!won) return;
+    voice({ line: "welldone", text: "You found them all! Well done!" });
+    onWin?.();
+  }, [won]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => stop, []);
+
+  const sayWord = (w) => voice(english ? { text: w.english } : { word: w.word, text: w.english });
+
+  function turn(card) {
+    if (open.length === 2 || open.includes(card) || found.includes(card.w.key)) return;
+    sayWord(card.w);
+    const now = [...open, card];
+    setOpen(now);
+    if (now.length < 2) return;
+    const [a, b] = now;
+    if (a.w.key === b.w.key) {
+      setTimeout(() => {
+        setFound((f) => [...f, a.w.key]);
+        setOpen([]);
+      }, 600);
+    } else {
+      setMiss(true);
+      setTimeout(() => {
+        setOpen([]);
+        setMiss(false);
+      }, 1200);
+    }
+  }
+
+  if (won) {
+    return (
+      <div className="flex flex-1 flex-col items-center justify-center gap-5 text-center">
+        <game.Pic size={150} />
+        <div className="flex gap-2">
+          {Array.from({ length: 3 }, (_, i) => (
+            <Star key={i} width="40" height="40" />
+          ))}
+        </div>
+        <h2 className="text-4xl font-bold">You found them all!</h2>
+        <p className="text-lg text-muted">All {PAIRS} pictures and their words.</p>
+        <button type="button" onClick={deal} className="btn-brand text-lg">
+          Play again
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-1 flex-col items-center justify-between gap-6 pt-4">
+      <p className="self-end font-extrabold text-muted">
+        {found.length} of {PAIRS} found
+      </p>
+      <div className="grid grid-cols-4 gap-4">
+        {cards.map((card) => {
+          const isFound = found.includes(card.w.key);
+          const up = isFound || open.includes(card);
+          return (
+            <button
+              key={card.id}
+              type="button"
+              onClick={() => turn(card)}
+              aria-label={up ? (card.side === "pic" ? `Picture: ${card.w.english}` : card.w.native) : "A card, turned over"}
+              className={`flex h-32 w-36 items-center justify-center rounded-3xl border-4 p-2 text-center font-bold transition ${
+                isFound
+                  ? "border-good bg-good-soft text-good"
+                  : up
+                    ? miss && open.length === 2
+                      ? "border-accent bg-accent-soft text-accent"
+                      : "border-brand bg-white"
+                    : "border-brand bg-brand text-white hover:-translate-y-1"
+              }`}
+            >
+              {!up ? (
+                <span className="font-display text-4xl">?</span>
+              ) : card.side === "pic" ? (
+                <span className="text-6xl">{card.w.pic}</span>
+              ) : (
+                <span className={english ? "font-display text-2xl" : "font-geez text-2xl"}>{english ? card.w.english : card.w.native}</span>
+              )}
+            </button>
+          );
+        })}
+      </div>
+      <p className="min-h-[1.5em] font-bold text-accent">{miss ? "Not a pair. Try again!" : ""}</p>
+    </div>
+  );
+}
+
 function GamesPage() {
   const { kid, update } = useKid();
   const lang = langOf(kid);
@@ -207,7 +317,7 @@ function GamesPage() {
       letters: letterUnits(kid.lang)[0].letters.map((l) => ({ key: l, big: l })),
       math: Array.from({ length: 5 }, (_, i) => ({ key: String(i + 1), big: String(i + 1), count: i + 1 })),
       // The unit's words (from the path), or animals and colors. The picture is what you tap.
-      words: lessonItems(course?.themes?.length ? course : { type: "words", themes: ["animals", "colors", "food"] }, kid.track)
+      words: lessonItems(course?.themes?.length ? course : { type: "game", themes: ["animals", "colors", "food"] }, kid.track)
         .filter((x, i, all) => all.findIndex((y) => y.pic === x.pic) === i)
         .map((x) => ({ ...x, key: x.word, big: x.pic })),
     }),
@@ -237,7 +347,12 @@ function GamesPage() {
         <section className={`card flex min-h-[560px] flex-col p-8 ${game.id === "goat" ? "bg-[#F1F8EC]" : "bg-[#FFF6E9]"}`}>
           <h2 className="text-2xl font-bold">{game.title}</h2>
           <p className="text-muted">{game.note}</p>
-          {ready && <Stage key={`${game.id}-${kid.lang}-${kid.track}`} game={game} pool={pools[game.kind]} geez={geez} words={words} english={english} onWin={onWin} />}
+          {ready &&
+            (game.id === "memory" ? (
+              <Memory key={`memory-${kid.lang}-${kid.track}`} game={game} pool={pools.words} english={english} onWin={onWin} />
+            ) : (
+              <Stage key={`${game.id}-${kid.lang}-${kid.track}`} game={game} pool={pools[game.kind]} geez={geez} words={words} english={english} onWin={onWin} />
+            ))}
         </section>
 
         {/* All games */}
