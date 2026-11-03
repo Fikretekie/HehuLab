@@ -15,7 +15,7 @@
 ## A. Kids/learners website (this repo)
 1. ✅ Screen 4 lesson: approved, committed and pushed to `main`.
 2. Screen 4 lesson: test the microphone in Chrome (http://localhost:3001/app/lesson/?letter=ሀ).
-3. Screen 4 lesson: trim the silence at the end of Rodas's letter recordings (~4.5 s each) so she answers faster.
+3. ✅ Rodas skips the quiet at the start and end of her recordings while playing (ሀ: 4.6 s → 0.8 s). Files unchanged.
 4. Copy Adiam's new recordings (the 11 lesson lines: በሊ, ጽቡቕ ገይርኪ!, ደጊምኪ በሊ…) into `public/voices` once she records them.
 5. ✅ Older work committed (Voice.jsx, Avatars, games/homework/settings/stories folders).
 6. ✅ (overnight) Curriculum structure. Next: more themes and phrases per level, math inside the levels.

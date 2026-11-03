@@ -68,13 +68,73 @@ export async function recordingUrl(lang, word) {
   return id ? `${BASE}/${lang}/${id}.webm` : null;
 }
 
+// The recordings have up to 3 seconds of quiet before and after Rodas speaks. Find where her voice starts and
+// ends (20 ms windows louder than 4% of the loudest sound) so we can skip the quiet. Worked out once per clip.
+const bounds = {};
+let decoder = null;
+function voiceBounds(url) {
+  bounds[url] ||= (async () => {
+    decoder ||= new AudioContext();
+    const buf = await decoder.decodeAudioData(await (await fetch(url)).arrayBuffer());
+    const d = buf.getChannelData(0);
+    const win = Math.floor(buf.sampleRate * 0.02);
+    let peak = 0;
+    for (let i = 0; i < d.length; i++) peak = Math.max(peak, Math.abs(d[i]));
+    let first = -1;
+    let last = -1;
+    for (let i = 0; i + win <= d.length; i += win) {
+      let sum = 0;
+      for (let j = i; j < i + win; j++) sum += d[j] * d[j];
+      if (Math.sqrt(sum / win) > peak * 0.04) {
+        if (first < 0) first = i;
+        last = i + win;
+      }
+    }
+    if (first < 0) return null;
+    return { start: Math.max(0, first / buf.sampleRate - 0.12), end: Math.min(buf.duration, last / buf.sampleRate + 0.3) };
+  })().catch(() => null);
+  return bounds[url];
+}
+
+// Play one recording from where Rodas starts speaking to where she stops, and resolve when she's done
+// (true) or it couldn't play (false). `keep(audio)` lets a page hold on to it so it can pause it.
+export async function playClip(url, keep) {
+  if (!url) return false;
+  const b = await voiceBounds(url);
+  return new Promise((done) => {
+    const a = new Audio(url);
+    playing = a;
+    keep?.(a);
+    let timer;
+    const finish = (ok) => {
+      clearTimeout(timer);
+      a.onended = a.onerror = a.onpause = a.ontimeupdate = null;
+      if (ok && !a.ended) a.pause();
+      done(ok);
+    };
+    a.onended = a.onerror = a.onpause = () => finish(true);
+    a.onplaying = () => {
+      clearTimeout(timer);
+      if (b) timer = setTimeout(() => finish(true), (b.end - a.currentTime) * 1000);
+    };
+    a.ontimeupdate = () => b && a.currentTime >= b.end && finish(true);
+    if (b) a.currentTime = b.start;
+    a.play().catch(() => finish(false));
+  });
+}
+
 // Play Rodas's recording of `word` (a letter, a word, a sentence, or "#3" for a number).
 async function playRecording(lang, word) {
-  const id = (await recordings(lang))[word];
-  if (!id) return false;
+  const url = await recordingUrl(lang, word);
+  if (!url) return false;
+  const b = await voiceBounds(url);
   try {
-    const a = new Audio(`${BASE}/${lang}/${id}.webm`);
+    const a = new Audio(url);
     playing = a;
+    if (b) {
+      a.currentTime = b.start;
+      a.ontimeupdate = () => a.currentTime >= b.end && a.pause();
+    }
     await a.play();
     return true;
   } catch {

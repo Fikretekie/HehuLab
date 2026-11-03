@@ -9,7 +9,7 @@ import RodasLive from "../../../components/RodasLive";
 import { LINES, REACTIONS, AUDIO, line } from "../../../components/rodasLines";
 import { MATH, NUMBER_WORDS, family, letterUnits, usesGeez } from "../../../components/curriculum";
 import { findLesson, lessonItems, levelsFor } from "../../../components/courses";
-import { recordingUrl, stop as stopVoice } from "../../../components/Voice";
+import { playClip, recordingUrl, stop as stopVoice } from "../../../components/Voice";
 
 // Screen 4 (web): a guided talk with Rodas. For each letter of one family (ሀ ሁ ሂ ሃ ሄ ህ ሆ):
 // Rodas says it → asks "ሀ በሊ" → listens (microphone, sound bar, stops by itself after a short pause) →
@@ -211,15 +211,9 @@ function Lesson() {
 
   const voiceOn = kid.voice !== false;
 
-  // Play one audio address to the end (or until cancelled / cut in).
+  // Play one audio address to the end of Rodas's voice (or until cancelled / cut in).
   function play(url) {
-    return new Promise((done) => {
-      if (!url) return done(false);
-      const a = new Audio(url);
-      audio.current = a;
-      a.onended = a.onerror = () => done(true);
-      a.play().catch(() => done(false));
-    });
+    return playClip(url, (a) => (audio.current = a));
   }
   function hush() {
     audio.current?.pause();

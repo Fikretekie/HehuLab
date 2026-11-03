@@ -7,7 +7,7 @@ import { Grandma } from "../../../components/Avatars";
 import { Moon, Play } from "../../../components/Icons";
 import { STORIES } from "../../../components/stories";
 import { allLessons, levelsFor } from "../../../components/courses";
-import { recordingUrl, stop as stopVoice } from "../../../components/Voice";
+import { playClip, recordingUrl, stop as stopVoice } from "../../../components/Voice";
 
 // Screen 6 (web): Bedtime stories, told by Grandma Didi. The player is big on the left; the stories are on the right.
 // The story goes line by line: a picture, the line in Tigrinya and in English. A line plays the teller's recording
@@ -90,14 +90,7 @@ function StoriesPage() {
         if (english) heard = await speakEnglish(en);
         else {
           const url = await recordingUrl(kid.lang, ti);
-          if (url && alive()) {
-            heard = await new Promise((done) => {
-              const a = new Audio(url);
-              audio.current = a;
-              a.onended = a.onerror = () => done(true);
-              a.play().catch(() => done(false));
-            });
-          }
+          if (url && alive()) heard = await playClip(url, (a) => (audio.current = a));
         }
       }
       if (!alive()) return;
