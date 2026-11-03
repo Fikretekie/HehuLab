@@ -30,6 +30,7 @@ const GAMES = [
   { id: "cups", title: "Count the coffee cups", note: "How many cups for the coffee ceremony?", Pic: Camel, kind: "math" },
   { id: "pics", title: "Find the picture", note: "Bebe says a word. Tap its picture!", Pic: Sheep, kind: "words" },
   { id: "memory", title: "Memory match", note: "Turn two cards: find each picture and its word", Pic: Kokob, kind: "words" },
+  { id: "build", title: "Build the word", note: "Look at the picture. Tap the letters in order!", Pic: Kokob, kind: "words" },
   { id: "race", title: "Race the camel", note: "Coming soon", Pic: Camel, soon: true },
 ];
 
@@ -297,6 +298,145 @@ function Memory({ game, pool, english, onWin }) {
   );
 }
 
+// "Build the word": a picture and empty boxes; tap its letters in the right order (ከ ል ቢ = ከልቢ). Two extra
+// letters make it harder. 5 words to win. Kokob hosts it: she says the word once it's built (Aki's voice only).
+// Words with spaces or marks are left out; the English track builds the English word.
+const BUILD_ROUNDS = 5;
+
+function buildable(pool, english) {
+  return pool
+    .map((w) => ({ ...w, letters: Array.from(english ? w.english : w.native) }))
+    .filter((w) => (english ? /^[a-z]{3,6}$/.test(w.english) : w.letters.length >= 2 && w.letters.length <= 5 && !/[\s!?።፣.]/.test(w.native)));
+}
+
+function Build({ game, pool, english, onWin }) {
+  const { kid } = useKid();
+  const kokob = useFriendVoice("kokob");
+  const words = useMemo(() => buildable(pool, english), [pool, english]);
+  const [round, setRound] = useState(null);
+  const [placed, setPlaced] = useState([]); // the tiles tapped so far, in order
+  const [wrong, setWrong] = useState(null);
+  const [score, setScore] = useState(0);
+  const won = score >= BUILD_ROUNDS;
+
+  function next(last) {
+    const fresh = words.filter((w) => w.key !== last?.key);
+    const w = fresh[Math.floor(Math.random() * fresh.length)] || words[0];
+    const others = shuffle(words.filter((x) => x.key !== w.key).flatMap((x) => x.letters).filter((l) => !w.letters.includes(l)));
+    const tiles = shuffle([...w.letters, ...new Set(others)].slice(0, w.letters.length + 2).map((l, i) => ({ id: i, l })));
+    setRound({ w, tiles });
+    setPlaced([]);
+    setWrong(null);
+  }
+  useEffect(() => next(), [words]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (!won) return;
+    kokob(KOKOB.allFound[kid.gender === "boy" ? "boy" : "girl"][0]);
+    onWin?.();
+  }, [won]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => stop, []);
+
+  if (!words.length) return <p className="m-auto text-lg text-muted">No words to build in this unit yet.</p>;
+  if (won) {
+    return (
+      <div className="flex flex-1 flex-col items-center justify-center gap-5 text-center">
+        <game.Pic size={150} />
+        <div className="flex gap-2">
+          {Array.from({ length: 3 }, (_, i) => (
+            <Star key={i} width="40" height="40" />
+          ))}
+        </div>
+        <h2 className="text-4xl font-bold">You built them all!</h2>
+        <p className="text-lg text-muted">All {BUILD_ROUNDS} words.</p>
+        <button
+          type="button"
+          onClick={() => {
+            setScore(0);
+            next();
+          }}
+          className="btn-brand text-lg"
+        >
+          Play again
+        </button>
+      </div>
+    );
+  }
+  if (!round) return null;
+
+  const { w, tiles } = round;
+  const done = placed.length === w.letters.length;
+
+  function tap(tile) {
+    if (done || placed.includes(tile)) return;
+    if (tile.l !== w.letters[placed.length]) return setWrong(tile.id);
+    setWrong(null);
+    const now = [...placed, tile];
+    setPlaced(now);
+    if (now.length === w.letters.length) {
+      if (!english) kokob(w.word);
+      setTimeout(() => {
+        setScore((s) => s + 1);
+        next(w);
+      }, 1400);
+    }
+  }
+
+  return (
+    <div className="flex flex-1 flex-col items-center justify-between gap-6 pt-2">
+      <div className="flex gap-2 self-end" aria-label={`${score} of ${BUILD_ROUNDS}`}>
+        {Array.from({ length: BUILD_ROUNDS }, (_, i) => (
+          <span key={i} className={i < score ? "" : "opacity-25 grayscale"}>
+            <Star width="28" height="28" />
+          </span>
+        ))}
+      </div>
+
+      <div className="flex flex-col items-center gap-2">
+        <span className={`text-8xl transition ${done ? "scale-110" : ""}`} aria-hidden="true">
+          {w.pic}
+        </span>
+        <p className="font-bold text-muted">{english ? w.native : w.english}</p>
+      </div>
+
+      {/* The boxes the word goes in */}
+      <div className="flex gap-3">
+        {w.letters.map((l, i) => (
+          <span
+            key={i}
+            className={`flex h-20 w-20 items-center justify-center rounded-2xl border-4 text-5xl font-bold ${
+              done ? "border-good bg-good-soft text-good" : placed[i] ? "border-brand bg-white" : "border-dashed border-line bg-white/60"
+            } ${english ? "font-display" : "font-geez"}`}
+          >
+            {placed[i]?.l || ""}
+          </span>
+        ))}
+      </div>
+
+      {/* The letters to tap */}
+      <div className="flex flex-wrap justify-center gap-3">
+        {tiles.map((t) => (
+          <button
+            key={t.id}
+            type="button"
+            onClick={() => tap(t)}
+            disabled={placed.includes(t)}
+            className={`h-20 w-20 rounded-2xl border-4 text-4xl font-bold transition ${english ? "font-display" : "font-geez"} ${
+              placed.includes(t)
+                ? "border-line bg-line/40 text-transparent"
+                : wrong === t.id
+                  ? "border-accent bg-accent-soft text-accent"
+                  : "border-brand bg-white hover:-translate-y-1"
+            }`}
+          >
+            {t.l}
+          </button>
+        ))}
+      </div>
+      <p className="min-h-[1.5em] font-bold text-accent">{wrong !== null ? "Not that one yet. Which letter comes next?" : done ? "Yes! You built it!" : ""}</p>
+    </div>
+  );
+}
+
 function GamesPage() {
   const { kid, update } = useKid();
   const lang = langOf(kid);
@@ -351,6 +491,8 @@ function GamesPage() {
           {ready &&
             (game.id === "memory" ? (
               <Memory key={`memory-${kid.lang}-${kid.track}`} game={game} pool={pools.words} english={english} onWin={onWin} />
+            ) : game.id === "build" ? (
+              <Build key={`build-${kid.lang}-${kid.track}`} game={game} pool={pools.words} english={english} onWin={onWin} />
             ) : (
               <Stage key={`${game.id}-${kid.lang}-${kid.track}`} game={game} pool={pools[game.kind]} geez={geez} words={words} english={english} onWin={onWin} />
             ))}
