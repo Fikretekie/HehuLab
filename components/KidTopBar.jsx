@@ -37,8 +37,8 @@ export default function KidTopBar() {
           ))}
         </nav>
         <div className="flex items-center gap-3 font-extrabold">
-          <span className="chip bg-brand text-white">{langOf(kid).name}</span>
-          <span className="flex items-center gap-1"><Star /> 38</span>
+          <span className="chip bg-brand text-white">{kid.track === "english" ? `English · ${langOf(kid).name}` : langOf(kid).name}</span>
+          <span className="flex items-center gap-1"><Star /> {Object.values(kid.stars || {}).reduce((n, x) => n + x, 0)}</span>
           <span className="rounded-full bg-soft px-3 py-1.5">{kid.name}</span>
         </div>
       </div>

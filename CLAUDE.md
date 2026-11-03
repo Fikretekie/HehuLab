@@ -24,6 +24,7 @@ The owner is Fik (GitHub: Fikretekie). He is learning, so explain simply.
 - `next.config.mjs`: `PREVIEW=1` only changes the asset folder for Claude's cloud preview. Ignore it locally.
 - **Ocean Blue** theme (`tailwind.config.js`): brand #1760CF, accent #B8441C, soft #EEF5FF, ink #102542,
   muted #4D5E78, line #DCE7F7, sun #FFC93C, good #1F8A4C. Fonts: Quicksand (headings), Nunito, Noto Sans Ethiopic.
+- Curriculum: `components/courses.js` (learners kid/adult, tracks native/english, levels → units → lessons).
 - Shared pieces in `components/`: `KidState.jsx` (language, teacher, math, name, gender kept in localStorage),
   `KidTopBar.jsx` (kids' menu), `Avatars.jsx` (Rodas photo + Goat, Sheep, Camel, Grandma drawings, `TEACHERS`),
   `Icons.jsx`, `curriculum.js` (letters per language, number words, math units, cheers), `GradePicker.jsx`.
@@ -39,9 +40,9 @@ The owner is Fik (GitHub: Fikretekie). He is learning, so explain simply.
 | 1 | Landing page (hero, features, grade picker Pre-K/K/Grade 1…, Meet Rodas, bedtime stories, parents report, pricing $19.99/mo per child) | `/` | ✅ done |
 | 2 | Pick language (Eritrean / From Ethiopia), math on/off, teacher | `/app/` | ✅ done |
 | 3 | Learning path: letter units + "Math in {language}", done/current/locked stops, Rodas cheering | `/app/path/` | ✅ done |
-| 4 | Lesson: hands-free conversation. Rodas says ሀ, asks the child to say it, listens, replays the child's voice; the child can ask questions out loud | `/app/lesson/` | ⏭ next |
-| 5 | Games | `/app/games/` | todo |
-| 6 | Bedtime stories (watch a short movie or listen only) | `/app/stories/` | todo |
+| 4 | Lesson: hands-free conversation. Rodas says ሀ (or a word), asks the child to say it, listens, replays the child's voice | `/app/lesson/` | ✅ built (branch overnight-curriculum) |
+| 5 | Games (Feed the goat, Coffee cups, Find the picture) | `/app/games/` | ✅ built |
+| 6 | Bedtime stories, line-by-line player (draft stories) | `/app/stories/` | ✅ built |
 | 7 | Homework / practice sheets | `/app/homework/` | todo |
 | 8 | Settings (grown-ups) | `/app/settings/` | todo |
 | 9 | Friday parent report email — **written in Tigrinya** | — | todo |
