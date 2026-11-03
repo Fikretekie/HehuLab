@@ -1,6 +1,6 @@
 # HehuLab — open tasks (updated 2026-11-03)
 
-## Done overnight (branch `overnight-curriculum`, NOT pushed — Fik reviews first)
+## Done overnight (branch `overnight-curriculum`, merged and pushed to `main` 2026-11-03)
 - Start screen: who is learning (child / grown-up) and what (learn my language / learn English from my language).
 - Curriculum in `components/courses.js`: kids Pre-K → Grade 3 (74 lessons), grown-ups Beginner → Culture (62);
   English track 42 / 30 lessons. Units mix letter families, word themes (140 words Rodas already recorded),
@@ -13,11 +13,11 @@
 - To check: the Tigrinya in the 3 stories; "ሎሚ" and the number 10 have no Rodas recording yet.
 
 ## A. Kids/learners website (this repo)
-1. Screen 4 lesson: Fik approves → commit + push.
+1. ✅ Screen 4 lesson: approved, committed and pushed to `main`.
 2. Screen 4 lesson: test the microphone in Chrome (http://localhost:3001/app/lesson/?letter=ሀ).
 3. Screen 4 lesson: trim the silence at the end of Rodas's letter recordings (~4.5 s each) so she answers faster.
 4. Copy Adiam's new recordings (the 11 lesson lines: በሊ, ጽቡቕ ገይርኪ!, ደጊምኪ በሊ…) into `public/voices` once she records them.
-5. Commit the older uncommitted work (Voice.jsx, Avatars, games/homework/settings/stories folders).
+5. ✅ Older work committed (Voice.jsx, Avatars, games/homework/settings/stories folders).
 6. ✅ (overnight) Curriculum structure. Next: more themes and phrases per level, math inside the levels.
 7. ✅ (overnight) Tracks. Still needed: Tigre, Bilen, Saho, Amharic word lists + recordings (task 22).
 8. **Characters with real recorders** (one character = one person's voice, always the same):
