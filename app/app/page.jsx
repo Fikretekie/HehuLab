@@ -33,7 +33,7 @@ export default function Start() {
   const adult = kid.learner === "adult";
   const english = kid.track === "english";
   const teacher = TEACHERS.find((t) => t.id === kid.teacher) || TEACHERS[0];
-  const teachers = adult ? TEACHERS.filter((t) => t.id === "rodas" || t.id === "abeba") : TEACHERS;
+  const teachers = adult ? TEACHERS.filter((t) => t.id === "rodas" || t.id === "kokob") : TEACHERS;
 
   return (
     <main>

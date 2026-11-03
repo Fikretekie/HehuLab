@@ -1,6 +1,6 @@
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
-import { Rodas, Goat, Sheep, Camel, Grandma } from "../components/Avatars";
+import { Rodas, Goat, Sheep, Camel, Kokob } from "../components/Avatars";
 import { GamePad, Sheet, Moon } from "../components/Icons";
 import GradePicker from "../components/GradePicker";
 
@@ -60,7 +60,7 @@ export default function Home() {
             Homework that adapts to each child: trace the fidel, match words, count. Print it or do it on screen.
           </Feature>
           <Feature color="bg-accent-soft text-accent" Icon={Moon} title="Bedtime stories">
-            Our folk tales as short movies, or audio only for sleepy eyes, told by Grandma Didi.
+            Our folk tales as short movies, or audio only for sleepy eyes, told by Rodas.
           </Feature>
         </div>
       </section>
@@ -86,9 +86,9 @@ export default function Home() {
               I&apos;m an AI teacher, always ready when your child is. I teach first words, the fidel, songs and stories,
               answer questions, and remember which words need more practice.
             </p>
-            <p className="eyebrow mb-3 text-muted">Or learn with an animal friend</p>
+            <p className="eyebrow mb-3 text-muted">Or learn with a friend</p>
             <div className="flex flex-wrap gap-3">
-              {[["Fiyel the goat", Goat], ["Bebe the sheep", Sheep], ["Gemel the camel", Camel], ["Grandma Didi", Grandma]].map(([n, Pic]) => (
+              {[["Fiyel the goat", Goat], ["Bebe the sheep", Sheep], ["Gemel the camel", Camel], ["Kokob", Kokob]].map(([n, Pic]) => (
                 <span key={n} className="flex items-center gap-2 rounded-2xl bg-white py-1.5 pl-1.5 pr-4 font-extrabold">
                   <Pic size={40} /> {n}
                 </span>

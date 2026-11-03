@@ -3,13 +3,13 @@
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { langOf, useKid } from "../../../components/KidState";
-import { Grandma } from "../../../components/Avatars";
+import { Rodas } from "../../../components/Avatars";
 import { Moon, Play } from "../../../components/Icons";
 import { STORIES } from "../../../components/stories";
 import { allLessons, levelsFor } from "../../../components/courses";
 import { playClip, recordingUrl, stop as stopVoice } from "../../../components/Voice";
 
-// Screen 6 (web): Bedtime stories, told by Grandma Didi. The player is big on the left; the stories are on the right.
+// Screen 6 (web): Bedtime stories, told by Rodas in her own voice. The player is big on the left; the stories are on the right.
 // The story goes line by line: a picture, the line in Tigrinya and in English. A line plays the teller's recording
 // when there is one; otherwise it stays on screen long enough to read and the story moves on.
 // "Learn English" shows the English big (read by the browser's English voice) and Tigrinya small.
@@ -126,7 +126,7 @@ function StoriesPage() {
     <main>
       <div className="mb-8">
         <p className="eyebrow text-accent">Bedtime stories</p>
-        <h1 className="mt-1 text-4xl font-bold">Stories with Grandma Didi</h1>
+        <h1 className="mt-1 text-4xl font-bold">Stories with Rodas</h1>
         <p className="mt-2 text-lg text-muted">
           {english ? `Stories in English, with ${lang.name} under each line.` : `Our stories in ${lang.name}.`} Watch, or turn the
           screen dark and just listen.
@@ -148,7 +148,7 @@ function StoriesPage() {
             {dark ? (
               <div className="text-white/40">
                 <p className="text-2xl font-bold">Close your eyes and listen</p>
-                <p className="mt-1">Grandma Didi is telling the story</p>
+                <p className="mt-1">Rodas is telling the story</p>
               </div>
             ) : playing || ended || at > 0 ? (
               <>
@@ -162,9 +162,9 @@ function StoriesPage() {
               <div className="flex items-end gap-10">
                 <div className="flex flex-col items-center gap-2">
                   <div className="rounded-full bg-white/10 p-3">
-                    <Grandma size={120} />
+                    <Rodas size={120} />
                   </div>
-                  <span className="text-sm font-bold text-white/70">Grandma Didi</span>
+                  <span className="text-sm font-bold text-white/70">Rodas</span>
                 </div>
                 <div className="rounded-full bg-white/10 p-5">
                   <story.Pic size={170} />
@@ -231,7 +231,7 @@ function StoriesPage() {
         {/* All stories */}
         <aside className="space-y-4">
           <div className="card flex items-center gap-4 bg-accent-soft p-5">
-            <Grandma size={64} />
+            <Rodas size={64} />
             <p className="font-bold">&ldquo;Come sit with me, {kid.name}. Which story tonight?&rdquo;</p>
           </div>
           {STORIES.map((s) => (

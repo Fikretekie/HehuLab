@@ -3,7 +3,7 @@
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { langOf, useKid } from "../../../components/KidState";
-import { Camel, Goat, Grandma, Sheep } from "../../../components/Avatars";
+import { Camel, Goat, Kokob, Sheep } from "../../../components/Avatars";
 import { Check, GamePad, Star } from "../../../components/Icons";
 import { NUMBER_WORDS, letterUnits, usesGeez } from "../../../components/curriculum";
 import { SpeakButton, stop, useVoice } from "../../../components/Voice";
@@ -28,7 +28,7 @@ const GAMES = [
   { id: "goat", title: "Feed the goat", note: "Find the letter Fiyel asks for", Pic: Goat, kind: "letters" },
   { id: "cups", title: "Count the coffee cups", note: "How many cups for the coffee ceremony?", Pic: Camel, kind: "math" },
   { id: "pics", title: "Find the picture", note: "Bebe says a word. Tap its picture!", Pic: Sheep, kind: "words" },
-  { id: "memory", title: "Memory match", note: "Turn two cards: find each picture and its word", Pic: Grandma, kind: "words" },
+  { id: "memory", title: "Memory match", note: "Turn two cards: find each picture and its word", Pic: Kokob, kind: "words" },
   { id: "race", title: "Race the camel", note: "Coming soon", Pic: Camel, soon: true },
 ];
 
@@ -188,11 +188,10 @@ function Stage({ game, pool, geez, words, english, onWin }) {
 }
 
 // "Memory match": 6 words of the unit become 12 cards, a picture and its word. Turn two; if they belong together
-// they stay open. Rodas says the word of every card you turn.
+// they stay open. Kokob hosts it. She has no recorder yet, so the game is silent (never another person's voice).
 const PAIRS = 6;
 
 function Memory({ game, pool, english, onWin }) {
-  const voice = useVoice();
   const [cards, setCards] = useState([]);
   const [open, setOpen] = useState([]); // the 1 or 2 cards turned right now
   const [found, setFound] = useState([]); // keys of the pairs found
@@ -208,17 +207,11 @@ function Memory({ game, pool, english, onWin }) {
   useEffect(deal, [pool]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    if (!won) return;
-    voice({ line: "welldone", text: "You found them all! Well done!" });
-    onWin?.();
+    if (won) onWin?.();
   }, [won]); // eslint-disable-line react-hooks/exhaustive-deps
-  useEffect(() => stop, []);
-
-  const sayWord = (w) => voice(english ? { text: w.english } : { word: w.word, text: w.english });
 
   function turn(card) {
     if (open.length === 2 || open.includes(card) || found.includes(card.w.key)) return;
-    sayWord(card.w);
     const now = [...open, card];
     setOpen(now);
     if (now.length < 2) return;

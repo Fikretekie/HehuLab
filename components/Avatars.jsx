@@ -1,4 +1,4 @@
-// The teachers. Rodas is a photo; the animal friends and Grandma are drawings.
+// The teachers. Rodas is a photo; the animal friends and Kokob are drawings.
 
 export function Rodas({ size = 64, className = "" }) {
   return (
@@ -63,23 +63,29 @@ export function Camel({ size = 64 }) {
   );
 }
 
-export function Grandma({ size = 64 }) {
+// Kokob (ኮኾብ, "star"): a young girl with headphones and a star clip. Silent until Fik picks her recorder.
+export function Kokob({ size = 64 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 120 120" aria-hidden="true">
-      <path d="M18 70 Q18 18 60 16 Q102 18 102 70 L102 104 L18 104 Z" fill="#FFFFFF" stroke="#D9CBB0" strokeWidth="3" />
-      <circle cx="60" cy="62" r="28" fill="#7A4E33" />
-      <circle cx="50" cy="60" r="4" fill="#102542" />
-      <circle cx="70" cy="60" r="4" fill="#102542" />
-      <path d="M50 74 Q60 81 70 74" stroke="#102542" strokeWidth="3" fill="none" strokeLinecap="round" />
-      <path d="M22 92 L98 92" stroke="#1E7A46" strokeWidth="4" />
-      <path d="M22 98 L98 98" stroke="#E0A400" strokeWidth="4" />
+      <circle cx="30" cy="34" r="16" fill="#1B1B1B" />
+      <circle cx="90" cy="34" r="16" fill="#1B1B1B" />
+      <circle cx="60" cy="62" r="34" fill="#1B1B1B" />
+      <circle cx="60" cy="66" r="27" fill="#8A5A3B" />
+      <path d="M24 62 Q24 22 60 22 Q96 22 96 62" stroke="#1760CF" strokeWidth="6" fill="none" strokeLinecap="round" />
+      <rect x="16" y="54" width="14" height="22" rx="6" fill="#1760CF" />
+      <rect x="90" y="54" width="14" height="22" rx="6" fill="#1760CF" />
+      <circle cx="50" cy="64" r="4" fill="#102542" />
+      <circle cx="70" cy="64" r="4" fill="#102542" />
+      <path d="M50 77 Q60 85 70 77" stroke="#102542" strokeWidth="3" fill="none" strokeLinecap="round" />
+      <path d="M84 24 l3 6 6 1 -4.5 4 1 6 -5.5 -3 -5.5 3 1 -6 -4.5 -4 6 -1z" fill="#FFC93C" stroke="#B07D00" strokeWidth="1" />
+      <path d="M40 104 Q60 94 80 104" stroke="#1760CF" strokeWidth="8" fill="none" strokeLinecap="round" />
     </svg>
   );
 }
 
 export const TEACHERS = [
   { id: "rodas", name: "Rodas", note: "AI teacher", Pic: Rodas },
-  { id: "abeba", name: "Grandma Didi", short: "Grandma", note: "Stories and songs", Pic: Grandma },
+  { id: "kokob", name: "Kokob", note: "Games and puzzles", Pic: Kokob },
   { id: "fiyel", name: "Fiyel the goat", short: "Fiyel", note: "Games and jokes", Pic: Goat },
   { id: "bebe", name: "Bebe the sheep", short: "Bebe", note: "Calm, for little ones", Pic: Sheep },
   { id: "gemel", name: "Gemel the camel", short: "Gemel", note: "Counting and math", Pic: Camel },

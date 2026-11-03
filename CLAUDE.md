@@ -26,13 +26,13 @@ The owner is Fik (GitHub: Fikretekie). He is learning, so explain simply.
   muted #4D5E78, line #DCE7F7, sun #FFC93C, good #1F8A4C. Fonts: Quicksand (headings), Nunito, Noto Sans Ethiopic.
 - Curriculum: `components/courses.js` (learners kid/adult, tracks native/english, levels → units → lessons).
 - Shared pieces in `components/`: `KidState.jsx` (language, teacher, math, name, gender kept in localStorage),
-  `KidTopBar.jsx` (kids' menu), `Avatars.jsx` (Rodas photo + Goat, Sheep, Camel, Grandma drawings, `TEACHERS`),
+  `KidTopBar.jsx` (kids' menu), `Avatars.jsx` (Rodas photo + Goat, Sheep, Camel, Kokob drawings, `TEACHERS`),
   `Icons.jsx`, `curriculum.js` (letters per language, number words, math units, cheers), `GradePicker.jsx`.
 
 ### Teachers
 - **Rodas** = AI-generated Eritrean woman (23, in a zuria), photo `public/images/rodas.jpg`. Always labeled
   **"AI teacher"**. Greets "Selam! I'm Rodas." / "ሰላም! ኣነ ሮዳስ እየ።"
-- Animal friends + Grandma Abeba are AI teachers too. Footer says every voice is a real family voice.
+- Animal friends + Kokob (ኮኾብ, "star", a young girl with headphones; hosts Memory match) are AI teachers too. Grandma was removed. Rodas tells the bedtime stories. Footer says every voice is a real family voice.
 
 ## Screens (web first)
 | # | Screen | Route | Status |
