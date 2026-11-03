@@ -27,7 +27,7 @@
 11. ✅ Homework follows the path (trace, match letters, pictures-and-words, count).
 12. ✅ Settings: learner, track, language, reset.
 13. Screen 9 Friday parent report email, written in Tigrinya.
-14. Hosting: S3 + CloudFront, then GitHub Actions deploy. Fix the 2 `npm audit` warnings safely first.
+14. Hosting: S3 + CloudFront, then GitHub Actions deploy. ✅ PostCSS warning fixed (8.5.30). Next.js warning left: only hits servers, our site is static; fixing needs Next 14 → 16 (big change).
 
 ## B. Voices site (voices.hehulab.org) — live: update 55 (consent v3, idle sign-out)
 15. Push local commits (updates 49–55) to GitHub; sync CloudShell's copy.
