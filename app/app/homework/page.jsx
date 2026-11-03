@@ -3,10 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import { langOf, useKid } from "../../../components/KidState";
 import { Check, Sheet, Star } from "../../../components/Icons";
-import { NUMBER_WORDS, family, letterUnits, usesGeez } from "../../../components/curriculum";
+import { NUMBER_WORDS, family, usesGeez } from "../../../components/curriculum";
+import { allLessons, lessonItems, levelsFor } from "../../../components/courses";
 
 // Screen 7 (web): Homework. This week's sheets on the left; the open sheet on the right.
-// Sheets follow the child's path: trace the newest letter family, match letters, count. Do it on screen or print it.
+// Sheets follow the path (the lessons with stars): trace the newest letter family, match the letters learned, match
+// pictures to the newest words, count. Do it on screen or print it. "Learn English" gets the English word sheets.
 
 const Printer = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
@@ -115,11 +117,12 @@ function Trace({ letters, geez, onDone }) {
   );
 }
 
-// Step 2 sheet: tap a letter on the left, then the same letter on the right.
+// Match sheets: tap something on the left, then its partner on the right. Letters match the same letter; pictures
+// match their word. pairs = [{ key, left, right }].
 const ORDER = [2, 0, 3, 1]; // the right column's order (fixed, so the sheet prints the same every time)
 
-function Match({ letters, geez, onDone }) {
-  const four = letters.slice(0, 4);
+function Match({ pairs, geez, rightGeez = geez, what = "letter", onDone }) {
+  const four = pairs.slice(0, 4);
   const [pick, setPick] = useState(null);
   const [paired, setPaired] = useState(new Set());
   const [miss, setMiss] = useState(null);
@@ -137,8 +140,8 @@ function Match({ letters, geez, onDone }) {
     if (next.size === four.length) onDone();
   }
 
-  const tile = (l, state) =>
-    `flex h-20 w-24 items-center justify-center rounded-2xl border-[3px] text-4xl font-bold transition ${geez ? "font-geez" : "font-display"} ${
+  const tile = (font, state, wide) =>
+    `flex h-20 ${wide ? "min-w-[9rem] px-4 text-2xl" : "w-24 text-4xl"} items-center justify-center rounded-2xl border-[3px] font-bold transition ${font ? "font-geez" : "font-display"} ${
       state === "paired"
         ? "border-good bg-good-soft text-good"
         : state === "picked"
@@ -151,33 +154,36 @@ function Match({ letters, geez, onDone }) {
   return (
     <div className="flex flex-col items-center gap-6">
       <div className="grid grid-cols-[auto_120px_auto] items-center gap-y-4">
-        {four.map((l, row) => {
-          const r = four[ORDER[row]];
+        {four.map((p, row) => {
+          const r = four[ORDER[row] % four.length];
+          const wide = what === "word";
           return [
             <button
-              key={`l${l}`}
+              key={`l${p.key}`}
               type="button"
-              disabled={paired.has(l)}
-              onClick={() => setPick(l)}
-              className={tile(l, paired.has(l) ? "paired" : pick === l ? "picked" : "")}
+              disabled={paired.has(p.key)}
+              onClick={() => setPick(p.key)}
+              className={tile(geez && !wide, paired.has(p.key) ? "paired" : pick === p.key ? "picked" : "")}
             >
-              {l}
+              {p.left}
             </button>,
             <span key={`d${row}`} className="mx-4 h-1 rounded-full border-t-4 border-dotted border-line" aria-hidden="true" />,
             <button
-              key={`r${r}`}
+              key={`r${r.key}`}
               type="button"
-              disabled={paired.has(r)}
-              onClick={() => right(r)}
-              className={tile(r, paired.has(r) ? "paired" : miss === r ? "miss" : "")}
+              disabled={paired.has(r.key)}
+              onClick={() => right(r.key)}
+              className={tile(rightGeez, paired.has(r.key) ? "paired" : miss === r.key ? "miss" : "", wide)}
             >
-              {r}
+              {r.right}
             </button>,
           ];
         })}
       </div>
       <p className="min-h-[1.5em] font-bold text-muted">
-        {pick ? "Now tap the same one on the right." : paired.size === four.length ? "All matched!" : "Tap a letter on the left."}
+        {pick
+          ? what === "word" ? "Now tap its word on the right." : "Now tap the same one on the right."
+          : paired.size === four.length ? "All matched!" : what === "word" ? "Tap a picture on the left." : "Tap a letter on the left."}
       </p>
     </div>
   );
@@ -236,16 +242,39 @@ export default function Homework() {
   const lang = langOf(kid);
   const geez = usesGeez(kid.lang);
   const words = NUMBER_WORDS[kid.lang];
-  const learned = letterUnits(kid.lang).flatMap((u) => u.letters).slice(0, Math.max(kid.done ?? 4, 4));
-  const newest = learned[learned.length - 1];
+  const english = kid.track === "english";
+  const stars = kid.stars || {};
+  const lessons = allLessons(levelsFor(kid.learner, kid.track, kid.lang));
+
+  // Letters: the families with stars (at least the first 4 of the path, so there is always a sheet).
+  const letterStops = lessons.filter((l) => l.type === "letters");
+  const doneLetters = letterStops.filter((l) => stars[l.id]).map((l) => l.letter);
+  const learned = doneLetters.length >= 4 ? doneLetters : [...new Set([...doneLetters, ...letterStops.map((l) => l.letter)])].slice(0, 4);
+  const newest = doneLetters[doneLetters.length - 1] || letterStops.find((l) => !stars[l.id])?.letter || learned[0];
+
+  // Words: the newest word lesson with stars (or the first one): 4 pictures and their words.
+  const wordStop = [...lessons].reverse().find((l) => l.type === "words" && stars[l.id]) || lessons.find((l) => l.type === "words");
+  const pairs = wordStop
+    ? lessonItems(wordStop, kid.track)
+        .filter((x, i, all) => all.findIndex((y) => y.pic === x.pic) === i)
+        .slice(0, 4)
+        .map((x) => ({ key: x.word, left: x.pic, right: english ? x.english : x.native }))
+    : [];
 
   const sheets = [
-    { id: "trace", title: geez ? `Trace the ${newest} family` : `Trace the letter ${newest.toUpperCase()}`, note: "Follow the grey letter", letters: family(newest) },
-    { id: "match", title: "Match the letters", note: "Find the same one", letters: learned.slice(-4) },
-    ...(kid.math ? [{ id: "count", title: "Count the stars", note: `Numbers in ${lang.name}` }] : []),
+    ...(newest
+      ? [
+          { id: "trace", title: geez ? `Trace the ${newest} family` : `Trace the letter ${newest.toUpperCase()}`, note: "Follow the grey letter", letters: family(newest) },
+          { id: "match", title: "Match the letters", note: "Find the same one", pairs: learned.slice(-4).map((l) => ({ key: l, left: l, right: l })) },
+        ]
+      : []),
+    ...(pairs.length >= 2
+      ? [{ id: "words", title: `Pictures and words: ${wordStop.title}`, note: english ? "Match each picture to its English word" : "Match each picture to its word", pairs }]
+      : []),
+    ...(kid.math && !english ? [{ id: "count", title: "Count the stars", note: `Numbers in ${lang.name}` }] : []),
   ];
 
-  const [openId, setOpenId] = useState("trace");
+  const [openId, setOpenId] = useState(sheets[0].id);
   const [done, setDone] = useState(new Set());
   const open = sheets.find((s) => s.id === openId) || sheets[0];
   const finish = (id) => setDone((d) => new Set(d).add(id));
@@ -259,7 +288,7 @@ export default function Homework() {
         <div>
           <p className="eyebrow text-brand">Homework</p>
           <h1 className="mt-1 text-4xl font-bold">This week&apos;s sheets</h1>
-          <p className="mt-2 text-lg text-muted">Made from the letters {kid.name} learned. Do them on screen, or print them.</p>
+          <p className="mt-2 text-lg text-muted">Made from what {kid.name} learned on the path. Do them on screen, or print them.</p>
         </div>
         <span className="chip bg-white text-base">
           <Star /> {done.size} of {sheets.length} done · due Friday
@@ -315,7 +344,10 @@ export default function Homework() {
 
           <div className="flex flex-1 items-center justify-center">
             {open.id === "trace" && <Trace key={open.title} letters={open.letters} geez={geez} onDone={() => finish("trace")} />}
-            {open.id === "match" && <Match key={open.letters.join("")} letters={open.letters} geez={geez} onDone={() => finish("match")} />}
+            {open.id === "match" && <Match key={open.pairs.map((p) => p.key).join("")} pairs={open.pairs} geez={geez} onDone={() => finish("match")} />}
+            {open.id === "words" && (
+              <Match key={open.pairs.map((p) => p.key).join("")} pairs={open.pairs} geez={false} rightGeez={!english} what="word" onDone={() => finish("words")} />
+            )}
             {open.id === "count" && <Count words={words} onDone={() => finish("count")} />}
           </div>
 

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { LANGS, useKid } from "../../../components/KidState";
 import { TEACHERS } from "../../../components/Avatars";
+import { LEARNERS, TRACKS } from "../../../components/courses";
 import { Check } from "../../../components/Icons";
 import { Speaker, say } from "../../../components/Voice";
 
@@ -116,7 +117,13 @@ export default function Settings() {
           <Field label="Boy or girl" note="So the teacher says “well done” the right way in Tigrinya.">
             <Choice options={[["girl", "Girl"], ["boy", "Boy"]]} value={kid.gender} onPick={(gender) => update({ gender })} />
           </Field>
-          <Field label="Language to learn">
+          <Field label="Who is learning" note="Grown-ups get their own course (Beginner to Culture), with nothing locked.">
+            <Choice options={LEARNERS.map((l) => [l.id, l.title])} value={kid.learner || "kid"} onPick={(learner) => update({ learner })} />
+          </Field>
+          <Field label="What to learn" note="Learn English: English words, explained in the language below.">
+            <Choice options={TRACKS.map((x) => [x.id, x.title])} value={kid.track || "native"} onPick={(track) => update({ track })} />
+          </Field>
+          <Field label={kid.track === "english" ? "Language you speak" : "Language to learn"}>
             <Choice options={LANGS.map((l) => [l.id, l.name, l.native])} value={kid.lang} onPick={(lang) => update({ lang })} />
           </Field>
           <Field label="Learn math too" note="Math is taught in the language above.">
@@ -188,13 +195,13 @@ export default function Settings() {
                 onPick={(reportLang) => update({ reportLang })}
               />
             </Field>
-            <Field label="Start the path again" note="All letters go back to locked. Stars stay.">
+            <Field label="Start the path again" note="Every lesson goes back to the start and the stars are cleared.">
               {resetAsk ? (
                 <div className="flex flex-wrap gap-3">
                   <button
                     type="button"
                     onClick={() => {
-                      update({ done: 0 });
+                      update({ done: 0, stars: {} });
                       setResetAsk(false);
                     }}
                     className="btn bg-accent text-white hover:brightness-110"
