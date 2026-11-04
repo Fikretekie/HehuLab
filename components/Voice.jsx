@@ -187,10 +187,11 @@ export function useFriendVoice(who) {
   const { kid } = useKid();
   const on = kid.voice !== false;
   return useCallback(
-    (word) => {
+    // `lang` "en" plays their English recordings (public/voices/<who>/en.json) for the "Learn English" track.
+    (word, lang = kid.lang) => {
       if (!on || !word) return Promise.resolve(false);
       stop();
-      return playRecording(kid.lang, word, who);
+      return playRecording(lang, word, who);
     },
     [on, kid.lang, who],
   );

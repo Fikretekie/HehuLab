@@ -8,6 +8,7 @@ import { Check, GamePad, Star } from "../../../components/Icons";
 import { NUMBER_WORDS, letterUnits, usesGeez } from "../../../components/curriculum";
 import { SpeakButton, stop, useFriendVoice, useVoice } from "../../../components/Voice";
 import { KOKOB } from "../../../components/kokobLines";
+import { gameText } from "../../../components/gameText";
 import { AGE_GROUPS, ageGroup, findLesson, lessonItems, levelsFor } from "../../../components/courses";
 
 // Screen 5 (web): Games. The game you're playing is big on the left; all games are listed on the right.
@@ -15,6 +16,18 @@ import { AGE_GROUPS, ageGroup, findLesson, lessonItems, levelsFor } from "../../
 // of the unit ("Find the picture"). A "Play" stop on the path opens here with ?lesson=… and keeps the stars.
 
 const ROUNDS = 5;
+
+// Put a styled letter where "@" is in an instruction (Tigrinya puts the letter in the middle: "ፍየል @ ትደሊ!").
+function fill(line, node) {
+  const [a, b] = line.split("@");
+  return (
+    <>
+      {a}
+      {node}
+      {b}
+    </>
+  );
+}
 
 const Cup = () => (
   <svg width="52" height="52" viewBox="0 0 48 48" aria-hidden="true">
@@ -70,11 +83,12 @@ function Stage({ game, pool, geez, words, english, onWin }) {
 
   // Rodas reads each question out loud (the letter in her recorded voice) and cheers.
   const { kid } = useKid();
+  const T = gameText(kid);
   const voice = useVoice();
   const talk = (line, text) => voice({ line, text });
   const ask = () =>
     game.id === "goat"
-      ? voice({ word: round.answer.key, text: "Fiyel wants this letter! Can you find it?" })
+      ? voice(english ? { text: `Fiyel wants ${round.answer.key[0]}!` } : { word: round.answer.key, text: "Fiyel wants this letter! Can you find it?" })
       : game.id === "pics"
         ? voice(english ? { text: round.answer.english } : { word: round.answer.word, text: round.answer.english })
         : talk("howmany", "How many cups?");
@@ -131,7 +145,7 @@ function Stage({ game, pool, geez, words, english, onWin }) {
   const question =
     game.id === "goat" ? (
       <>
-        Fiyel wants <span className={geez ? "font-geez" : ""}>{round.answer.big}</span>!
+        {fill(T.goat("@"), <span className={geez ? "font-geez" : "font-display"}>{round.answer.big}</span>)}
       </>
     ) : game.id === "pics" ? (
       <>
@@ -157,7 +171,7 @@ function Stage({ game, pool, geez, words, english, onWin }) {
         <div className={`transition ${ok ? "scale-110" : ""}`}>
           <game.Pic size={140} />
         </div>
-        <div className="relative rounded-3xl bg-white px-7 py-5 text-3xl font-bold">
+        <div className={`relative rounded-3xl bg-white px-7 py-5 text-3xl font-bold ${T.geez && game.id === "goat" ? "font-geez" : ""}`}>
           <span className="absolute -left-2 top-1/2 h-5 w-5 -translate-y-1/2 rotate-45 bg-white" aria-hidden="true" />
           {ok ? cheerText : question}
         </div>
@@ -196,7 +210,7 @@ function Stage({ game, pool, geez, words, english, onWin }) {
           </button>
         ))}
       </div>
-      <p className="min-h-[1.5em] font-bold text-accent">{wrong ? "Not that one. Try again!" : ""}</p>
+      <p className={`min-h-[1.5em] font-bold text-accent ${T.geez ? "font-geez" : ""}`}>{wrong ? T.again : ""}</p>
     </div>
   );
 }
@@ -464,8 +478,11 @@ const Balloon = ({ color }) => (
   </svg>
 );
 
-function Pop({ game, pool, geez, pace, onWin }) {
+function Pop({ game, pool, geez, english, pace, onWin }) {
   const { kid } = useKid();
+  const T = gameText(kid);
+  // Kokob says the letter: in English from Aki's English recordings ("B"), else in the child's language.
+  const sayLetter = (l) => (english ? kokob(l[0], "en") : kokob(l));
   const kokob = useFriendVoice("kokob");
   const [target, setTarget] = useState(pool[0].key);
   const [balloons, setBalloons] = useState([]);
@@ -481,7 +498,7 @@ function Pop({ game, pool, geez, pace, onWin }) {
   }
   useEffect(() => newTarget(), [pool]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
-    if (!won) kokob(target);
+    if (!won) sayLetter(target);
   }, [target]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => stop, []);
 
@@ -556,11 +573,11 @@ function Pop({ game, pool, geez, pace, onWin }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Kokob size={90} />
-          <div className="relative rounded-3xl bg-white px-6 py-3 text-2xl font-bold">
+          <div className={`relative rounded-3xl bg-white px-6 py-3 text-2xl font-bold ${T.geez ? "font-geez" : ""}`}>
             <span className="absolute -left-2 top-1/2 h-5 w-5 -translate-y-1/2 rotate-45 bg-white" aria-hidden="true" />
-            Pop <span className={`text-4xl text-brand ${geez ? "font-geez" : "font-display"}`}>{target}</span>!
+            {fill(T.pop("@"), <span className={`text-4xl text-brand ${geez ? "font-geez" : "font-display"}`}>{target}</span>)}
           </div>
-          <SpeakButton onClick={() => kokob(target)} label="Hear the letter again" />
+          <SpeakButton onClick={() => sayLetter(target)} label="Hear the letter again" />
         </div>
         <div className="flex gap-1" aria-label={`${score} of ${POP_WIN}`}>
           {Array.from({ length: POP_WIN }, (_, i) => (
@@ -593,7 +610,7 @@ function Pop({ game, pool, geez, pace, onWin }) {
           </div>
         ))}
       </div>
-      <p className="min-h-[1.5em] text-center font-bold text-accent">{miss !== null ? "Not that letter. Look again!" : ""}</p>
+      <p className={`min-h-[1.5em] text-center font-bold text-accent ${T.geez ? "font-geez" : ""}`}>{miss !== null ? T.popMiss : ""}</p>
     </div>
   );
 }
@@ -650,6 +667,8 @@ const Lane = ({ pos, children }) => (
 );
 
 function Race({ game, words, pace, onWin }) {
+  const { kid } = useKid();
+  const T = gameText(kid);
   const [q, setQ] = useState(() => numberRound(10));
   const [camel, setCamel] = useState(0);
   const [goat, setGoat] = useState(0);
@@ -706,9 +725,9 @@ function Race({ game, words, pace, onWin }) {
         </div>
       ) : !started ? (
         <div className="flex flex-1 flex-col items-center justify-center gap-3 text-center">
-          <p className="text-xl font-bold">Count the dots and tap the number. Be quicker than the goat!</p>
+          <p className={`text-xl font-bold ${T.geez ? "font-geez" : ""}`}>{T.raceHow}</p>
           <button type="button" onClick={() => setStarted(true)} className="btn-brand text-lg">
-            Start the race
+            {T.raceStart}
           </button>
         </div>
       ) : (
@@ -729,7 +748,7 @@ function Race({ game, words, pace, onWin }) {
               </button>
             ))}
           </div>
-          <p className="min-h-[1.5em] font-bold text-accent">{wrong ? "Count again!" : ""}</p>
+          <p className={`min-h-[1.5em] font-bold text-accent ${T.geez ? "font-geez" : ""}`}>{wrong ? T.countAgain : ""}</p>
         </div>
       )}
     </div>
@@ -750,6 +769,8 @@ function speedQuestion(letters) {
 }
 
 function Speed({ game, letters, geez, lang, onWin }) {
+  const { kid } = useKid();
+  const T = gameText(kid);
   const bestKey = `hehu-speed-best-${lang}`;
   const [left, setLeft] = useState(0); // seconds left; 0 = not playing
   const [played, setPlayed] = useState(false);
@@ -823,12 +844,12 @@ function Speed({ game, letters, geez, lang, onWin }) {
       </div>
 
       {q.kind === "letter" ? (
-        <p className="text-3xl font-bold">
-          Find <span className={`text-5xl text-brand ${geez ? "font-geez" : "font-display"}`}>{q.answer}</span>
+        <p className={`text-3xl font-bold ${T.geez ? "font-geez" : ""}`}>
+          {T.find} <span className={`text-5xl text-brand ${geez ? "font-geez" : "font-display"}`}>{q.answer}</span>
         </p>
       ) : (
         <div className="flex flex-col items-center gap-3">
-          <p className="text-3xl font-bold">How many?</p>
+          <p className={`text-3xl font-bold ${T.geez ? "font-geez" : ""}`}>{T.howMany}</p>
           <Dots n={q.answer} />
         </div>
       )}
@@ -847,7 +868,7 @@ function Speed({ game, letters, geez, lang, onWin }) {
           </button>
         ))}
       </div>
-      <p className="min-h-[1.5em] font-bold text-accent">{wrong !== null ? "Not that one!" : ""}</p>
+      <p className="min-h-[1.5em] font-bold text-accent">{wrong !== null ? T.again : ""}</p>
     </div>
   );
 }
@@ -860,7 +881,9 @@ const SPOTS = [
   [68, 45], [88, 55], [10, 82], [34, 80], [60, 78], [84, 85],
 ];
 
-function StarMap({ game, units, geez, onWin }) {
+function StarMap({ game, units, geez, english, onWin }) {
+  const { kid } = useKid();
+  const T = gameText(kid);
   const kokob = useFriendVoice("kokob");
   const [unit, setUnit] = useState(0);
   const [spots, setSpots] = useState(SPOTS.slice(0, 6));
@@ -881,7 +904,8 @@ function StarMap({ game, units, geez, onWin }) {
       setWrong(i);
       return setTimeout(() => setWrong(null), 500);
     }
-    kokob(letters[i]);
+    if (english) kokob(letters[i][0], "en");
+    else kokob(letters[i]);
     setLit(i + 1);
   }
 
@@ -902,8 +926,8 @@ function StarMap({ game, units, geez, onWin }) {
     <div className="flex flex-1 flex-col gap-4 pt-2">
       <style>{`@keyframes starShake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }`}</style>
       <div className="flex items-center justify-between">
-        <p className="text-xl font-bold">
-          Next star: <span className={`text-3xl text-brand ${geez ? "font-geez" : "font-display"}`}>{letters[lit]}</span>
+        <p className={`text-xl font-bold ${T.geez ? "font-geez" : ""}`}>
+          {T.nextStar} <span className={`text-3xl text-brand ${geez ? "font-geez" : "font-display"}`}>{letters[lit]}</span>
         </p>
         <p className="font-bold text-muted">
           Map {(unit % units.length) + 1} of {units.length}
@@ -935,7 +959,7 @@ function StarMap({ game, units, geez, onWin }) {
           </button>
         ))}
       </div>
-      <p className="min-h-[1.5em] text-center font-bold text-accent">{wrong !== null ? `Not yet! Find ${letters[lit]} first.` : ""}</p>
+      <p className={`min-h-[1.5em] text-center font-bold text-accent ${T.geez ? "font-geez" : ""}`}>{wrong !== null ? T.starMiss(letters[lit]) : ""}</p>
     </div>
   );
 }
@@ -964,20 +988,22 @@ function GamesPage() {
     stageRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
   const game = GAMES.find((g) => g.id === gameId);
-  const geez = usesGeez(kid.lang);
-  const words = NUMBER_WORDS[kid.lang];
+  // The "Learn English" track plays with English letters and number words, not the language the learner speaks.
+  const gameLang = english ? "en" : kid.lang;
+  const geez = usesGeez(gameLang);
+  const words = NUMBER_WORDS[gameLang];
 
   // Letters come from the first unit of the child's path; numbers are 1 to 5.
   const pools = useMemo(
     () => ({
-      letters: letterUnits(kid.lang)[0].letters.map((l) => ({ key: l, big: l })),
+      letters: letterUnits(gameLang)[0].letters.map((l) => ({ key: l, big: l })),
       math: Array.from({ length: 5 }, (_, i) => ({ key: String(i + 1), big: String(i + 1), count: i + 1 })),
       // The unit's words (from the path), or animals and colors. The picture is what you tap.
       words: lessonItems(course?.themes?.length ? course : { type: "game", themes: ["animals", "colors", "food"] }, kid.track)
         .filter((x, i, all) => all.findIndex((y) => y.pic === x.pic) === i)
         .map((x) => ({ ...x, key: x.word, big: x.pic })),
     }),
-    [kid.lang, kid.track, course],
+    [kid.track, course, gameLang],
   );
 
   // The game is drawn only in the browser: it depends on the lesson in the address and the child's saved choices,
@@ -994,8 +1020,10 @@ function GamesPage() {
     <main>
       <div className="mb-8">
         <p className="eyebrow text-brand">Games</p>
-        <h1 className="mt-1 text-4xl font-bold">Play and learn in {lang.name}</h1>
-        <p className="mt-2 text-lg text-muted">Every game uses the letters and numbers from your path.</p>
+        <h1 className="mt-1 text-4xl font-bold">{english ? "Play and learn English" : `Play and learn in ${lang.name}`}</h1>
+        <p className="mt-2 text-lg text-muted">
+          {english ? `English letters, numbers and words, for ${lang.name} speakers.` : "Every game uses the letters and numbers from your path."}
+        </p>
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px]">
@@ -1007,13 +1035,13 @@ function GamesPage() {
             (game.id === "memory" ? (
               <Memory key={`memory-${kid.lang}-${kid.track}`} game={game} pool={pools.words} english={english} onWin={onWin} />
             ) : game.id === "race" ? (
-              <Race key={`race-${kid.lang}-${group}`} game={game} words={words} pace={PACE[group]} onWin={onWin} />
+              <Race key={`race-${gameLang}-${group}`} game={game} words={words} pace={PACE[group]} onWin={onWin} />
             ) : game.id === "speed" ? (
-              <Speed key={`speed-${kid.lang}`} game={game} letters={pools.letters} geez={geez} lang={kid.lang} onWin={onWin} />
+              <Speed key={`speed-${gameLang}`} game={game} letters={pools.letters} geez={geez} lang={gameLang} onWin={onWin} />
             ) : game.id === "stars" ? (
-              <StarMap key={`stars-${kid.lang}`} game={game} units={letterUnits(kid.lang)} geez={geez} onWin={onWin} />
+              <StarMap key={`stars-${gameLang}`} game={game} units={letterUnits(gameLang)} geez={geez} english={english} onWin={onWin} />
             ) : game.id === "pop" ? (
-              <Pop key={`pop-${kid.lang}-${kid.track}-${group}`} game={game} pool={pools.letters} geez={geez} pace={PACE[group]} onWin={onWin} />
+              <Pop key={`pop-${kid.lang}-${kid.track}-${group}`} game={game} pool={pools.letters} geez={geez} english={english} pace={PACE[group]} onWin={onWin} />
             ) : game.id === "build" ? (
               <Build key={`build-${kid.lang}-${kid.track}`} game={game} pool={pools.words} english={english} onWin={onWin} />
             ) : (
@@ -1042,7 +1070,7 @@ function GamesPage() {
               <span className="flex-1">
                 <b className="block text-lg leading-tight">{g.title}</b>
                 <span className="text-sm text-muted">
-                  {g.soon ? "Coming soon" : g.kind === "mixed" ? "Letters and numbers" : g.kind === "math" ? `Numbers in ${lang.name}` : g.kind === "words" ? (english ? "English words" : `${lang.name} words`) : `${lang.name} letters`}
+                  {g.soon ? "Coming soon" : g.kind === "mixed" ? "Letters and numbers" : g.kind === "math" ? `Numbers in ${english ? "English" : lang.name}` : g.kind === "words" ? (english ? "English words" : `${lang.name} words`) : `${english ? "English" : lang.name} letters`}
                 </span>
               </span>
               {g.id === gameId && (

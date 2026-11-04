@@ -25,7 +25,9 @@
 9. Screen 5 Games: ✅ memory match, build the word, letter pop, star map (Kokob), race the camel, speed round.
    ✅ Step 1: grade saved (Pre-K to Grade 3); Games page shows "Best for <age>" first; speed by age.
    Next: Step 2 = grown-up games (phrase match, sentence builder, listen & choose);
-   Step 3 = English track: Feed the goat, Letter pop, Star map, Speed round must use English letters + "Play and learn English" title.
+   ✅ Step 3 = English track: games use English letters + numbers, "Play and learn English" title, instructions in
+   Tigrinya for Tigrinya speakers (`components/gameText.js`, DRAFT: Fik checks). Still: Aki records
+   `kokob-lines/kokob-lines-en.txt` (26 letters); instructions for Amharic, Tigre, Bilen speakers.
 10. Screen 6 Stories (each unit ends with a story from its words; watch or listen only).
 11. ✅ Homework follows the path (trace, match letters, pictures-and-words, count).
 12. ✅ Settings: learner, track, language, reset.
