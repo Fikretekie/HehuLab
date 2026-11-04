@@ -14,6 +14,29 @@ export const LEARNERS = [
   { id: "adult", title: "A grown-up", note: "Talk, read and write, at your own pace" },
 ];
 
+// A child's grade (the same ids as the kids' levels below). It picks which games fit and how fast they go.
+export const GRADES = [
+  { id: "k0", title: "Pre-K", age: "3–4" },
+  { id: "k1", title: "Kinder­garten", age: "5" }, // ­: may break as "Kinder-garten" on a narrow screen
+  { id: "k2", title: "Grade 1", age: "6" },
+  { id: "k3", title: "Grade 2", age: "7" },
+  { id: "k4", title: "Grade 3", age: "8–9" },
+];
+
+// The age group: small (Pre-K, K), mid (Grade 1–2), big (Grade 3) or adult.
+export const AGE_GROUPS = {
+  small: "Pre-K and Kindergarten",
+  mid: "Grade 1 and 2",
+  big: "Grade 3",
+  adult: "grown-ups",
+};
+export function ageGroup(kid) {
+  if (kid.learner === "adult") return "adult";
+  if (kid.grade === "k0" || kid.grade === "k1") return "small";
+  if (kid.grade === "k4") return "big";
+  return "mid";
+}
+
 export const TRACKS = [
   { id: "native", title: "Learn my language", note: "Tigrinya, Tigre, Bilen, Saho or Amharic" },
   { id: "english", title: "Learn English", note: "Taught in Tigrinya, Tigre, Bilen, Saho or Amharic" },

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { LANGS, useKid } from "../../../components/KidState";
 import { TEACHERS } from "../../../components/Avatars";
-import { LEARNERS, TRACKS } from "../../../components/courses";
+import { GRADES, LEARNERS, TRACKS } from "../../../components/courses";
 import { Check } from "../../../components/Icons";
 import { Speaker, say } from "../../../components/Voice";
 import Choice from "../../../components/Choice";
@@ -101,6 +101,11 @@ export default function Settings() {
           <Field label="Who is learning" note="Grown-ups get their own course (Beginner to Culture), with nothing locked.">
             <Choice options={LEARNERS.map((l) => [l.id, l.title])} value={kid.learner || "kid"} onPick={(learner) => update({ learner })} />
           </Field>
+          {kid.learner !== "adult" && (
+            <Field label="Grade" note="Games fit the age: no timers for the little ones, faster games for older kids.">
+              <Choice options={GRADES.map((g) => [g.id, g.title])} value={kid.grade || "k1"} onPick={(grade) => update({ grade })} />
+            </Field>
+          )}
           <Field label="What to learn" note="Learn English: English words, explained in the language below.">
             <Choice options={TRACKS.map((x) => [x.id, x.title])} value={kid.track || "native"} onPick={(track) => update({ track })} />
           </Field>

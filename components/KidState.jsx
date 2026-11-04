@@ -14,8 +14,9 @@ export const LANGS = [
 
 const KEY = "hehulab.kid";
 // learner: kid | adult · track: native (learn my language) | english (learn English from my language)
+// grade: k0 Pre-K · k1 Kindergarten · k2 Grade 1 · k3 Grade 2 · k4 Grade 3 (kids only; picks the games that fit)
 // stars: lessonId -> stars earned (demo until accounts exist)
-const START = { lang: "ti", teacher: "rodas", math: true, name: "Selam", gender: "girl", learner: "kid", track: "native", stars: {} };
+const START = { lang: "ti", teacher: "rodas", math: true, name: "Selam", gender: "girl", learner: "kid", grade: "k1", track: "native", stars: {} };
 
 const Ctx = createContext(null);
 

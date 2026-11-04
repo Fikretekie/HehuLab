@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { LANGS, langOf, useKid } from "../../components/KidState";
 import { TEACHERS } from "../../components/Avatars";
-import { LEARNERS, TRACKS } from "../../components/courses";
+import { GRADES, LEARNERS, TRACKS } from "../../components/courses";
 
 // Screen 2 (web): who is learning (a child or a grown-up), what (their own language, or English taught in their
 // language), which language, and (for kids) math and a teacher. Choices on the left, teachers on the right.
@@ -59,6 +59,27 @@ export default function Start() {
                 />
               ))}
             </div>
+            {!adult && (
+              <>
+                <p className="mb-2 mt-5 font-extrabold">Which grade? <span className="font-semibold text-muted">(games fit the age)</span></p>
+                <div className="grid grid-cols-5 gap-2">
+                  {GRADES.map((g) => (
+                    <button
+                      key={g.id}
+                      type="button"
+                      onClick={() => update({ grade: g.id })}
+                      aria-pressed={kid.grade === g.id}
+                      className={`rounded-2xl border-[3px] px-1 py-3 text-center font-extrabold transition ${
+                        kid.grade === g.id ? "border-brand bg-soft" : "border-line bg-white hover:border-brand/50"
+                      }`}
+                    >
+                      <span className="block text-[15px] leading-tight">{g.title}</span>
+                      <span className="block text-sm font-semibold text-muted">age {g.age}</span>
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
 
           <div>
