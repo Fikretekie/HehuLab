@@ -3,7 +3,8 @@
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { langOf, useKid } from "../../../components/KidState";
-import { Camel, Goat, Kokob, Sheep } from "../../../components/Avatars";
+import { Camel, Goat, Kokob, Rodas, Sheep } from "../../../components/Avatars";
+import { ListenChoose, PhraseMatch, SentenceBuilder } from "../../../components/GrownUpGames";
 import { Check, GamePad, Star } from "../../../components/Icons";
 import { NUMBER_WORDS, letterUnits, usesGeez } from "../../../components/curriculum";
 import { SpeakButton, stop, useFriendVoice, useVoice } from "../../../components/Voice";
@@ -40,6 +41,10 @@ const Cup = () => (
 
 // `ages`: who the game fits. small = Pre-K and K (no timers), mid = Grade 1–2, big = Grade 3, adult = grown-ups.
 const GAMES = [
+  // Grown-up games first (a grown-up starts with Phrase match). Rodas hosts them: her recorded phrases.
+  { id: "phrases", title: "Phrase match", note: "Tap a phrase, then what it means", Pic: Rodas, kind: "phrases", ages: ["big", "adult"] },
+  { id: "sentence", title: "Sentence builder", note: "Tap the words in the right order", Pic: Rodas, kind: "phrases", ages: ["adult"] },
+  { id: "listen", title: "Listen and choose", note: "Rodas says a phrase. What does it mean?", Pic: Rodas, kind: "phrases", ages: ["big", "adult"] },
   { id: "goat", title: "Feed the goat", note: "Find the letter Fiyel asks for", Pic: Goat, kind: "letters", ages: ["small", "mid"] },
   { id: "cups", title: "Count the coffee cups", note: "How many cups for the coffee ceremony?", Pic: Camel, kind: "math", ages: ["small", "mid"] },
   { id: "pics", title: "Find the picture", note: "Bebe says a word. Tap its picture!", Pic: Sheep, kind: "words", ages: ["small", "mid", "big", "adult"] },
@@ -964,6 +969,19 @@ function StarMap({ game, units, geez, english, onWin }) {
   );
 }
 
+// The grown-up game for an id (they all take the same props).
+function GrownUp(props) {
+  const Game = { phrases: PhraseMatch, sentence: SentenceBuilder, listen: ListenChoose }[props.game.id];
+  return <Game {...props} />;
+}
+
+// Where the phrase games take their phrases: the unit's themes if they have phrases, else these.
+const PHRASE_THEMES = ["hello", "questions", "sentences", "evening", "feelings"];
+function phraseLesson(course) {
+  const own = course?.themes?.length ? lessonItems(course).filter((x) => /\s/.test(x.native.trim())) : [];
+  return own.length >= 4 ? course : { type: "game", themes: PHRASE_THEMES };
+}
+
 function GamesPage() {
   const { kid, update } = useKid();
   const lang = langOf(kid);
@@ -980,7 +998,7 @@ function GamesPage() {
   const others = GAMES.filter((g) => !g.ages.includes(group));
   const [showOthers, setShowOthers] = useState(false);
   const [picked, setPicked] = useState(null);
-  const gameId = picked || (course?.themes?.length || english ? "pics" : fits[0].id);
+  const gameId = picked || (kid.learner === "adult" ? "phrases" : course?.themes?.length || english ? "pics" : fits[0].id);
   const stageRef = useRef(null);
   // Picking a game shows it: on a narrow screen the list is below the game, so scroll up to it.
   function pick(id) {
@@ -1002,6 +1020,12 @@ function GamesPage() {
       words: lessonItems(course?.themes?.length ? course : { type: "game", themes: ["animals", "colors", "food"] }, kid.track)
         .filter((x, i, all) => all.findIndex((y) => y.pic === x.pic) === i)
         .map((x) => ({ ...x, key: x.word, big: x.pic })),
+      // Phrases and sentences (2 words or more) for the grown-up games: the unit's, or greetings, questions and
+      // "talk about me". One of each meaning (the girl and boy forms of "how are you?" mean the same).
+      phrases: lessonItems(phraseLesson(course), kid.track)
+        .filter((x) => /\s/.test(x.native.trim()))
+        .filter((x, i, all) => all.findIndex((y) => y.english === x.english) === i)
+        .map((x) => ({ ...x, key: x.word })),
     }),
     [kid.track, course, gameLang],
   );
@@ -1032,7 +1056,9 @@ function GamesPage() {
           <h2 className="text-2xl font-bold">{game.title}</h2>
           <p className="text-muted">{game.note}</p>
           {ready &&
-            (game.id === "memory" ? (
+            (game.kind === "phrases" ? (
+              <GrownUp key={`${game.id}-${kid.lang}-${kid.track}`} game={game} pool={pools.phrases} english={english} onWin={onWin} />
+            ) : game.id === "memory" ? (
               <Memory key={`memory-${kid.lang}-${kid.track}`} game={game} pool={pools.words} english={english} onWin={onWin} />
             ) : game.id === "race" ? (
               <Race key={`race-${gameLang}-${group}`} game={game} words={words} pace={PACE[group]} onWin={onWin} />
@@ -1070,7 +1096,7 @@ function GamesPage() {
               <span className="flex-1">
                 <b className="block text-lg leading-tight">{g.title}</b>
                 <span className="text-sm text-muted">
-                  {g.soon ? "Coming soon" : g.kind === "mixed" ? "Letters and numbers" : g.kind === "math" ? `Numbers in ${english ? "English" : lang.name}` : g.kind === "words" ? (english ? "English words" : `${lang.name} words`) : `${english ? "English" : lang.name} letters`}
+                  {g.soon ? "Coming soon" : g.kind === "phrases" ? (english ? "English phrases" : `${lang.name} phrases`) : g.kind === "mixed" ? "Letters and numbers" : g.kind === "math" ? `Numbers in ${english ? "English" : lang.name}` : g.kind === "words" ? (english ? "English words" : `${lang.name} words`) : `${english ? "English" : lang.name} letters`}
                 </span>
               </span>
               {g.id === gameId && (

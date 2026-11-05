@@ -24,7 +24,8 @@
    Rodas = Adiam Abraham. Kokob (young girl, replaced Grandma) = **Aki**. Aki records `kokob-lines/kokob-lines-1..5.txt` (500 lines, draft Tigrinya: Fik checks first), then copy her approved recordings to `public/voices/kokob/ti/` + `public/voices/kokob/ti.json`. Until then Kokob is silent. Gemel the camel, Goat, Sheep = Fik picks a recorder for each.
 9. Screen 5 Games: ✅ memory match, build the word, letter pop, star map (Kokob), race the camel, speed round.
    ✅ Step 1: grade saved (Pre-K to Grade 3); Games page shows "Best for <age>" first; speed by age.
-   Next: Step 2 = grown-up games (phrase match, sentence builder, listen & choose);
+   ✅ Step 2 = grown-up games (phrase match, sentence builder, listen & choose; `components/GrownUpGames.jsx`).
+   Fik checks: "ከመይ ኣሎኺ" has no "?" in the word list;
    ✅ Step 3 = English track: games use English letters + numbers, "Play and learn English" title, instructions in
    Tigrinya for Tigrinya speakers (`components/gameText.js`, DRAFT: Fik checks). Still: Aki records
    `kokob-lines/kokob-lines-en.txt` (26 letters); instructions for Amharic, Tigre, Bilen speakers.
@@ -54,3 +55,8 @@
 27. Rodas's AI voice (text-to-speech from 30–60 min of Adiam), then general Tigrinya text-to-speech.
 28. Speech recognition, so the lesson knows the child really said ሀ (today it only checks something was said).
 29. Rodas video clips (listening, talking, smiling, clapping, thinking) into `public/rodas/`.
+30. **TV section (later, Fik's idea 2026-11-05):** after learning, the family relaxes and listens to stories on the TV.
+    Needs: many stories (Rodas = Adiam records each one), a "TV mode" (big text, TV-remote arrow keys,
+    stories play one after another), works by casting (Chromecast/AirPlay) or a smart-TV browser.
+    Only after the site is online (task 14). TV has no mic or touch, so watch-only: stories, songs, "watch and repeat".
+    Maybe also a YouTube channel of Rodas stories.
