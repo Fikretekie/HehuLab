@@ -26,6 +26,8 @@
    ✅ Step 1: grade saved (Pre-K to Grade 3); Games page shows "Best for <age>" first; speed by age.
    ✅ Step 2 = grown-up games (phrase match, sentence builder, listen & choose; `components/GrownUpGames.jsx`).
    Fik checks: "ከመይ ኣሎኺ" has no "?" in the word list;
+   ✅ Fixed 2026-11-05: "ኣበይ ቦታ ኢኺ ትነብሪ?" and "ኣነ ክልተ ኣሓት ኣለዋኒ።" (were እበይ / የሕዋት ኣሎዉኒ). Fik listens to
+   Rodas's 2 old recordings; if she says the old words, Adiam records them again (then drop the old name in courses.js);
    ✅ Step 3 = English track: games use English letters + numbers, "Play and learn English" title, instructions in
    Tigrinya for Tigrinya speakers (`components/gameText.js`, DRAFT: Fik checks). Still: Aki records
    `kokob-lines/kokob-lines-en.txt` (26 letters); instructions for Amharic, Tigre, Bilen speakers.

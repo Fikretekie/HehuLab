@@ -243,8 +243,8 @@ export const THEMES = {
       ["ኣነ ጽቡቕ ኣሎኹ የቀንየለይ።", "I am fine, thank you.", "🙂"],
       ["ንስኻ ኸ ከመይ ኣሎኻ?", "And you, how are you? (to a boy)", "🤝"],
       ["ንስኺ ኸ ከመይ ኣሎኺ?", "And you, how are you? (to a girl)", "🤝"],
-      ["እበይ ቦታ ኢኺ ትነብሪ?", "Where do you live? (to a girl)", "🏠"],
-      ["ኣነ ክልተ የሕዋት ኣሎዉኒ።", "I have two sisters.", "👭"],
+      ["ኣበይ ቦታ ኢኺ ትነብሪ?", "Where do you live? (to a girl)", "🏠", "እበይ ቦታ ኢኺ ትነብሪ?"], // fixed text; the recording still has the old name
+      ["ኣነ ክልተ ኣሓት ኣለዋኒ።", "I have two sisters.", "👭", "ኣነ ክልተ የሕዋት ኣሎዉኒ።"], // fixed text; the recording still has the old name
       ["እዚ ኣቦይ እዩ።", "This is my father.", "👨"],
       ["ኣደይ ኣበይ ኣላ?", "Where is my mother?", "👩"],
       ["ኣቦይ ኣበይ ኣሎ?", "Where is my father?", "👨"],
