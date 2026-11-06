@@ -3,7 +3,8 @@
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { langOf, useKid } from "../../../components/KidState";
-import { Rodas } from "../../../components/Avatars";
+import { Kokob, Rodas } from "../../../components/Avatars";
+import StoryScene from "../../../components/StoryScene";
 import { Moon, Play } from "../../../components/Icons";
 import { STORIES } from "../../../components/stories";
 import { allLessons, levelsFor } from "../../../components/courses";
@@ -60,7 +61,9 @@ function StoriesPage() {
   }, [lessonId, kid.learner, kid.track, kid.lang]);
 
   const [storyId, setStoryId] = useState(STORIES[0].id);
-  useEffect(() => fromPath && setStoryId(fromPath), [fromPath]);
+  useEffect(() => {
+    if (fromPath) setStoryId(fromPath);
+  }, [fromPath]);
   const [mode, setMode] = useState("watch");
   const [playing, setPlaying] = useState(false);
   const [at, setAt] = useState(0); // which line
@@ -89,7 +92,9 @@ function StoriesPage() {
       if (kid.voice !== false) {
         if (english) heard = await speakEnglish(en);
         else {
-          const url = await recordingUrl(kid.lang, ti);
+          // Watch = Kokob tells it (Aki's recordings, kokob-lines/kokob-stories.txt); Listen only = Rodas.
+          // Each teller only plays their own recordings: if Aki hasn't recorded a line yet, it stays silent.
+          const url = await recordingUrl(kid.lang, ti, mode === "watch" ? "kokob" : undefined);
           if (url && alive()) heard = await playClip(url, (a) => (audio.current = a));
         }
       }
@@ -150,6 +155,8 @@ function StoriesPage() {
                 <p className="text-2xl font-bold">Close your eyes and listen</p>
                 <p className="mt-1">Rodas is telling the story</p>
               </div>
+            ) : mode === "watch" && (playing || ended || at > 0) ? (
+              <StoryScene story={story} at={at} line={story.lines[at]} ended={ended} english={english} playing={playing} />
             ) : playing || ended || at > 0 ? (
               <>
                 <span className="text-8xl" aria-hidden="true">{ended ? "🌙" : pic}</span>
@@ -162,9 +169,9 @@ function StoriesPage() {
               <div className="flex items-end gap-10">
                 <div className="flex flex-col items-center gap-2">
                   <div className="rounded-full bg-white/10 p-3">
-                    <Rodas size={120} />
+                    {mode === "watch" ? <Kokob size={120} /> : <Rodas size={120} />}
                   </div>
-                  <span className="text-sm font-bold text-white/70">Rodas</span>
+                  <span className="text-sm font-bold text-white/70">{mode === "watch" ? "Kokob tells it" : "Rodas tells it"}</span>
                 </div>
                 <div className="rounded-full bg-white/10 p-5">
                   <story.Pic size={170} />

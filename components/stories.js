@@ -12,6 +12,7 @@ export const STORIES = [
     minutes: 2,
     age: "Pre-K and up",
     Pic: Goat,
+    place: "hills",
     lines: [
       ["ሓደ ግዜ ሓንቲ ንእሽቶ ጤል ነይራ።", "Once there was a little goat.", "🐐"],
       ["እታ ጤል ኣብ ጎቦ ትጻወት ነበረት።", "The goat was playing on the hill.", "⛰️"],
@@ -27,6 +28,7 @@ export const STORIES = [
     minutes: 2,
     age: "Kindergarten and up",
     Pic: Camel,
+    place: "desert",
     lines: [
       ["ሓደ ግዜ ኣብ በረኻ ሓደ ገመል ነይሩ።", "Once there was a camel in the desert.", "🐫"],
       ["ገመል ለይቲ ኣብ ሰማይ ኮኾባት ይቖጽር ነበረ።", "At night the camel counted the stars in the sky.", "✨"],
@@ -42,6 +44,7 @@ export const STORIES = [
     minutes: 2,
     age: "Pre-K and up",
     Pic: Sheep,
+    place: "meadow",
     lines: [
       ["በበ ንእሽቶ በጊዕ እያ።", "Bebe is a little sheep.", "🐑"],
       ["ሓደ መዓልቲ ካብ ኣደኣ ርሒቓ ከደት።", "One day she went far from her mother.", "🌾"],

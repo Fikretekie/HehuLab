@@ -49,3 +49,16 @@
 /* Word rocket (components/BigGames.jsx): the rocket flying up into space */
 @keyframes rocket-launch { 0% { transform: translateY(160px); } 70% { transform: translateY(-30px) rotate(-6deg); } 100% { transform: translateY(0); } }
 .rocket-launch { display: inline-block; animation: rocket-launch 1.6s ease-out both; }
+
+/* Bedtime story "Watch" scenes (components/StoryScene.jsx) */
+@keyframes scene-walk { from { left: var(--from); } to { left: var(--to); } }
+@keyframes scene-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes scene-hills { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes scene-drift { from { transform: translateX(0); } to { transform: translateX(60px); } }
+@keyframes scene-twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+.scene-walk { animation: scene-walk 2.2s ease-in-out both; }
+.scene-bob { animation: scene-bob 0.8s ease-in-out infinite; }
+.scene-hills-far { animation: scene-hills 80s linear infinite; }
+.scene-hills-near { animation: scene-hills 40s linear infinite; }
+.scene-drift { animation: scene-drift 12s ease-in-out infinite alternate; }
+.scene-twinkle { animation: scene-twinkle 2s ease-in-out infinite; }
