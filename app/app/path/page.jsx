@@ -8,6 +8,7 @@ import { Check, GamePad, Moon, Star } from "../../../components/Icons";
 import { MATH, NUMBER_WORDS, cheer, family, usesGeez } from "../../../components/curriculum";
 import { HAS_WORDS, allLessons, levelsFor } from "../../../components/courses";
 import { SpeakButton, useVoice } from "../../../components/Voice";
+import { LevelPrize, PrizeShelf } from "../../../components/Prizes";
 
 // Screen 3 (web): the learning path. Level tabs on top (Pre-K … Grade 3 for kids; Beginner … Culture for grown-ups),
 // then the level's units. Each stop is one lesson: a letter family, a word theme, a review, a story or a game.
@@ -105,7 +106,9 @@ export default function LearningPath() {
   const levels = useMemo(() => levelsFor(kid.learner, kid.track, kid.lang), [kid.learner, kid.track, kid.lang]);
   const lessons = useMemo(() => allLessons(levels), [levels]);
   const doneCount = lessons.filter((l) => stars[l.id]).length;
-  const current = lessons.find((l) => !stars[l.id]) || lessons[lessons.length - 1];
+  // The placement test can start the learner at a later level (the levels before it stay open, not locked).
+  const placedAt = Math.max(0, lessons.findIndex((l) => l.level === kid.placed));
+  const current = lessons.find((l, i) => i >= placedAt && !stars[l.id]) || lessons[lessons.length - 1];
   const [levelId, setLevelId] = useState(current.level);
   useEffect(() => setLevelId(current.level), [current.level]);
   const level = levels.find((lv) => lv.id === levelId) || levels[0];
@@ -146,6 +149,17 @@ export default function LearningPath() {
           </div>
         </div>
 
+        {!kid.placed && (
+          <Link href="/app/placement/" className="flex items-center gap-4 rounded-2xl border-2 border-brand bg-white px-5 py-4 hover:bg-soft">
+            <span className="text-3xl" aria-hidden="true">🧭</span>
+            <span className="flex-1">
+              <b className="block text-lg">Not sure where to start?</b>
+              <span className="text-muted">Take the 2-minute placement test and we&apos;ll pick the right level.</span>
+            </span>
+            <span className="btn-brand px-4 py-2">Take the test</span>
+          </Link>
+        )}
+
         {/* Level tabs */}
         <nav aria-label="Levels" className="flex flex-wrap gap-2">
           {levels.map((lv) => {
@@ -161,6 +175,7 @@ export default function LearningPath() {
                   lv.id === level.id ? "border-brand bg-brand text-white" : "border-line bg-white hover:border-brand/50"
                 }`}
               >
+                {d === ls.length && <span aria-label="finished">🏆 </span>}
                 {lv.title}
                 <span className={`ml-2 text-xs ${lv.id === level.id ? "text-white/80" : "text-muted"}`}>
                   {d}/{ls.length}
@@ -176,6 +191,8 @@ export default function LearningPath() {
             {" "}{lang.name}.
           </p>
         )}
+
+        <LevelPrize levels={levels} lessons={lessons} />
 
         {level.units.map((u, i) => (
           <Unit
@@ -246,6 +263,8 @@ export default function LearningPath() {
             </span>
           </div>
         </div>
+
+        <PrizeShelf levels={levels} lessons={lessons} />
 
         <div className="grid grid-cols-2 gap-3">
           <Link href="/app/games/" className="card flex flex-col items-center gap-1 p-4 font-extrabold text-brand hover:border-brand">

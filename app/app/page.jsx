@@ -181,7 +181,8 @@ export default function Start() {
                 ? `${teacher.short || teacher.name} will teach you English, explained in ${lang.name}.`
                 : `${teacher.short || teacher.name} will teach you ${lang.name}${!adult && kid.math ? ` and math in ${lang.name}` : ""}.`}
             </p>
-            <Link href="/app/path/" className="btn-brand text-lg">
+            {/* First time: the placement test picks the level. After that, straight to the path. */}
+            <Link href={kid.placed ? "/app/path/" : "/app/placement/"} className="btn-brand text-lg">
               Let&apos;s start
             </Link>
           </div>
