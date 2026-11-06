@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { langOf, useKid } from "../../../components/KidState";
 import { Camel, Goat, Kokob, Rodas, Sheep } from "../../../components/Avatars";
 import { ListenChoose, PhraseMatch, SentenceBuilder } from "../../../components/GrownUpGames";
+import { CarRace, Rocket } from "../../../components/BigGames";
 import { Check, GamePad, Star } from "../../../components/Icons";
 import { NUMBER_WORDS, letterUnits, usesGeez } from "../../../components/curriculum";
 import { SpeakButton, stop, useFriendVoice, useVoice } from "../../../components/Voice";
@@ -39,8 +40,21 @@ const Cup = () => (
   </svg>
 );
 
+// A big emoji in a round tile, for games that have no animal friend as host.
+function Emoji(e) {
+  const Pic = ({ size = 60 }) => (
+    <span className="flex flex-none items-center justify-center rounded-full bg-soft" style={{ width: size, height: size, fontSize: size * 0.55 }} aria-hidden="true">
+      {e}
+    </span>
+  );
+  return Pic;
+}
+
 // `ages`: who the game fits. small = Pre-K and K (no timers), mid = Grade 1–2, big = Grade 3, adult = grown-ups.
 const GAMES = [
+  // Grade 3's own games (harder thinking, not just faster): car racing and spelling.
+  { id: "carrace", title: "Car race", note: "Steer into the gate with the right picture or answer!", Pic: Emoji("🏎️"), kind: "words", ages: ["big"] },
+  { id: "rocket", title: "Word rocket", note: "Find the missing letter. 6 words and the rocket blasts off!", Pic: Emoji("🚀"), kind: "words", ages: ["big", "adult"] },
   // Grown-up games first (a grown-up starts with Phrase match). Rodas hosts them: her recorded phrases.
   { id: "phrases", title: "Phrase match", note: "Tap a phrase, then what it means", Pic: Rodas, kind: "phrases", ages: ["big", "adult"] },
   { id: "sentence", title: "Sentence builder", note: "Tap the words in the right order", Pic: Rodas, kind: "phrases", ages: ["adult"] },
@@ -50,8 +64,8 @@ const GAMES = [
   { id: "pics", title: "Find the picture", note: "Bebe says a word. Tap its picture!", Pic: Sheep, kind: "words", ages: ["small", "mid", "big", "adult"] },
   { id: "memory", title: "Memory match", note: "Turn two cards: find each picture and its word", Pic: Kokob, kind: "words", ages: ["small", "mid", "big", "adult"] },
   { id: "build", title: "Build the word", note: "Look at the picture. Tap the letters in order!", Pic: Kokob, kind: "words", ages: ["mid", "big", "adult"] },
-  { id: "pop", title: "Letter pop", note: "Pop only the balloons with Kokob's letter!", Pic: Kokob, kind: "letters", ages: ["small", "mid", "big"] },
-  { id: "race", title: "Race the camel", note: "Count fast! Every right answer moves Gemel ahead of the goat.", Pic: Camel, kind: "math", ages: ["mid", "big"] },
+  { id: "pop", title: "Letter pop", note: "Pop only the balloons with Kokob's letter!", Pic: Kokob, kind: "letters", ages: ["small", "mid"] },
+  { id: "race", title: "Race the camel", note: "Count fast! Every right answer moves Gemel ahead of the goat.", Pic: Camel, kind: "math", ages: ["mid"] },
   { id: "speed", title: "Speed round", note: "How many can you get in 30 seconds?", Pic: Sheep, kind: "mixed", ages: ["big", "adult"] },
   { id: "stars", title: "Star map", note: "Tap the stars in letter order to draw Kokob's map!", Pic: Kokob, kind: "letters", ages: ["mid", "big", "adult"] },
 ];
@@ -1058,6 +1072,10 @@ function GamesPage() {
           {ready &&
             (game.kind === "phrases" ? (
               <GrownUp key={`${game.id}-${kid.lang}-${kid.track}`} game={game} pool={pools.phrases} english={english} onWin={onWin} />
+            ) : game.id === "carrace" ? (
+              <CarRace key={`carrace-${kid.lang}-${kid.track}`} game={game} pool={pools.words} english={english} onWin={onWin} />
+            ) : game.id === "rocket" ? (
+              <Rocket key={`rocket-${kid.lang}-${kid.track}`} game={game} pool={pools.words} english={english} onWin={onWin} />
             ) : game.id === "memory" ? (
               <Memory key={`memory-${kid.lang}-${kid.track}`} game={game} pool={pools.words} english={english} onWin={onWin} />
             ) : game.id === "race" ? (

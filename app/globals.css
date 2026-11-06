@@ -45,3 +45,7 @@
   header, footer, .no-print { display: none !important; }
   body, .bg-soft { background: white !important; }
 }
+
+/* Word rocket (components/BigGames.jsx): the rocket flying up into space */
+@keyframes rocket-launch { 0% { transform: translateY(160px); } 70% { transform: translateY(-30px) rotate(-6deg); } 100% { transform: translateY(0); } }
+.rocket-launch { display: inline-block; animation: rocket-launch 1.6s ease-out both; }
