@@ -282,71 +282,165 @@ function numberTheme(from, to) {
 THEMES.num1 = numberTheme(1, 5);
 THEMES.num2 = numberTheme(6, 10);
 
-// One unit: letter families (if any), then theme words, then a story, a game and a review.
-function unit(id, title, { letters = [], themes = [], story = false } = {}) {
+// Big themes are also split in two halves ("animals1", "animals2"), so the youngest learn a few words at a time.
+for (const t of Object.keys(THEMES)) {
+  const { title, pic, words } = THEMES[t];
+  if (words.length < 9) continue;
+  const half = Math.ceil(words.length / 2);
+  THEMES[`${t}1`] = { title: `${title} 1`, pic, words: words.slice(0, half) };
+  THEMES[`${t}2`] = { title: `${title} 2`, pic, words: words.slice(half) };
+}
+
+// About how long each kind of lesson takes (minutes), for the parents' plan and the unit cards.
+export const MINUTES = { letters: 5, words: 6, math: 5, story: 4, game: 5, review: 4 };
+
+// One unit = one theme, about 25–30 minutes:
+//   new letter families (if any) · the theme's words · math · a story (every other unit) · a game · a quiz.
+// `focus` says how the words are taught at that level: hear (say it back), read, or talk (sentences).
+function unit(id, title, { letters = [], themes = [], math = null, story = false, focus = "hear" } = {}) {
   const lessons = [
     ...letters.map((l) => ({ id: `${id}-l-${l}`, type: "letters", letter: l, title: l })),
     ...themes.map((t) => ({ id: `${id}-w-${t}`, type: "words", theme: t, title: THEMES[t].title, pic: THEMES[t].pic })),
   ];
-  if (themes.length) lessons.push({ id: `${id}-review`, type: "review", themes, title: "Review", pic: "⭐" });
+  if (math) lessons.push({ id: `${id}-m`, type: "math", math, title: MATH_LESSONS[math].title, pic: MATH_LESSONS[math].pic });
   if (story) lessons.push({ id: `${id}-story`, type: "story", title: "Story time", pic: "📚" });
-  lessons.push({ id: `${id}-game`, type: "game", themes, title: "Play", pic: "🎮" });
-  return { id, title, lessons };
+  if (themes.length) lessons.push({ id: `${id}-game`, type: "game", themes, title: "Play", pic: "🎮" });
+  if (themes.length) lessons.push({ id: `${id}-review`, type: "review", themes, title: "Quiz", pic: "⭐" });
+  return { id, title, focus, themes, lessons };
 }
 
-// The letter families of a language, split into groups of n.
-function letterGroups(lang, n) {
+// Math taught in the learner's language. Each one is 5 "say it back" steps on the lesson screen
+// (Rodas says the answer's number word when it is 1 to 9: the numbers she has recorded).
+export const MATH_LESSONS = {
+  c13: { title: "Count 1 to 3", pic: "🔢", kind: "count", from: 1, to: 3 },
+  c15: { title: "Count 1 to 5", pic: "🔢", kind: "count", from: 1, to: 5 },
+  c610: { title: "Count 6 to 10", pic: "🔢", kind: "count", from: 6, to: 10 },
+  c110: { title: "Count to 10", pic: "🔟", kind: "count", from: 1, to: 10 },
+  more5: { title: "Which is more?", pic: "⚖️", kind: "more", max: 5 },
+  more10: { title: "More or less", pic: "⚖️", kind: "more", max: 10 },
+  add5: { title: "Add to 5", pic: "➕", kind: "add", max: 5 },
+  sub5: { title: "Take away to 5", pic: "➖", kind: "sub", max: 5 },
+  add10: { title: "Add to 10", pic: "➕", kind: "add", max: 10 },
+  sub10: { title: "Take away to 10", pic: "➖", kind: "sub", max: 10 },
+  tens: { title: "Count by tens", pic: "💯", kind: "tens" },
+  add20: { title: "Add to 20", pic: "➕", kind: "add", max: 20 },
+  sub20: { title: "Take away to 20", pic: "➖", kind: "sub", max: 20 },
+  x2: { title: "2 times table", pic: "✖️", kind: "times", n: 2 },
+  x3: { title: "3 times table", pic: "✖️", kind: "times", n: 3 },
+  x4: { title: "4 times table", pic: "✖️", kind: "times", n: 4 },
+  x5: { title: "5 times table", pic: "✖️", kind: "times", n: 5 },
+  x10: { title: "10 times table", pic: "✖️", kind: "times", n: 10 },
+};
+
+// The 5 steps of a math lesson: { big, sub, word, say }. Always the same steps (no random), so the page drawn on
+// the server and in the browser match.
+export function mathItems(id, lang) {
+  const m = MATH_LESSONS[id] || MATH_LESSONS.c15;
+  const words = NUMBER_WORDS[lang] || NUMBER_WORDS.ti;
+  const step = (big, n) => ({ big, tile: String(n), sub: n >= 1 && n <= 10 ? words[n - 1] : String(n), word: n >= 1 && n <= 9 ? `#${n}` : null, say: n >= 1 && n <= 10 ? words[n - 1] : String(n) });
+  const five = [0, 1, 2, 3, 4];
+  if (m.kind === "count") {
+    const span = m.to - m.from;
+    return five.slice(0, Math.min(5, span + 1)).map((i) => {
+      const n = m.from + Math.round((i * span) / Math.min(4, span || 1));
+      return { ...step(String(n), n), pic: "🍎".repeat(Math.min(n, 10)) };
+    });
+  }
+  if (m.kind === "more") {
+    const pairs = m.max <= 5 ? [[3, 1], [2, 5], [4, 2], [1, 3], [5, 4]] : [[7, 4], [3, 9], [8, 6], [5, 10], [9, 2]];
+    return pairs.map(([a, b]) => step(`${a} or ${b}? → ${Math.max(a, b)}`, Math.max(a, b)));
+  }
+  if (m.kind === "add" || m.kind === "sub") {
+    const sums = {
+      5: [[1, 1], [2, 1], [2, 2], [3, 2], [4, 1]],
+      10: [[3, 4], [5, 2], [6, 3], [4, 4], [7, 3]],
+      20: [[8, 5], [9, 6], [7, 7], [12, 5], [11, 9]],
+    }[m.max];
+    return sums.map(([a, b]) => (m.kind === "add" ? step(`${a} + ${b} = ${a + b}`, a + b) : step(`${a + b} − ${b} = ${a}`, a)));
+  }
+  if (m.kind === "tens") return [10, 20, 30, 50, 100].map((n) => ({ big: String(n), tile: String(n), sub: "", word: null, say: String(n), pic: "🔟".repeat(Math.min(n / 10, 5)) }));
+  return [2, 3, 4, 5, 6].map((k) => step(`${m.n} × ${k} = ${m.n * k}`, m.n * k));
+}
+
+// The letter families of a language, split into groups: how many each level gets.
+function letterSplit(lang, sizes) {
   const all = LETTERS[lang] || LETTERS.ti;
-  const out = [];
-  for (let i = 0; i < all.length; i += n) out.push(all.slice(i, i + n));
-  return out;
+  let at = 0;
+  return sizes.map((n, i) => {
+    const part = i === sizes.length - 1 ? all.slice(at) : all.slice(at, at + n);
+    at += n;
+    return part;
+  });
 }
 
-// The levels for each learner. Letters are spread over the kids' levels; grown-ups get them faster.
-export function levelsFor(learner, track, lang) {
+// Spread a level's letters over its 8 units (one or two per unit, from the first unit on).
+function spread(letters, units = 8) {
+  const per = Array.from({ length: units }, () => []);
+  letters.forEach((l, i) => per[Math.floor((i * units) / letters.length)].push(l));
+  return per;
+}
+
+// A level: its 8 units from a plan of [title, theme, math, focus]. Story time in every other unit.
+function level(id, title, goals, letters, plan, mathOn) {
+  const per = spread(letters, plan.length);
+  return {
+    id,
+    title,
+    goals,
+    units: plan.map(([t, theme, math, focus], i) =>
+      unit(`${id}u${i + 1}`, t, { letters: per[i], themes: [theme], math: mathOn ? math : null, story: i % 2 === 1, focus }),
+    ),
+  };
+}
+
+// The levels for each learner: 8 units per level. `math` = the child wants math (kids, "learn my language").
+// Kids: Pre-K → Grade 3 (letters spread 4 · 8 · 8 · 8 · the rest). Grown-ups: Beginner → Culture.
+export function levelsFor(learner, track, lang, math = true) {
   const english = track === "english";
-  const g = letterGroups(lang, english ? 99 : 4); // English learners don't need the fidel lessons
-  const L = (i) => (english ? [] : g[i] || []);
   if (learner === "adult") {
-    const a = letterGroups(lang, 8);
-    const A = (i) => (english ? [] : a[i] || []);
+    const [a1, a2, a3] = english ? [[], [], []] : letterSplit(lang, [16, 16, 99]);
     return [
-      { id: "a1", title: "Beginner", units: [
-        unit("a1u1", "Say hello", { letters: A(0), themes: ["hello", "num1"] }),
-        unit("a1u2", "People and numbers", { letters: A(1), themes: ["family", "num2"] }),
-      ] },
-      { id: "a2", title: "Everyday talk", units: [
-        unit("a2u1", "Food and coffee", { letters: A(2), themes: ["food", "actions"] }),
-        unit("a2u2", "Getting around", { letters: A(3), themes: ["places", "time", "questions"] }),
-      ] },
-      { id: "a3", title: "Reading and writing", units: [
-        unit("a3u1", "Read about me", { letters: A(4), themes: ["sentences"], story: true }),
-        unit("a3u2", "Feelings and kind words", { themes: ["feelings", "evening"], story: true }),
-      ] },
-      { id: "a4", title: "Culture", units: [unit("a4u1", "Holidays and the coffee ceremony", { themes: ["culture"], story: true })] },
+      level("a1", "Beginner", ["Greet people and say how you are", "Count to 10", "Name your family, colors and food", "Read the first 16 letter families"], a1, [
+        ["Say hello", "hello"], ["Numbers 1 to 5", "num1"], ["My family", "family"], ["Numbers 6 to 10", "num2"],
+        ["Colors", "colors"], ["My body", "body"], ["Food and drinks", "food"], ["Day and time", "time"],
+      ]),
+      level("a2", "Everyday talk", ["Ask and answer simple questions", "Talk about food, places and time", "Give and follow short instructions", "Read all the letter families"], a2, [
+        ["At the table", "food"], ["Do it!", "actions"], ["Around town", "places"], ["When?", "time"],
+        ["At home", "home"], ["Ask questions", "questions"], ["Animals", "animals"], ["Feelings", "feelings"],
+      ]),
+      level("a3", "Reading and writing", ["Read and write short sentences", "Introduce yourself and your family", "Read a short story"], a3, [
+        ["About me", "sentences1"], ["My family and home", "sentences2"], ["Questions in sentences", "questions"], ["Kind words", "evening"],
+        ["Read: home and school", "home"], ["Read: places", "places"], ["Read: actions", "actions"], ["Read: holidays", "culture"],
+      ]),
+      level("a4", "Culture", ["Talk about holidays and the coffee ceremony", "Use kind words with elders", "Tell a short story"], [], [
+        ["The coffee ceremony", "culture"], ["Kind words", "evening"], ["Greeting elders", "hello"], ["Family visits", "family"],
+        ["Feast food", "food"], ["How do you feel?", "feelings"], ["Talk about me", "sentences"], ["Big review", "questions"],
+      ]),
     ];
   }
+  const mathOn = math && !english;
+  const [p, k, g1, g2, g3] = english ? [[], [], [], [], []] : letterSplit(lang, [4, 8, 8, 8, 99]);
   return [
-    { id: "k0", title: "Pre-K", units: [
-      unit("k0u1", "Hello, Rodas!", { letters: L(0).slice(0, 2), themes: ["hello", "animals"] }),
-      unit("k0u2", "Colors and numbers", { letters: L(0).slice(2), themes: ["colors", "num1"], story: true }),
-    ] },
-    { id: "k1", title: "Kindergarten", units: [
-      unit("k1u1", "My family", { letters: L(1), themes: ["family", "num2"] }),
-      unit("k1u2", "My body", { letters: L(2), themes: ["body"], story: true }),
-    ] },
-    { id: "k2", title: "Grade 1", units: [
-      unit("k2u1", "Food", { letters: L(3), themes: ["food"] }),
-      unit("k2u2", "Home and school", { letters: L(4), themes: ["home", "actions"], story: true }),
-    ] },
-    { id: "k3", title: "Grade 2", units: [
-      unit("k3u1", "How do I feel?", { letters: L(5), themes: ["feelings", "questions"] }),
-      unit("k3u2", "Places and time", { letters: L(6), themes: ["places", "time"], story: true }),
-    ] },
-    { id: "k4", title: "Grade 3", units: [
-      unit("k4u1", "Talk about me", { letters: L(7), themes: ["sentences", "evening"] }),
-      unit("k4u2", "Holidays", { letters: L(8), themes: ["culture"], story: true }),
-    ] },
+    level("k0", "Pre-K", ["Say hello and good night", "Name animals, colors and family", "Count 1 to 5", "Know the first 4 letter families"], p, [
+      ["Hello, Rodas!", "hello", "c13"], ["Farm animals", "animals1", "c15"], ["Colors", "colors", "more5"], ["Numbers 1 to 5", "num1", "c13"],
+      ["My family", "family", "c15"], ["More animals", "animals2", "more5"], ["My face", "body1", "add5"], ["Yummy food", "food1", "c15"],
+    ], mathOn),
+    level("k1", "Kindergarten", ["Count to 10 and add to 5", "Name body parts, food and home", "Say how you feel", "Know 12 letter families"], k, [
+      ["Numbers 6 to 10", "num2", "c610"], ["My body", "body2", "c110"], ["Food and drinks", "food2", "more10"], ["My home", "home1", "add5"],
+      ["Feelings", "feelings", "sub5"], ["At school", "home2", "add5"], ["Do it!", "actions1", "sub5"], ["Day and night", "time", "c110"],
+    ], mathOn),
+    level("k2", "Grade 1", ["Read short words", "Add and take away to 10", "Ask who, what, where", "Know 20 letter families"], g1, [
+      ["Do it! 2", "actions2", "add10"], ["Places", "places", "sub10"], ["Questions", "questions1", "add10"], ["Holidays", "culture", "sub10"],
+      ["Read: my family", "family", "tens", "read"], ["Read: colors", "colors", "more10", "read"], ["More questions", "questions2", "add10"], ["Kind words", "evening", "sub10"],
+    ], mathOn),
+    level("k3", "Grade 2", ["Read and say short sentences", "Add and take away to 20", "Start the 2 times table", "Know 28 letter families"], g2, [
+      ["About me", "sentences1", "add20"], ["My family and home", "sentences2", "sub20"], ["Read: animals", "animals", "tens", "read"], ["Read: food", "food", "add20", "read"],
+      ["Read: home and school", "home", "sub20", "read"], ["Read: my body", "body", "x2", "read"], ["Read: places", "places", "add20", "read"], ["Read: day and time", "time", "sub20", "read"],
+    ], mathOn),
+    level("k4", "Grade 3", ["Talk in sentences about yourself", "Times tables 2, 3, 4, 5 and 10", "Read a whole story", "Know every letter family"], g3, [
+      ["Talk: hello", "hello", "x2", "talk"], ["Talk: my family", "family", "x5", "talk"], ["Talk: questions", "questions", "x10", "talk"], ["Talk: feelings", "feelings", "x3", "talk"],
+      ["Talk: holidays", "culture", "x4", "talk"], ["Talk: kind words", "evening", "x5", "talk"], ["Talk about me", "sentences", "x3", "talk"], ["Big review", "actions", "x10", "talk"],
+    ], mathOn),
   ];
 }
 
@@ -389,7 +483,10 @@ const meaningKey = (en) => en.replace(/ (to a (girl|boy))/, "").toLowerCase().re
 export function themeWords(theme, lang) {
   const table = TRANSLATED[lang];
   if (!table) return THEMES[theme].words;
-  if (theme === "sentences" && lang === "so") return SOMALI_SENTENCES;
+  if (theme.startsWith("sentences") && lang === "so") {
+    const half = Math.ceil(SOMALI_SENTENCES.length / 2);
+    return theme === "sentences1" ? SOMALI_SENTENCES.slice(0, half) : theme === "sentences2" ? SOMALI_SENTENCES.slice(half) : SOMALI_SENTENCES;
+  }
   const out = THEMES[theme].words
     .filter((w) => table[meaningKey(w[1])])
     .map((w) => [table[meaningKey(w[1])], w[1], w[2], `${lang}:${table[meaningKey(w[1])]}`]);

@@ -48,7 +48,7 @@ export default function Report() {
 
   // What the child has done: every lesson with stars on the current course.
   const stars = kid.stars || {};
-  const lessons = allLessons(levelsFor(kid.learner, kid.track, kid.lang));
+  const lessons = allLessons(levelsFor(kid.learner, kid.track, kid.lang, kid.math));
   const done = lessons.filter((l) => stars[l.id]);
   const starCount = done.reduce((n, l) => n + stars[l.id], 0);
   const letters = done.filter((l) => l.type === "letters").map((l) => l.letter);

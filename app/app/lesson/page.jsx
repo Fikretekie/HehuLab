@@ -8,7 +8,7 @@ import { Star } from "../../../components/Icons";
 import RodasLive from "../../../components/RodasLive";
 import { LINES, REACTIONS, AUDIO, line } from "../../../components/rodasLines";
 import { MATH, NUMBER_WORDS, family, letterUnits, usesGeez } from "../../../components/curriculum";
-import { findLesson, lessonItems, levelsFor } from "../../../components/courses";
+import { findLesson, lessonItems, levelsFor, mathItems } from "../../../components/courses";
 import { playClip, recordingUrl, stop as stopVoice } from "../../../components/Voice";
 
 // Screen 4 (web): a guided talk with Rodas. For each letter of one family (ሀ ሁ ሂ ሃ ሄ ህ ሆ):
@@ -42,6 +42,9 @@ function useLesson(kid, params) {
   return useMemo(() => {
     const id = params.get("lesson");
     const course = id && findLesson(levelsFor(kid.learner, kid.track, kid.lang), id);
+    if (course && course.type === "math") {
+      return { kind: "math", id, title: course.title, items: mathItems(course.math, kid.lang) };
+    }
     if (course && course.type !== "letters") {
       const english = kid.track === "english";
       const items = lessonItems(course, kid.track, kid.lang).map((x) => ({
@@ -409,7 +412,7 @@ function Lesson() {
                   k === idx && phase === "live" ? "border-brand bg-soft" : stars.includes(k) ? "border-good bg-good-soft" : "border-line bg-white"
                 }`}
               >
-                {x.pic && lesson.kind === "words" ? x.pic : x.big}
+                {x.pic && lesson.kind === "words" ? x.pic : x.tile || x.big}
                 {stars.includes(k) && <Star width="22" height="22" className="absolute -right-2 -top-2" />}
               </li>
             ))}

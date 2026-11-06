@@ -180,6 +180,11 @@ export default function Settings() {
                 See the report
               </Link>
             </Field>
+            <Field label="The plan" note="Every level and unit: letters, words, math and stories, and how long each takes.">
+              <Link href="/app/curriculum/" className="btn-line inline-flex py-2">
+                See the whole plan
+              </Link>
+            </Field>
             <Field label="Start the path again" note="Every lesson goes back to the start and the stars are cleared.">
               {resetAsk ? (
                 <div className="flex flex-wrap gap-3">

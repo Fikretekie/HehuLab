@@ -12,6 +12,8 @@
 - Production build passes (`npx next build`).
 - To check: the Tigrinya in the 3 stories; "ሎሚ" and the number 10 have no Rodas recording yet.
 
+- ✅ Curriculum (2026-11-05 late): 8 units per level, "by the end you can" goals, math in every kids level (counting → times tables), winding-road path with a big Next button, finished units fold, parents plan page `/app/curriculum/`. Old demo stars reset (lesson names changed).
+
 ## Tonight's 4 tasks (given 2026-11-05 evening, Fik reviews 2026-11-06), branch `overnight-2`
 ✅ All 4 built and committed on `overnight-2` (not merged to `main` yet; production build passes). Fik tests:
 - `/signup/` → `/checkout/` → `/app/placement/` → `/app/path/` (log-in and payment are DEMO: nothing is sent or charged).

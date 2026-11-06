@@ -13,7 +13,7 @@ import { PRIZES, finishedLevels } from "../../../components/Prizes";
 function Certificate() {
   const { kid } = useKid();
   const params = useSearchParams();
-  const levels = useMemo(() => levelsFor(kid.learner, kid.track, kid.lang), [kid.learner, kid.track, kid.lang]);
+  const levels = useMemo(() => levelsFor(kid.learner, kid.track, kid.lang, kid.math), [kid.learner, kid.track, kid.lang, kid.math]);
   const lessons = useMemo(() => allLessons(levels), [levels]);
   const id = params.get("level");
   const level = levels.find((l) => l.id === id);
