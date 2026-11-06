@@ -13,6 +13,14 @@
 - To check: the Tigrinya in the 3 stories; "ሎሚ" and the number 10 have no Rodas recording yet.
 
 ## Tonight's 4 tasks (given 2026-11-05 evening, Fik reviews 2026-11-06), branch `overnight-2`
+✅ All 4 built and committed on `overnight-2` (not merged to `main` yet; production build passes). Fik tests:
+- `/signup/` → `/checkout/` → `/app/placement/` → `/app/path/` (log-in and payment are DEMO: nothing is sent or charged).
+- Prize: finish every lesson of a level → pop-up + certificate (`/app/prize/?level=k0`), "My prizes" on the path.
+- Games with grade = Grade 3: Car race and Word rocket first; Letter pop and Race the camel are now for younger kids.
+- Somali in Start → "From Somalia". Words from `somali-lines/` (97 of 132 lesson words matched; regenerate with
+  `node scripts/gen-somali.js`). No Somali voice yet: copy the recordings from the voices site to `public/voices/so/`.
+- Stories → Watch: moving scenes, Kokob narrates. Aki records `kokob-lines/kokob-stories.txt` (Fik checks first).
+Next: connect Stripe + PayPal (needs Fik's accounts and a small Lambda), real log-in with Cognito (Google/Apple apps).
 1. **Accounts + pricing:** sign-up / log-in page (email, plus Google and Apple buttons), price $13.99/mo per child,
    checkout page with Stripe + PayPal buttons (connected to real Stripe/PayPal tomorrow; real log-in needs Cognito).
 2. **Placement test + prizes:** short placement test for kids and grown-ups that picks the starting level;
