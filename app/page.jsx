@@ -152,7 +152,7 @@ export default function Home() {
           </div>
           <div className="rounded-xl3 bg-ink p-8 text-white">
             <h3 className="text-2xl font-bold">Full access</h3>
-            <p className="my-3 font-display text-5xl font-bold">$19.99 <span className="text-lg">/ month per child</span></p>
+            <p className="my-3 font-display text-5xl font-bold">$13.99 <span className="text-lg">/ month per child</span></p>
             <p className="mb-6 text-white/85">Every grade, all five languages and math, games, practice sheets, bedtime stories, Friday reports.</p>
             <Link href="/signup/" className="btn-sun w-full">Start learning</Link>
           </div>

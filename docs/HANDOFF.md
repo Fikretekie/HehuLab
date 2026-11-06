@@ -43,7 +43,7 @@ looks right.
 - Curriculum is organized by grade: Pre-K, Kindergarten, Grade 1…
 - Features: games, practice sheets/homework, **bedtime stories (watch a short movie or listen only)**, and a
   **Friday report email to parents written in Tigrinya**.
-- Pricing shown on the landing page: $19.99 per month per child.
+- Pricing shown on the landing page: $13.99 per month per child.
 
 ### Hands-free lesson (Screen 4, next to build)
 Rodas says a letter (e.g. ሀ), asks the child "can you say ሀ?", listens, **plays the child's own voice back**, and

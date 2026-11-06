@@ -12,6 +12,15 @@
 - Production build passes (`npx next build`).
 - To check: the Tigrinya in the 3 stories; "ሎሚ" and the number 10 have no Rodas recording yet.
 
+## Tonight's 4 tasks (given 2026-11-05 evening, Fik reviews 2026-11-06), branch `overnight-2`
+1. **Accounts + pricing:** sign-up / log-in page (email, plus Google and Apple buttons), price $13.99/mo per child,
+   checkout page with Stripe + PayPal buttons (connected to real Stripe/PayPal tomorrow; real log-in needs Cognito).
+2. **Placement test + prizes:** short placement test for kids and grown-ups that picks the starting level;
+   prize/certificate when a level is finished ("Grade 1 passed!").
+3. **More games:** different games for Grade 3 (not just faster), more exciting ones like car racing; keep Memory match.
+4. **Somali + bedtime "Watch":** Somali as a language (Latin letters, words from `somali-lines/`); stories get a
+   Watch mode with moving pictures, narrated by Aki (Kokob) once she records the script.
+
 ## A. Kids/learners website (this repo)
 1. ✅ Screen 4 lesson: approved, committed and pushed to `main`.
 2. Screen 4 lesson: test the microphone in Chrome (http://localhost:3001/app/lesson/?letter=ሀ).
@@ -48,6 +57,7 @@
 21. Fix Bible text errors: doubled apostrophes (Naomi''s), "5:" at the start of one English line, "ahweh",
     one English verse that doesn't match its Tigrinya.
 22. Find recorders for **Tigre, Bilen, Saho, Amharic** (0 recordings each). Needed before those tracks can talk.
+    ✅ **Somali** is on the voices site; one recorder has done 100+ recordings (word lists in `somali-lines/`). Somali is not on the kids site yet.
 23. Check why Tigre/Bilen/Amharic/Saho each show 1,190 "to record" (probably the shared English Translate list).
 24. ✅ Consent v3 live (update 55). Still: have a lawyer read it once.
 25. Optional: "🤖 Draft teacher lines" button (AI drafts 50 lines, Fik ticks the good ones).

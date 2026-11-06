@@ -37,7 +37,7 @@ The owner is Fik (GitHub: Fikretekie). He is learning, so explain simply.
 ## Screens (web first)
 | # | Screen | Route | Status |
 |---|--------|-------|--------|
-| 1 | Landing page (hero, features, grade picker Pre-K/K/Grade 1…, Meet Rodas, bedtime stories, parents report, pricing $19.99/mo per child) | `/` | ✅ done |
+| 1 | Landing page (hero, features, grade picker Pre-K/K/Grade 1…, Meet Rodas, bedtime stories, parents report, pricing $13.99/mo per child) | `/` | ✅ done |
 | 2 | Pick language (Eritrean / From Ethiopia), math on/off, teacher | `/app/` | ✅ done |
 | 3 | Learning path: letter units + "Math in {language}", done/current/locked stops, Rodas cheering | `/app/path/` | ✅ done |
 | 4 | Lesson: hands-free conversation. Rodas says ሀ (or a word), asks the child to say it, listens, replays the child's voice | `/app/lesson/` | ✅ built (branch overnight-curriculum) |
