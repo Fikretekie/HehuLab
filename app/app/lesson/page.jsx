@@ -44,7 +44,7 @@ function useLesson(kid, params) {
     const course = id && findLesson(levelsFor(kid.learner, kid.track, kid.lang), id);
     if (course && course.type !== "letters") {
       const english = kid.track === "english";
-      const items = lessonItems(course, kid.track).map((x) => ({
+      const items = lessonItems(course, kid.track, kid.lang).map((x) => ({
         big: english ? x.english : x.native,
         sub: english ? x.native : x.english + (x.note ? ` ${x.note}` : ""),
         word: x.word,
@@ -200,7 +200,7 @@ function Lesson() {
   const [phase, setPhase] = useState("ready"); // ready | live | paused | done
   const [idx, setIdx] = useState(0);
   const [mood, setMood] = useState("smiling"); // Rodas's state
-  const [bubble, setBubble] = useState({ text: "ሰላም!", english: `Hello ${kid.name}! Let's learn ${lesson.title}.` });
+  const [bubble, setBubble] = useState({ text: { so: "Iska warran!", am: "ሰላም!", ti: "ሰላም!" }[kid.lang] || (usesGeez(kid.lang) ? "ሰላም!" : "Selam!"), english: `Hello ${kid.name}! Let's learn ${lesson.title}.` });
   const [listening, setListening] = useState(false);
   const [stars, setStars] = useState([]); // index of every letter that got a star
   const [manual, setManual] = useState(null); // no microphone: a button the child taps after saying it

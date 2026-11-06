@@ -1,0 +1,31 @@
+ba | letter B
+ta | letter T
+ja | letter J
+xa | letter X (a strong h)
+kha | letter KH
+da | letter D
+ra | letter R
+sa | letter S
+sha | letter SH
+dha | letter DH
+ca | letter C
+ga | letter G
+fa | letter F
+qa | letter Q
+ka | letter K
+la | letter L
+ma | letter M
+na | letter N
+wa | letter W
+ha | letter H
+ya | letter Y
+a | vowel A
+e | vowel E
+i | vowel I
+o | vowel O
+u | vowel U
+aa | long vowel AA
+ee | long vowel EE
+ii | long vowel II
+oo | long vowel OO
+uu | long vowel UU

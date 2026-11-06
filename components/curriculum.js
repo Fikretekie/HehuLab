@@ -7,14 +7,16 @@ const GEEZ_TI = ["ሀ", "ለ", "ሐ", "መ", "ረ", "ሰ", "ሸ", "ቀ", "ቐ", 
 const GEEZ_AM = ["ሀ", "ለ", "ሐ", "መ", "ሠ", "ረ", "ሰ", "ሸ", "ቀ", "በ", "ቨ", "ተ", "ቸ", "ኀ", "ነ", "ኘ", "አ",
   "ከ", "ኸ", "ወ", "ዐ", "ዘ", "ዠ", "የ", "ደ", "ጀ", "ገ", "ጠ", "ጨ", "ጰ", "ጸ", "ፀ", "ፈ", "ፐ"];
 const LATIN = "a b c d e f g h i j k l m n o p q r s t u v w x y z".split(" ");
+// Somali uses Latin letters in its own order (from somali-lines/somali-words-13-alphabet.txt).
+const SOMALI_ABC = "b t j x kh d r s sh dh c g f q k l m n w h y a e i o u".split(" ");
 
 // "en" = English, for the "Learn English" track (the games use it instead of the language the learner speaks).
 // Capital and small together (Aa, Bb…): English beginners learn both.
 const ENGLISH = LATIN.map((l) => l.toUpperCase() + l);
-export const LETTERS = { ti: GEEZ_TI, tig: GEEZ_TI, am: GEEZ_AM, byn: LATIN, ssy: LATIN, en: ENGLISH };
+export const LETTERS = { ti: GEEZ_TI, tig: GEEZ_TI, am: GEEZ_AM, byn: LATIN, ssy: LATIN, so: SOMALI_ABC, en: ENGLISH };
 
-// True when the language is written in Ge'ez letters (Bilen, Saho and English use Latin letters).
-export const usesGeez = (lang) => LETTERS[lang] !== LATIN && LETTERS[lang] !== ENGLISH;
+// True when the language is written in Ge'ez letters (Bilen, Saho, Somali and English use Latin letters).
+export const usesGeez = (lang) => /[ሀ-፿]/.test((LETTERS[lang] || LETTERS.ti)[0]);
 
 // The 7 forms of a Ge'ez letter family, e.g. ሀ -> ሀ ሁ ሂ ሃ ሄ ህ ሆ (Unicode keeps them side by side).
 export function family(letter) {
@@ -28,6 +30,7 @@ export const NUMBER_WORDS = {
   ti: ["ሓደ", "ክልተ", "ሰለስተ", "ኣርባዕተ", "ሓሙሽተ", "ሽዱሽተ", "ሸውዓተ", "ሸሞንተ", "ትሽዓተ", "ዓሰርተ"],
   am: ["አንድ", "ሁለት", "ሶስት", "አራት", "አምስት", "ስድስት", "ሰባት", "ስምንት", "ዘጠኝ", "አስር"],
   en: ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],
+  so: ["kow", "laba", "saddex", "afar", "shan", "lix", "toddoba", "siddeed", "sagaal", "toban"],
 };
 
 export const MATH = [

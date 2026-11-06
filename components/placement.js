@@ -2,7 +2,7 @@
 // miss one and that level is where you start. Kids: Pre-K → Grade 3. Grown-ups: Beginner → Culture.
 // Questions are built from the words already in courses.js, so they always match what the lessons teach.
 
-import { THEMES } from "./courses";
+import { themeWords } from "./courses";
 import { LETTERS, family, usesGeez } from "./curriculum";
 
 const shuffle = (a) => a.map((x) => [Math.random(), x]).sort((p, q) => p[0] - q[0]).map((p) => p[1]);
@@ -16,8 +16,8 @@ function choicesFrom(list, right, key) {
 }
 
 // "Hear a word, tap its picture" (no reading needed).
-function hearQ(theme, english) {
-  const list = THEMES[theme].words;
+function hearQ(theme, english, lang) {
+  const list = themeWords(theme, lang);
   const w = pick(list);
   return {
     kind: "hear",
@@ -29,8 +29,8 @@ function hearQ(theme, english) {
 }
 
 // "Read the word, tap its picture" (reading, no sound).
-function readQ(theme, english) {
-  const list = THEMES[theme].words.filter((x, i, a) => a.findIndex((y) => y[2] === x[2]) === i);
+function readQ(theme, english, lang) {
+  const list = themeWords(theme, lang).filter((x, i, a) => a.findIndex((y) => y[2] === x[2]) === i);
   const w = pick(list);
   return {
     kind: "read",
@@ -42,8 +42,8 @@ function readQ(theme, english) {
 }
 
 // "What does it mean?" (a sentence or word, choose the meaning).
-function meaningQ(theme, english) {
-  const list = THEMES[theme].words;
+function meaningQ(theme, english, lang) {
+  const list = themeWords(theme, lang);
   const w = pick(list);
   return {
     kind: "meaning",
@@ -119,18 +119,18 @@ export function placementLevels(learner, track, lang) {
   const en = track === "english";
   if (learner === "adult") {
     return [
-      { id: "a1", title: "Beginner", qs: [meaningQ("hello", en), meaningQ("family", en)] },
-      { id: "a2", title: "Everyday talk", qs: [meaningQ("food", en), meaningQ("places", en)] },
-      { id: "a3", title: "Reading and writing", qs: [meaningQ("sentences", en), meaningQ("sentences", en)] },
-      { id: "a4", title: "Culture", qs: [meaningQ("culture", en), meaningQ("evening", en)] },
+      { id: "a1", title: "Beginner", qs: [meaningQ("hello", en, lang), meaningQ("family", en, lang)] },
+      { id: "a2", title: "Everyday talk", qs: [meaningQ("food", en, lang), meaningQ("places", en, lang)] },
+      { id: "a3", title: "Reading and writing", qs: [meaningQ("sentences", en, lang), meaningQ("sentences", en, lang)] },
+      { id: "a4", title: "Culture", qs: [meaningQ("culture", en, lang), meaningQ("evening", en, lang)] },
     ];
   }
   const letters = en ? "en" : lang;
   return [
-    { id: "k0", title: "Pre-K", qs: [hearQ("animals", en), sameLetterQ(letters)] },
-    { id: "k1", title: "Kindergarten", qs: [countQ(), hearQ("colors", en)] },
-    { id: "k2", title: "Grade 1", qs: [readQ("food", en), familyQ(letters)] },
-    { id: "k3", title: "Grade 2", qs: [readQ("home", en), sumQ(false)] },
-    { id: "k4", title: "Grade 3", qs: [meaningQ("sentences", en), sumQ(true)] },
+    { id: "k0", title: "Pre-K", qs: [hearQ("animals", en, lang), sameLetterQ(letters)] },
+    { id: "k1", title: "Kindergarten", qs: [countQ(), hearQ("colors", en, lang)] },
+    { id: "k2", title: "Grade 1", qs: [readQ("food", en, lang), familyQ(letters)] },
+    { id: "k3", title: "Grade 2", qs: [readQ("home", en, lang), sumQ(false)] },
+    { id: "k4", title: "Grade 3", qs: [meaningQ("sentences", en, lang), sumQ(true)] },
   ];
 }

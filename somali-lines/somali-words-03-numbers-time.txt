@@ -1,0 +1,101 @@
+eber | zero
+kow | one
+laba | two
+saddex | three
+afar | four
+shan | five
+lix | six
+toddoba | seven
+siddeed | eight
+sagaal | nine
+toban | ten
+kow iyo toban | eleven
+laba iyo toban | twelve
+saddex iyo toban | thirteen
+afar iyo toban | fourteen
+shan iyo toban | fifteen
+lix iyo toban | sixteen
+toddoba iyo toban | seventeen
+siddeed iyo toban | eighteen
+sagaal iyo toban | nineteen
+labaatan | twenty
+soddon | thirty
+afartan | forty
+konton | fifty
+lixdan | sixty
+toddobaatan | seventy
+siddeetan | eighty
+sagaashan | ninety
+boqol | one hundred
+kun | one thousand
+malyuun | one million
+koowaad | first
+labaad | second
+saddexaad | third
+afraad | fourth
+shanaad | fifth
+nus | half
+rubuc | quarter
+tiro | number
+xisaab | math
+isku dar | add
+ka jar | take away
+isku dhufo | multiply
+qaybi | divide
+ka badan | more than
+ka yar | less than
+la mid ah | the same as
+dhammaan | all
+qaar | some
+waqti | time
+saacad | hour, clock
+daqiiqad | minute
+ilbiriqsi | second (of time)
+maalin | day
+habeen | night
+subax | morning
+duhur | noon
+galab | afternoon
+fiid | evening
+maanta | today
+shalay | yesterday
+berri | tomorrow
+toddobaad | week
+bil | month
+sannad | year
+Isniin | Monday
+Talaado | Tuesday
+Arbaco | Wednesday
+Khamiis | Thursday
+Jimce | Friday
+Sabti | Saturday
+Axad | Sunday
+Janaayo | January
+Febraayo | February
+Maarso | March
+Abriil | April
+Maajo | May
+Juun | June
+Luulyo | July
+Agoosto | August
+Sebtembar | September
+Oktoobar | October
+Nofembar | November
+Desembar | December
+xilli | season
+gu' | spring rains
+xagaa | summer
+dayr | autumn rains
+jiilaal | dry season
+hadda | now
+dhowaan | soon
+goor dambe | later
+had iyo jeer | always
+marna | never
+mararka qaarkood | sometimes
+ka hor | before
+kadib | after
+saacaddu waa imisa | what time is it?
+waa saacad kow | it is one o'clock
+maalin dhalasho | birthday
+fasax | holiday

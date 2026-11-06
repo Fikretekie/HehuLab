@@ -1,0 +1,81 @@
+guriga | the house
+qolka | the room
+albaabka | the door
+daaqadda | the window
+sariirta | the bed
+kursiga | the chair
+miiska | the table
+buugga | the book
+qalinka | the pen
+kubbadda | the ball
+eeyga | the dog
+bisadda | the cat
+faraska | the horse
+dameerka | the donkey
+shimbirta | the bird
+geedka | the tree
+ubaxa | the flower
+qorraxda | the sun
+dayaxa | the moon
+cirka | the sky
+roobka | the rain
+biyaha | the water
+caanaha | the milk
+rootiga | the bread
+bariiska | the rice
+hilibka | the meat
+mooska | the banana
+tufaaxa | the apple
+shaaha | the tea
+bunka | the coffee
+cuntada | the food
+suuqa | the market
+iskuulka | the school
+isbitaalka | the hospital
+masjidka | the mosque
+magaalada | the city
+tuulada | the village
+badda | the sea
+webiga | the river
+buurta | the mountain
+jidka | the road
+gaariga | the car
+baska | the bus
+diyaaradda | the airplane
+hooyada | the mother
+aabbaha | the father
+wiilka | the boy
+gabadha | the girl
+ninka | the man
+haweeneyda | the woman
+ilmaha | the child, the children
+macallinka | the teacher
+ardayga | the student
+dhakhtarka | the doctor
+saaxiibka | the friend
+casharka | the lesson
+sheekada | the story
+heesta | the song
+erayga | the word
+xarafka | the letter
+midabka | the color
+ciyaarta | the game
+furaash | mattress
+dhir | plants
+abuur | seed
+xidid | root
+laan | branch
+khariidad | map
+injineer | engineer
+garsoore | judge
+qareen | lawyer
+shaqo | work, job
+shaqaale | workers
+qurux | beauty
+ciyaaryahan | player
+muusig | music
+filim | film
+kubbadda koleyga | basketball
+dabaasha | swimming
+orodka | running
+sacab | clapping

@@ -102,7 +102,7 @@ export default function Start() {
             <h2 className="mb-4 text-2xl font-bold">
               3. {english ? "Which language do you speak?" : "Which language do you want to learn?"}
             </h2>
-            {["Eritrean", "From Ethiopia"].map((group) => (
+            {["Eritrean", "From Ethiopia", "From Somalia"].map((group) => (
               <div key={group} className="mb-4">
                 <p className="eyebrow mb-2 text-muted">{group === "Eritrean" ? "Eritrean languages" : group}</p>
                 <div className="grid grid-cols-4 gap-3">
@@ -123,7 +123,11 @@ export default function Start() {
                 </div>
               </div>
             ))}
-            {kid.lang !== "ti" && (
+            {kid.lang === "so" ? (
+              <p className="rounded-2xl bg-accent-soft px-4 py-3 text-sm font-bold text-accent">
+                Somali letters and words work today. The Somali voice recordings are being added next.
+              </p>
+            ) : kid.lang !== "ti" && (
               <p className="rounded-2xl bg-accent-soft px-4 py-3 text-sm font-bold text-accent">
                 {lang.name} lessons are being recorded by families right now. Letters work today; words and Rodas&apos;s
                 voice in {lang.name} come soon.

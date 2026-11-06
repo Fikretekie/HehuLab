@@ -1,0 +1,78 @@
+dunida | the world
+cir | sky
+qorrax | sun
+dayax | moon
+xiddigo | stars
+daruur | cloud
+roob | rain
+dabayl | wind
+onkod | thunder
+hillaac | lightning
+ceeryaamo | fog
+baraf | snow, ice
+cimilo | weather
+bad | sea
+webi | river
+haro | lake
+ceel | well (for water)
+buur | mountain
+kur | hill
+dooxo | valley
+lamadegaan | desert
+kayn | forest
+geed | tree
+geedo | trees
+caleen | leaf
+ubax | flower
+cows | grass
+ciid | sand
+dhoobo | mud
+jasiirad | island
+xeeb | coast, beach
+mowjad | wave
+magaalo | city, town
+tuulo | village
+waddan | country
+jid | road, way
+waddo | street
+buundo | bridge
+masjid | mosque
+kaniisad | church
+iskuul | school
+dugsi | Quran school
+jaamacad | university
+maktabad | library
+bangi | bank
+xafiis | office
+huteel | hotel
+maqaayad | restaurant
+garoon | field, stadium
+garoonka diyaaradaha | airport
+dekad | port
+beerta xayawaanka | zoo
+gaari | car
+baabuur | vehicle
+bas | bus
+tareen | train
+diyaarad | airplane
+doon | boat
+markab | ship
+baaskiil | bicycle
+mooto | motorbike
+taksi | taxi
+tikid | ticket
+safar | trip, journey
+socod | walking
+waqooyi | north
+koonfur | south
+bari | east
+galbeed | west
+Soomaaliya | Somalia
+Muqdisho | Mogadishu
+Hargeysa | Hargeisa
+Jabuuti | Djibouti
+Itoobiya | Ethiopia
+Kiiniya | Kenya
+Ameerika | America
+af Soomaali | Somali language
+af Ingiriisi | English language

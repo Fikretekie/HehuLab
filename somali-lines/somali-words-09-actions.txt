@@ -1,0 +1,74 @@
+orod | run
+bood | jump
+soco | walk
+dabaal | swim
+seexo | go to sleep
+toos | wake up
+qubeyso | take a shower
+hadal | speak
+ooy | cry
+hees | song, sing
+qoob ka ciyaar | dance
+tiri | count
+baro | learn
+bar | teach
+fikir | think
+waan ogahay | I know
+ma aqaan | I don't know
+waan rabaa | I want
+waan jeclahay | I like it
+sii | give
+keen | bring
+dhig | put
+fur | open
+xir | close
+riix | push
+jiid | pull
+tuur | throw
+qabo | catch, hold
+qaad | take, carry
+dhis | build
+jebi | break
+hagaaji | fix
+dhaq | wash
+raadi | look for
+hel | find
+caawi | help
+weydii | ask
+jawaab | answer
+wac | call
+dir | send
+jiif | lie down
+soo noqo | come back
+gal | go in
+bax | go out
+fuul | climb, ride
+deg | get down
+samee | make, do
+shaqee | work
+naso | rest
+fiiri | look at
+arag | see
+maqal | hear
+taabo | touch
+dhadhami | taste
+xusuuso | remember
+illow | forget
+jooji | stop
+sii wad | keep going
+dhammee | finish
+isku day | try
+mar kale isku day | try again
+guul | victory
+kubbadda cagta | football
+ciyaar kubbadda cagta | play football
+waan ciyaarayaa | I'm playing
+waan akhrinayaa | I'm reading
+waan qorayaa | I'm writing
+waan cunayaa | I'm eating
+waan seexanayaa | I'm going to sleep
+waan imanayaa | I'm coming
+waan tagayaa | I'm going
+waan sugayaa | I'm waiting
+waad guulaysatay | you did it!
+aad baad u fiican tahay | you are very good

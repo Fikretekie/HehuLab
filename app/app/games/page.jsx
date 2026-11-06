@@ -991,8 +991,8 @@ function GrownUp(props) {
 
 // Where the phrase games take their phrases: the unit's themes if they have phrases, else these.
 const PHRASE_THEMES = ["hello", "questions", "sentences", "evening", "feelings"];
-function phraseLesson(course) {
-  const own = course?.themes?.length ? lessonItems(course).filter((x) => /\s/.test(x.native.trim())) : [];
+function phraseLesson(course, lang) {
+  const own = course?.themes?.length ? lessonItems(course, "native", lang).filter((x) => /\s/.test(x.native.trim())) : [];
   return own.length >= 4 ? course : { type: "game", themes: PHRASE_THEMES };
 }
 
@@ -1031,17 +1031,17 @@ function GamesPage() {
       letters: letterUnits(gameLang)[0].letters.map((l) => ({ key: l, big: l })),
       math: Array.from({ length: 5 }, (_, i) => ({ key: String(i + 1), big: String(i + 1), count: i + 1 })),
       // The unit's words (from the path), or animals and colors. The picture is what you tap.
-      words: lessonItems(course?.themes?.length ? course : { type: "game", themes: ["animals", "colors", "food"] }, kid.track)
+      words: lessonItems(course?.themes?.length ? course : { type: "game", themes: ["animals", "colors", "food"] }, kid.track, kid.lang)
         .filter((x, i, all) => all.findIndex((y) => y.pic === x.pic) === i)
         .map((x) => ({ ...x, key: x.word, big: x.pic })),
       // Phrases and sentences (2 words or more) for the grown-up games: the unit's, or greetings, questions and
       // "talk about me". One of each meaning (the girl and boy forms of "how are you?" mean the same).
-      phrases: lessonItems(phraseLesson(course), kid.track)
+      phrases: lessonItems(phraseLesson(course, kid.lang), kid.track, kid.lang)
         .filter((x) => /\s/.test(x.native.trim()))
         .filter((x, i, all) => all.findIndex((y) => y.english === x.english) === i)
         .map((x) => ({ ...x, key: x.word })),
     }),
-    [kid.track, course, gameLang],
+    [kid.track, kid.lang, course, gameLang],
   );
 
   // The game is drawn only in the browser: it depends on the lesson in the address and the child's saved choices,

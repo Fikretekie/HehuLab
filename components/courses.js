@@ -8,6 +8,7 @@
 // Tigre, Bilen, Saho and Amharic have no recordings yet: their word lessons wait for recorders (letters still work).
 
 import { LETTERS, NUMBER_WORDS } from "./curriculum";
+import { SOMALI, SOMALI_SENTENCES } from "./somali";
 
 export const LEARNERS = [
   { id: "kid", title: "A child", note: "Ages 3 to 9: letters, words, songs, games" },
@@ -38,8 +39,8 @@ export function ageGroup(kid) {
 }
 
 export const TRACKS = [
-  { id: "native", title: "Learn my language", note: "Tigrinya, Tigre, Bilen, Saho or Amharic" },
-  { id: "english", title: "Learn English", note: "Taught in Tigrinya, Tigre, Bilen, Saho or Amharic" },
+  { id: "native", title: "Learn my language", note: "Tigrinya, Tigre, Bilen, Saho, Amharic or Somali" },
+  { id: "english", title: "Learn English", note: "Taught in Tigrinya, Tigre, Bilen, Saho, Amharic or Somali" },
 ];
 
 // Theme words: [Tigrinya, English, picture]. Only Tigrinya for now (the languages with recordings).
@@ -360,9 +361,9 @@ export function findLesson(levels, id) {
 
 // The words a lesson teaches, ready for the lesson screen.
 // Native track: big = the word, small = English. English track: big = English, small = the word in your language.
-export function lessonItems(lesson, track) {
+export function lessonItems(lesson, track, lang) {
   const themes = lesson.type === "words" ? [lesson.theme] : lesson.themes || [];
-  let words = themes.flatMap((t) => THEMES[t].words);
+  let words = themes.flatMap((t) => themeWords(t, lang));
   // A review takes 8 words spread over the unit's themes. Always the same 8 (no shuffling here), so the page drawn on
   // the server and in the browser match; the game mixes its rounds after the page loads.
   if (lesson.type === "review" && words.length > 8) words = Array.from({ length: 8 }, (_, i) => words[Math.floor((i * words.length) / 8)]);
@@ -376,5 +377,21 @@ export function lessonItems(lesson, track) {
   }));
 }
 
-// Does this language have recordings yet? (Word lessons need them; letters and English work anyway.)
-export const HAS_WORDS = { ti: true };
+// Does this language have its own words yet? Somali's come from Fik's lists (recordings are on the voices site).
+export const HAS_WORDS = { ti: true, so: true };
+
+// Languages whose words are matched to the Tigrinya list by their English meaning.
+const TRANSLATED = { so: SOMALI };
+const meaningKey = (en) => en.replace(/ (to a (girl|boy))/, "").toLowerCase().replace(/[.!?]$/, "");
+
+// A theme's words in a language: [word, English, picture, recording name]. Tigrinya (and languages without their
+// own list yet) get the Tigrinya words; Somali gets only the words it has, plus its own sentences.
+export function themeWords(theme, lang) {
+  const table = TRANSLATED[lang];
+  if (!table) return THEMES[theme].words;
+  if (theme === "sentences" && lang === "so") return SOMALI_SENTENCES;
+  const out = THEMES[theme].words
+    .filter((w) => table[meaningKey(w[1])])
+    .map((w) => [table[meaningKey(w[1])], w[1], w[2], `${lang}:${table[meaningKey(w[1])]}`]);
+  return out.length ? out : THEMES[theme].words;
+}

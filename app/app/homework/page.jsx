@@ -255,7 +255,7 @@ export default function Homework() {
   // Words: the newest word lesson with stars (or the first one): 4 pictures and their words.
   const wordStop = [...lessons].reverse().find((l) => l.type === "words" && stars[l.id]) || lessons.find((l) => l.type === "words");
   const pairs = wordStop
-    ? lessonItems(wordStop, kid.track)
+    ? lessonItems(wordStop, kid.track, kid.lang)
         .filter((x, i, all) => all.findIndex((y) => y.pic === x.pic) === i)
         .slice(0, 4)
         .map((x) => ({ key: x.word, left: x.pic, right: english ? x.english : x.native }))

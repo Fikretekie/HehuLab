@@ -1,0 +1,84 @@
+cunto | food
+biyo | water
+caano | milk
+shaah | tea
+bun | coffee
+casiir | juice
+rooti | bread
+canjeero | canjeero (flatbread)
+bariis | rice
+baasto | pasta
+hilib | meat
+hilib ari | goat meat
+hilib lo' | beef
+hilib digaag | chicken meat
+ukun | egg
+subag | butter
+farmaajo | cheese
+malab | honey
+sonkor | sugar
+cusbo | salt
+basbaas | hot pepper
+saliid | oil
+bur | flour
+digir | beans
+galley | corn
+masago | sorghum
+miro | fruit
+moos | banana
+tufaax | apple
+liin | lemon, lime
+liin macaan | orange
+cambe | mango
+canab | grapes
+qare | watermelon
+timir | dates
+babaay | papaya
+khudaar | vegetables
+yaanyo | tomato
+basal | onion
+toon | garlic
+baradho | potato
+karooto | carrot
+kaabash | cabbage
+qajaar | cucumber
+maraq | soup, stew
+suugo | sauce
+sambuus | sambusa
+xalwo | halwa (sweet)
+buskud | biscuit
+doolsho | cake
+nacnac | candy
+quraac | breakfast
+qado | lunch
+casho | dinner
+cun | eat
+cab | drink
+kari | cook
+jikada | the kitchen
+weel | dish, container
+saxan | plate
+koob | cup
+koob shaah | a cup of tea
+quraarad | bottle
+qaado | spoon
+fargeeto | fork
+mindi | knife
+dheri | clay pot
+digsi | cooking pot
+miis | table
+dhadhan | taste
+udgoon | nice smell
+cuntadu waa diyaar | the food is ready
+biyo ii keen | bring me water
+waan dhergay | I'm full
+ma gaajaysan tahay | are you hungry?
+aad bay u macaan tahay | it's very tasty
+bariis iyo hilib | rice and meat
+shaah caano leh | tea with milk
+suuq | market
+dukaan | shop
+lacag | money
+iibso | buy
+iibi | sell
+qiimo | price

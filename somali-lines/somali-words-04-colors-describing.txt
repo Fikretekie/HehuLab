@@ -1,0 +1,82 @@
+midab | color
+cas | red
+buluug | blue
+cagaar | green
+huruud | yellow
+madow | black
+cad | white
+bunni | brown
+cawl | grey
+dahab | gold
+qaab | shape
+goobaabin | circle
+afargees | square
+saddexagal | triangle
+xariiq | line
+dhibic | dot, drop
+xiddig | star
+weyn | big
+yar | small
+ballaaran | wide
+cariiri | narrow
+culus | heavy
+fudud | light, easy
+cusub | new
+duug | old (thing)
+qurux badan | beautiful
+wanaagsan | good
+xun | bad
+fiican | nice
+kulul | hot
+diiran | warm
+qabow | cold
+qoyan | wet
+qalalan | dry
+macaan | sweet
+qadhaadh | bitter
+dhanaan | sour
+cusbo leh | salty
+dhakhso | fast
+tartiib | slow
+adag | hard
+jilicsan | soft
+buuxa | full
+madhan | empty
+faraxsan | happy
+murugaysan | sad
+xanaaqsan | angry
+cabsi | fear
+baqay | scared
+daalan | tired
+gaajaysan | hungry
+oomman | thirsty
+xishood | shyness
+deggan | calm
+dhiirran | brave
+caqli badan | smart
+naxariis badan | kind
+qaali | expensive, dear
+jaban | cheap
+fog | far
+dhow | near
+sare | up, high
+hoos | down
+gudaha | inside
+dibadda | outside
+dul | on top
+hoosta | under
+hor | in front
+gadaal | behind
+dhex | middle
+midig | right
+bidix | left
+kala duwan | different
+isku mid | same
+sax | correct
+khalad | wrong
+run | true
+been | lie, false
+badan | many
+kooban | few, short
+bilow | beginning
+dhammaad | end

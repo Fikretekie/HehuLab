@@ -10,6 +10,7 @@ export const LANGS = [
   { id: "byn", name: "Bilen", native: "", group: "Eritrean" },
   { id: "ssy", name: "Saho", native: "", group: "Eritrean" },
   { id: "am", name: "Amharic", native: "አማርኛ", group: "From Ethiopia" },
+  { id: "so", name: "Somali", native: "Soomaali", group: "From Somalia" },
 ];
 
 const KEY = "hehulab.kid";

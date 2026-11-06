@@ -1,0 +1,96 @@
+salaan | greeting
+nabad | peace
+haa | yes
+maya | no
+mahadsanid | thank you
+fadlan | please
+waan ka xumahay | I'm sorry
+soo dhawoow | welcome
+nabadgelyo | goodbye
+subax wanaagsan | good morning
+galab wanaagsan | good afternoon
+habeen wanaagsan | good night
+iska warran | how are you?
+waan fiicanahay | I'm fine
+ma nabad baa | is everything well?
+magac | name
+magacaa | what is your name?
+magacaygu waa | my name is
+imisa jir baad tahay | how old are you?
+xaggee baad ka timid | where are you from?
+hooyo | mother
+aabbe | father
+hooyaday | my mother
+aabbahay | my father
+waalidiin | parents
+walaal | brother or sister
+walaashay | my sister
+walaalkay | my brother
+ayeeyo | grandmother
+awoowe | grandfather
+wiil | boy, son
+gabadh | girl, daughter
+nin | man
+haweeney | woman
+ilmo | child
+carruur | children
+ilmo yar | baby
+saaxiib | friend
+saaxiibad | friend (a girl or woman)
+qoys | family
+qaraabo | relatives
+eedo | aunt (father's sister)
+habaryar | aunt (mother's sister)
+adeer | uncle (father's brother)
+abti | uncle (mother's brother)
+ina adeer | cousin
+qof | person
+dad | people
+jaar | neighbour
+marti | guest
+oday | elder, old man
+islaan | old woman
+dhallinyaro | young people
+macallin | teacher
+macallimad | teacher (a woman)
+arday | student
+dhakhtar | doctor
+kalkaaliso | nurse
+darawal | driver
+ganacsade | trader, businessman
+beeraley | farmer
+boolis | police
+askari | soldier
+nijaar | carpenter
+dawaarle | tailor
+madaxweyne | president
+boqor | king
+boqorad | queen
+aroos | wedding
+waan ku jeclahay | I love you
+i caawi | help me
+waan fahmay | I understand
+ma fahmin | I don't understand
+mar kale | again
+si tartiib ah | slowly
+hagaag | okay
+waa sax | that's right
+waa khalad | that's wrong
+aad u fiican | very good
+hambalyo | congratulations
+sug | wait
+kaalay | come here
+tag | go
+fadhiiso | sit down
+istaag | stand up
+eeg | look
+dhegeyso | listen
+dheh | say it
+ku celi | repeat
+qor | write
+akhri | read
+iska ilaali | take care
+ku soo dhawoow gurigeena | welcome to our home
+ciid wanaagsan | happy Eid
+maalin wanaagsan | have a good day
+safar wanaagsan | have a good trip

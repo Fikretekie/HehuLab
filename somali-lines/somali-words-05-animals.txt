@@ -1,0 +1,69 @@
+xayawaan | animal
+xoolo | livestock
+eey | dog
+eey yar | puppy
+bisad | cat
+bisad yar | kitten
+ari | goats and sheep
+ri' | goat
+riyaha | the goats
+lax | sheep
+laxaha | the sheep
+geel | camels
+geela | the camels
+awr | male camel
+hal | female camel
+nirig | baby camel
+lo' | cattle
+lo'da | the cows
+sac | cow
+dibi | bull, ox
+weyl | calf
+faras | horse
+fardo | horses
+dameer | donkey
+dameerro | donkeys
+digaag | chicken
+diiq | rooster
+shimbir | bird
+shimbiraha | the birds
+gorgor | eagle
+qoolley | dove
+xamaam | pigeon
+tuke | crow
+libaax | lion
+libaaxa | the lion
+shabeel | leopard
+haramcad | cheetah
+waraabe | hyena
+dawaco | fox, jackal
+maroodi | elephant
+maroodiga | the elephant
+geri | giraffe
+deero | gazelle
+garanuug | gerenuk
+goodir | kudu
+jiir | mouse
+doolli | rat
+bakayle | rabbit, hare
+daanyeer | monkey
+yaxaas | crocodile
+mas | snake
+diin | tortoise
+rah | frog
+kalluun | fish
+kalluunka | the fish
+cayayaan | insect
+qudhaanjo | ant
+shinni | bee
+balanbaalis | butterfly
+duqsi | fly
+kaneeco | mosquito
+caaro | spider
+baal | feather, wing
+dabo | tail
+gees | horn
+qoob | hoof
+xero | animal pen
+buul | nest, hut
+xoolo dhaqato | herders

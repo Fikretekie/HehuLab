@@ -1,0 +1,97 @@
+jir | body
+madax | head
+timo | hair
+weji | face
+il | eye
+indho | eyes
+san | nose
+af | mouth
+dhaban | cheek
+bushin | lip
+ilig | tooth
+ilko | teeth
+carrab | tongue
+dheg | ear
+dhego | ears
+qoor | neck
+garab | shoulder
+gacan | hand, arm
+gacmo | hands
+far | finger
+faro | fingers
+ciddi | fingernail
+xusul | elbow
+laab | chest
+calool | stomach, belly
+dhabar | back
+lug | leg
+lugo | legs
+bowdo | thigh
+jilib | knee
+canqow | ankle
+cag | foot
+cagaha | the feet
+suul | thumb
+cidhib | heel
+maqaar | skin
+dhiig | blood
+laf | bone
+wadne | heart
+sambab | lung
+maskax | brain
+gadh | beard, chin
+gacanta midig | right hand
+gacanta bidix | left hand
+caafimaad | health
+xanuun | pain
+jirro | illness
+qandho | fever
+qufac | cough
+hargab | cold, flu
+madax xanuun | headache
+calool xanuun | stomachache
+ilko xanuun | toothache
+dhaawac | injury
+daawo | medicine
+isbitaal | hospital
+farmashiye | pharmacy
+irbad | needle, injection
+nasasho | rest
+hurdo | sleep
+daal | tiredness
+gaajo | hunger
+harraad | thirst
+qubeys | bath, shower
+saabuun | soap
+caday | toothbrush
+shanlo | comb
+tuwaal | towel
+nadiif | clean
+wasakh | dirty
+gacmaha dhaq | wash your hands
+ilkaha caddee | brush your teeth
+waan bukaa | I am sick
+waan ladnahay | I am well
+halkan ayaa i xanuunaya | it hurts here
+neef | breath
+neefso | breathe
+dhidid | sweat
+cod | voice
+dhoolla caddeyn | smile
+qosol | laughter
+oohin | crying
+hindhis | sneeze
+hamaansi | yawn
+gacanta kor u qaad | raise your hand
+indhaha xir | close your eyes
+indhaha fur | open your eyes
+afka fur | open your mouth
+dheer | tall, long
+gaaban | short
+buuran | fat
+caato | thin
+xoog | strength
+xoogan | strong
+daciif | weak
+da' | age
+dhalasho | birth

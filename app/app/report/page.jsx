@@ -52,7 +52,7 @@ export default function Report() {
   const done = lessons.filter((l) => stars[l.id]);
   const starCount = done.reduce((n, l) => n + stars[l.id], 0);
   const letters = done.filter((l) => l.type === "letters").map((l) => l.letter);
-  const words = done.filter((l) => l.type === "words").flatMap((l) => lessonItems(l, kid.track).slice(0, 4));
+  const words = done.filter((l) => l.type === "words").flatMap((l) => lessonItems(l, kid.track, kid.lang).slice(0, 4));
   const next = lessons.find((l) => !stars[l.id]);
   const practice = letters[letters.length - 1] || words[words.length - 1]?.native || lessons.find((l) => l.type === "letters")?.letter;
 

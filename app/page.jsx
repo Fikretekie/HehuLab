@@ -35,6 +35,7 @@ export default function Home() {
             <div className="flex flex-wrap gap-2 text-sm font-extrabold">
               <span className="chip bg-white">Eritrean: Tigrinya · Tigre · Bilen · Saho</span>
               <span className="chip bg-white">From Ethiopia: Amharic</span>
+              <span className="chip bg-white">From Somalia: Somali</span>
               <span className="chip bg-white">Math in the same language</span>
             </div>
           </div>
