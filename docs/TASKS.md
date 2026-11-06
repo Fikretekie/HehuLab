@@ -67,13 +67,25 @@ Next: connect Stripe + PayPal (needs Fik's accounts and a small Lambda), real lo
 21. Fix Bible text errors: doubled apostrophes (Naomi''s), "5:" at the start of one English line, "ahweh",
     one English verse that doesn't match its Tigrinya.
 22. Find recorders for **Tigre, Bilen, Saho, Amharic** (0 recordings each). Needed before those tracks can talk.
-    ✅ **Somali** is on the voices site; one recorder has done 100+ recordings (word lists in `somali-lines/`). Somali is not on the kids site yet.
+    ✅ **Somali** is on the voices site; one recorder (a man) has done 200+ recordings (word lists in `somali-lines/`). Somali is on the kids site, but its recordings aren't copied in yet (`public/voices/so.json` is empty); wait for task 26.
 23. Check why Tigre/Bilen/Amharic/Saho each show 1,190 "to record" (probably the shared English Translate list).
 24. ✅ Consent v3 live (update 55). Still: have a lawyer read it once.
 25. Optional: "🤖 Draft teacher lines" button (AI drafts 50 lines, Fik ticks the good ones).
 
 ## C. Later projects
-26. Voice conversion: other readers' recordings turned into Rodas's voice (RVC free / ElevenLabs paid).
+26. **Change ALL voices with a voice changer (Fik's decision 2026-11-06, to keep the family safe):** no real
+    family voice is heard on the site, YouTube or anywhere public, so nobody can copy it for text-to-speech.
+    - Tool: ElevenLabs Voice Changer, about $0.12 per minute of audio (API), paid plan while converting
+      (cheapest about $6/mo; the free plan doesn't allow paid-site use). Check the official price page first.
+    - Cost once: 3,000 recordings ≈ 250–500 min ≈ **$30–60**. Cut the quiet at the start and end first (can halve it).
+      After that the files are ours, no more fees; only new recordings cost again.
+    - Each character = one made-up voice (ElevenLabs "Voice Design" or library), always the same one.
+      Never a real person's voice without their OK. Somali recorder is a man: he can become a woman's voice.
+    - **Test first, especially the hard-to-pronounce letters:** ~10 clips per language: Tigrinya ጸ ጠ ቐ ጨ ፀ and
+      ሐ ዐ ኸ ኀ, short single letters like ሀ, Somali x, c, kh, dh, q. Fik listens to before/after side by side;
+      only then do all. Tell each recorder their voice will be changed.
+    - Then: label voices "AI-changed voice" and change the footer ("every voice is a real family voice" is no
+      longer true). Keep the original files private in S3, never public.
 27. Rodas's AI voice (text-to-speech from 30–60 min of Adiam), then general Tigrinya text-to-speech.
 28. Speech recognition, so the lesson knows the child really said ሀ (today it only checks something was said).
 29. Rodas video clips (listening, talking, smiling, clapping, thinking) into `public/rodas/`.
