@@ -104,5 +104,6 @@ Next: connect Stripe + PayPal (needs Fik's accounts and a small Lambda), real lo
     all tasks are done. Next: Adiam records → voice changer → Kling Lip Sync → Claude joins with captions → landing page;
     6 short clips (one per service) for social media.
 32. **Lesson lip sync:** ✅ Rodas shows her talking clip only while a sound plays, no more bouncing circle on top of the
-    video. Next (Fik picks): mouth follows the sound (free) and/or Kling lip sync for her 30 most-used lines.
+    video. ✅ Mouth follows the sound (2026-11-10). Later: Kling lip sync for her 30 most-used lines. Her clips show a
+    "Kling AI" watermark: download without it (paid) or crop before going public.
     Mic works only in real Chrome/Edge, not in the Claude Preview pane; "🎤 Turn on the microphone" button added.

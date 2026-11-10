@@ -97,9 +97,32 @@ function voiceBounds(url) {
       }
     }
     if (first < 0) return null;
-    return { start: Math.max(0, first / buf.sampleRate - 0.12), end: Math.min(buf.duration, last / buf.sampleRate + 0.3) };
+    // How loud she is every 40 ms (0 = quiet, 1 = her loudest), so her mouth can follow her voice.
+    const step = Math.floor(buf.sampleRate * 0.04);
+    const env = [];
+    for (let i = 0; i < d.length; i += step) {
+      let sum = 0;
+      const to = Math.min(d.length, i + step);
+      for (let j = i; j < to; j++) sum += d[j] * d[j];
+      env.push(Math.sqrt(sum / (to - i)));
+    }
+    const top = Math.max(...env) || 1;
+    return {
+      start: Math.max(0, first / buf.sampleRate - 0.12),
+      end: Math.min(buf.duration, last / buf.sampleRate + 0.3),
+      env: env.map((v) => v / top),
+    };
   })().catch(() => null);
   return bounds[url];
+}
+
+// How loud Rodas's voice is right now (0 to 1), read from the recording that is playing.
+// null = we can't tell (nothing tracked is playing, e.g. the browser's English voice), so keep the mouth moving.
+let tracked = null; // { audio, env }
+export function voiceLevel() {
+  const t = tracked;
+  if (!t || t.audio.paused || t.audio.ended) return null;
+  return t.env[Math.floor(t.audio.currentTime / 0.04)] ?? 0;
 }
 
 // Play one recording from where Rodas starts speaking to where she stops, and resolve when she's done
@@ -111,9 +134,11 @@ export async function playClip(url, keep) {
     const a = new Audio(url);
     playing = a;
     keep?.(a);
+    tracked = b?.env ? { audio: a, env: b.env } : null;
     let timer;
     const finish = (ok) => {
       clearTimeout(timer);
+      if (tracked?.audio === a) tracked = null;
       a.onended = a.onerror = a.onpause = a.ontimeupdate = null;
       if (ok && !a.ended) a.pause();
       done(ok);

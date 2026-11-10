@@ -1,6 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { voiceLevel } from "./Voice";
+
+const LOUD = 0.15; // her voice louder than this (of her loudest) = mouth moving
+const QUIET_MS = 120; // quiet this long = mouth closes
+const REST = 0.4; // seconds into talking.mp4 where her mouth is closed (frame 0 has it open)
 
 // Rodas, alive. She has 5 states: listening, talking, smiling, clapping, thinking.
 // If a clip exists in public/rodas/ (e.g. listening.mp4) it plays as a loop. If not, her photo moves gently
@@ -36,8 +41,34 @@ export default function RodasLive({ state = "listening", size = 320, small = siz
   useEffect(() => {
     const v = videos.current[state];
     if (!v) return;
-    if (state === "talking") v.currentTime = 0;
+    if (state === "talking") v.currentTime = REST;
     v.play().catch(() => {});
+  }, [state, clips]);
+
+  // Mouth follows her voice: while she talks, the talking clip plays only when her recording is loud and
+  // goes back to a frame with her mouth closed in the quiet gaps between words.
+  useEffect(() => {
+    const v = videos.current.talking;
+    if (state !== "talking" || !v) return;
+    let raf = 0;
+    let quietSince = 0;
+    const tick = () => {
+      const lv = voiceLevel();
+      const now = performance.now();
+      if (lv === null || lv > LOUD) {
+        quietSince = 0;
+        if (v.paused) v.play().catch(() => {});
+      } else {
+        quietSince ||= now;
+        if (now - quietSince > QUIET_MS && !v.paused) {
+          v.pause();
+          v.currentTime = REST;
+        }
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    tick();
+    return () => cancelAnimationFrame(raf);
   }, [state, clips]);
 
   const showClip = clips[state];
