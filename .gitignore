@@ -9,3 +9,5 @@ public/voices/*/
 
 # Voices-site update zips (they go to CloudShell, not into this repo)
 hehulab-update*.zip
+.claude/clone-test/
+hehulab-rodas-intro.zip

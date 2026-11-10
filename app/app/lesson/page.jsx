@@ -228,7 +228,9 @@ function Lesson() {
   // `parts` is a list of audio addresses played one after another. Returns true if the child cut in.
   async function talk(id, bubbleLine, parts, moodNow = "talking") {
     const alive = () => run.current.id === id;
-    setMood(moodNow);
+    // Her mouth moves only while a sound is really playing; in the quiet moments she smiles.
+    const quiet = moodNow === "talking" ? "smiling" : moodNow;
+    setMood(quiet);
     setBubble(bubbleLine);
     cut.current = false;
     mic.setOnLoud(() => {
@@ -238,9 +240,12 @@ function Lesson() {
     let spoke = false;
     for (const url of voiceOn ? parts : []) {
       if (!alive() || cut.current) break;
-      if (url?.en) spoke = (await speakEnglish(url.en)) || spoke; // an English word, in the browser's English voice
-      else if (url && (await play(url))) spoke = true;
+      if (!url) continue; // not recorded yet: no sound, so no talking
+      setMood(moodNow); // stays "talking" from one sound to the next (no flicker in between)
+      if (url.en) spoke = (await speakEnglish(url.en)) || spoke; // an English word, in the browser's English voice
+      else if (await play(url)) spoke = true;
     }
+    if (alive()) setMood(quiet); // done talking: back to smiling
     // Lines she hasn't recorded yet stay on screen long enough to read.
     if (!spoke && alive() && !cut.current) await pause(1700);
     mic.setOnLoud(null);
@@ -381,12 +386,18 @@ function Lesson() {
 
       <div className="grid gap-6 lg:grid-cols-[5fr_7fr]">
         {/* Rodas: alive, with what she says in a speech bubble */}
-        <section className="card flex flex-col items-center gap-6 bg-accent-soft p-8 text-center">
-          <RodasLive state={mood} size={300} />
-          <div className="relative w-full max-w-sm rounded-3xl bg-white p-6">
-            <span className="absolute -top-2.5 left-1/2 h-5 w-5 -translate-x-1/2 rotate-45 bg-white" aria-hidden="true" />
-            <p className="font-geez text-4xl font-bold text-brand" lang="ti">{bubble.text}</p>
-            {bubble.english && <p className="mt-2 text-lg text-muted">{bubble.english}</p>}
+        {/* Narrow screens: a small Rodas beside her bubble, stuck to the top, so the child sees her and the letter together */}
+        <section className="card sticky top-2 z-10 flex flex-row items-center gap-4 bg-accent-soft p-4 text-left lg:static lg:flex-col lg:gap-6 lg:p-8 lg:text-center">
+          <div className="flex shrink-0 flex-col items-center">
+            <RodasLive state={mood} size={300} small={120} label={false} />
+            <p className="mt-4 hidden text-xl font-extrabold lg:block">Rodas</p>
+            <span className="chip mt-1 hidden bg-white lg:inline-flex">AI teacher</span>
+          </div>
+          <div className="relative w-full max-w-sm rounded-3xl bg-white p-4 lg:p-6">
+            <span className="absolute -left-2.5 top-1/2 h-5 w-5 -translate-y-1/2 rotate-45 bg-white lg:-top-2.5 lg:left-1/2 lg:top-auto lg:-translate-x-1/2 lg:translate-y-0" aria-hidden="true" />
+            <p className="text-xs font-extrabold text-muted lg:hidden">Rodas · AI teacher</p>
+            <p className="font-geez text-2xl font-bold text-brand lg:text-4xl" lang="ti">{bubble.text}</p>
+            {bubble.english && <p className="mt-1 text-base text-muted lg:mt-2 lg:text-lg">{bubble.english}</p>}
           </div>
         </section>
 
@@ -471,7 +482,15 @@ function Lesson() {
                     </button>
                   )
                 )}
-                {mic.ok === false && <p className="text-sm text-muted">The microphone is off, so tap “I said it” after you say it.</p>}
+                {mic.ok === false && (
+                  <div className="flex flex-col items-center gap-2 text-center">
+                    <p className="text-sm text-muted">The microphone is off, so tap “I said it” after you say it.</p>
+                    {/* Ask the browser again (works when the grown-up allowed the microphone in the address bar) */}
+                    <button type="button" onClick={() => mic.start().then((on) => on && lessonFrom(idx))} className="btn-line py-2 text-sm">
+                      🎤 Turn on the microphone
+                    </button>
+                  </div>
+                )}
               </>
             )}
           </div>

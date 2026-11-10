@@ -87,6 +87,9 @@ Next: connect Stripe + PayPal (needs Fik's accounts and a small Lambda), real lo
     - Then: label voices "AI-changed voice" and change the footer ("every voice is a real family voice" is no
       longer true). Keep the original files private in S3, never public.
 27. Rodas's AI voice (text-to-speech from 30–60 min of Adiam), then general Tigrinya text-to-speech.
+    2026-11-06 research: Adiam has 1,087 recordings = 72 min. Polly/Azure/ElevenLabs: no Tigrinya custom voice found;
+    Meta MMS-TTS tir is non-commercial. Best path: fine-tune OmniVoice (Apache 2.0, Tigrinya) on her clips on a rented
+    AWS GPU. Zero-shot tests from a 21 s sample scored 36–46% (Fik got 89% once). Needs Adiam's consent. Fik: later.
 28. Speech recognition, so the lesson knows the child really said ሀ (today it only checks something was said).
 29. Rodas video clips (listening, talking, smiling, clapping, thinking) into `public/rodas/`.
 30. **TV section (later, Fik's idea 2026-11-05):** after learning, the family relaxes and listens to stories on the TV.
@@ -94,3 +97,12 @@ Next: connect Stripe + PayPal (needs Fik's accounts and a small Lambda), real lo
     stories play one after another), works by casting (Chromecast/AirPlay) or a smart-TV browser.
     Only after the site is online (task 14). TV has no mic or touch, so watch-only: stories, songs, "watch and repeat".
     Maybe also a YouTube channel of Rodas stories.
+31. **Rodas intro video (marketing, Fik 2026-11-06):** script in `rodas-lines/rodas-intro.txt`, plan in
+    `docs/rodas-intro-video.md`. ✅ First 15 lines recorded by Adiam (2026-11-09). 2026-11-10: script grew to 23 lines,
+    6 services one by one (learn your language with a curriculum, learn English both ways, kids, grown-ups, parents
+    report, text to speech); Adiam records 10 new lines (all in Tigrinya; English shows as captions). Publish only after
+    all tasks are done. Next: Adiam records → voice changer → Kling Lip Sync → Claude joins with captions → landing page;
+    6 short clips (one per service) for social media.
+32. **Lesson lip sync:** ✅ Rodas shows her talking clip only while a sound plays, no more bouncing circle on top of the
+    video. Next (Fik picks): mouth follows the sound (free) and/or Kling lip sync for her 30 most-used lines.
+    Mic works only in real Chrome/Edge, not in the Claude Preview pane; "🎤 Turn on the microphone" button added.

@@ -29,6 +29,9 @@
 .rodas-smiling { animation: rodas-bounce 1.4s ease-in-out infinite; }
 .rodas-clapping { animation: rodas-bounce 0.7s ease-in-out infinite; }
 .rodas-thinking { animation: rodas-tilt 3s ease-in-out infinite; }
+/* Rodas is smaller on phones and narrow windows, so she fits beside the letter */
+.rodas-live { --rodas-size: var(--rodas-small); }
+@media (min-width: 1024px) { .rodas-live { --rodas-size: var(--rodas-big); } }
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
