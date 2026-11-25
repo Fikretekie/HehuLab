@@ -9,6 +9,7 @@ import { useKid } from "./KidState";
 //
 //   public/voices/ti.json         which recording says which text: { "ሀ": "<recId>", "#6": "<recId>", ... }
 //   public/voices/ti/<recId>.webm her recordings (copied from s3://hehulab-voices-data/approved/)
+//   public/voices/am.json + am/   Amharic test voice (mikal), made by scripts/kids_voices_export.sh in CloudShell
 //
 // In production the recordings can live on S3/CloudFront: set NEXT_PUBLIC_VOICES_URL to that address.
 const BASE = process.env.NEXT_PUBLIC_VOICES_URL || "/voices";
@@ -22,6 +23,15 @@ const PHRASES = {
     again: { girl: "እንደገና ፈትኒ።", boy: "እንደገና ፈትን።" },
     welldone: "ኮርዒዳ!",
     howmany: "ክንደይ?",
+    hello: "ሰላም",
+  },
+  // Amharic (test voice: mikal). A line plays only if she recorded exactly this text; otherwise the English line.
+  am: {
+    listen: { girl: "አዳምጪ", boy: "አዳምጥ" },
+    say: { girl: "ከኋላዬ በይ።", boy: "ከኋላዬ በል።" },
+    again: { girl: "እንደገና ሞክሪ።", boy: "እንደገና ሞክር።" },
+    welldone: "ጎበዝ!",
+    howmany: "ስንት?",
     hello: "ሰላም",
   },
 };
@@ -71,7 +81,8 @@ export function stop() {
 // The address of a character's recording of `word` (Rodas if `who` is left out), or null if not recorded yet.
 export async function recordingUrl(lang, word, who) {
   const id = (await recordings(lang, who))[word];
-  return id ? `${dir(who)}/${lang}/${id}.webm` : null;
+  // Most ids are "<recId>" (a .webm file); newer exports give the whole file name ("<recId>.mp4").
+  return id ? `${dir(who)}/${lang}/${id.includes(".") ? id : `${id}.webm`}` : null;
 }
 
 // The recordings have up to 3 seconds of quiet before and after Rodas speaks. Find where her voice starts and

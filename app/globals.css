@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------- Dark theme (Fik, 2026-11-24) ----------
+   Every site color is a variable here (tailwind.config.js reads them), so the whole site turns dark together.
+   Values are "R G B" so Tailwind can add see-through (bg-brand/50). Printing uses the light colors below. */
+:root {
+  color-scheme: dark;
+  --c-brand: 74 141 255;      /* buttons, links */
+  --c-brand-dark: 47 111 224;
+  --c-accent: 240 122 74;     /* orange */
+  --c-accent-soft: 61 36 30;
+  --c-soft: 11 21 40;         /* page background */
+  --c-ink: 237 244 255;       /* main text */
+  --c-muted: 154 171 196;     /* grey text */
+  --c-line: 40 58 88;         /* borders */
+  --c-good: 52 196 116;       /* green */
+  --c-good-soft: 20 52 40;
+  --c-panel: 20 33 58;        /* cards */
+}
+@media print {
+  :root {
+    color-scheme: light;
+    --c-brand: 23 96 207; --c-brand-dark: 15 74 163; --c-accent: 184 68 28; --c-accent-soft: 255 237 229;
+    --c-soft: 238 245 255; --c-ink: 16 37 66; --c-muted: 77 94 120; --c-line: 220 231 247;
+    --c-good: 31 138 76; --c-good-soft: 227 245 234; --c-panel: 255 255 255;
+  }
+}
+
 @layer base {
   h1, h2, h3 { font-family: theme("fontFamily.display"); text-wrap: balance; }
   :focus-visible { outline: 3px solid theme("colors.accent.DEFAULT"); outline-offset: 2px; }
@@ -17,6 +43,7 @@
   .chip { @apply inline-flex items-center gap-1.5 rounded-full bg-soft px-3 py-1.5 text-sm font-extrabold; }
   .card { @apply rounded-xl3 border-2 border-line bg-white; }
   .eyebrow { @apply text-xs font-extrabold uppercase tracking-[0.08em]; }
+  .input { @apply w-full rounded-2xl border-2 border-line bg-soft px-4 py-3 text-ink outline-none placeholder:text-muted focus:border-brand; }
 }
 
 /* Rodas's photo moving gently while there are no video clips yet (components/RodasLive.jsx) */
@@ -65,3 +92,34 @@
 .scene-hills-near { animation: scene-hills 40s linear infinite; }
 .scene-drift { animation: scene-drift 12s ease-in-out infinite alternate; }
 .scene-twinkle { animation: scene-twinkle 2s ease-in-out infinite; }
+
+/* ---------- Dark theme: pieces that set their own light colors ---------- */
+@media screen {
+  body {
+    background:
+      radial-gradient(ellipse at 12% 0%, #1c3b69 0, transparent 34%),
+      radial-gradient(ellipse at 90% 10%, #26305d 0, transparent 30%),
+      linear-gradient(145deg, #080f1e, #0d1729 55%, #101b30);
+    background-attachment: fixed;
+  }
+  /* white cards → dark cards */
+  .bg-white { background-color: rgb(var(--c-panel)); }
+  .bg-white\/70 { background-color: rgb(var(--c-panel) / 0.7); }
+  .bg-white\/60 { background-color: rgb(var(--c-panel) / 0.6); }
+  /* dark blocks stay dark (ink is now the light text color) */
+  .bg-ink { background-color: #060d1b; }
+  .bg-ink\/60 { background-color: rgb(3 8 18 / 0.7); }
+  .hover\:bg-black:hover { background-color: #000; }
+  /* pale colored boxes → dark tints of the same color */
+  .bg-\[\#FFF4D6\], .bg-\[\#FFF1C2\], .bg-\[\#FFF6E9\] { background-color: #3a2f14; }
+  .bg-\[\#FFE3D8\] { background-color: #3d241e; }
+  .bg-\[\#F3E2BF\] { background-color: #3b3020; }
+  .bg-\[\#F1F8EC\], .bg-\[\#E6F4DC\], .bg-\[\#DDF6EA\] { background-color: #143428; }
+  .bg-\[\#E7E9FF\] { background-color: #1f2452; }
+  .bg-\[\#DCEBFF\] { background-color: #16305a; }
+  .from-\[\#CFE3FF\] { --tw-gradient-from: #16305a var(--tw-gradient-from-position); --tw-gradient-to: rgb(22 48 90 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+  .to-\[\#EEF5FF\] { --tw-gradient-to: #0b1528 var(--tw-gradient-to-position); }
+  .text-\[\#B07D00\] { color: #ffc93c; }
+  .border-\[\#B9C8E8\] { border-color: rgb(var(--c-line)); }
+  input, textarea, select { color-scheme: dark; }
+}

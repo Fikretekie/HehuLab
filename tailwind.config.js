@@ -1,17 +1,20 @@
-/** Ocean Blue: the colors and fonts the whole site uses. Change a color here and it changes everywhere. */
+/** Ocean Blue (dark): the colors and fonts the whole site uses. The color values live in app/globals.css. */
 module.exports = {
   content: ["./app/**/*.{js,jsx}", "./components/**/*.{js,jsx}"],
   theme: {
     extend: {
+      // Dark theme (2026-11-24, Fik): every color is a variable set in app/globals.css (:root), so the whole site
+      // switches together. Printing (the certificate) switches back to the light colors there too.
       colors: {
-        brand: { DEFAULT: "#1760CF", dark: "#0F4AA3" },
-        accent: { DEFAULT: "#B8441C", soft: "#FFEDE5" },
-        soft: "#EEF5FF",
-        ink: "#102542",
-        muted: "#4D5E78",
-        line: "#DCE7F7",
+        brand: { DEFAULT: "rgb(var(--c-brand) / <alpha-value>)", dark: "rgb(var(--c-brand-dark) / <alpha-value>)" },
+        accent: { DEFAULT: "rgb(var(--c-accent) / <alpha-value>)", soft: "rgb(var(--c-accent-soft) / <alpha-value>)" },
+        soft: "rgb(var(--c-soft) / <alpha-value>)",
+        ink: "rgb(var(--c-ink) / <alpha-value>)",
+        muted: "rgb(var(--c-muted) / <alpha-value>)",
+        line: "rgb(var(--c-line) / <alpha-value>)",
         sun: "#FFC93C",
-        good: { DEFAULT: "#1F8A4C", soft: "#E3F5EA" },
+        good: { DEFAULT: "rgb(var(--c-good) / <alpha-value>)", soft: "rgb(var(--c-good-soft) / <alpha-value>)" },
+        panel: "rgb(var(--c-panel) / <alpha-value>)",
       },
       fontFamily: {
         display: ["Quicksand", "Nunito", "system-ui", "sans-serif"],
