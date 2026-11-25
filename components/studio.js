@@ -9,6 +9,7 @@ export const STYLES = [
   { id: "picture", name: "Picture story", note: "Pictures with motion + 10% real AI video", perMin: 120 },
   { id: "video540", name: "Full AI video (540p)", note: "Every shot is AI video", perMin: 900 },
   { id: "video720", name: "Full AI video (720p)", note: "Every shot is AI video, sharper", perMin: 1800 },
+  { id: "voice", name: "Voice only (text to speech)", note: "Our voices read your text · MP3 audio", perMin: 5 },
 ];
 export const AD_CREDITS = { 15: 500, 30: 990, 60: 1900 }; // one ad, one language, AI video 720p
 export const AD_EXTRA_LANG = 150; // each extra language of the same ad ($15)
@@ -33,6 +34,7 @@ export const MODES = [
   { id: "news", icon: "📰", name: "Daily news", short: "A news bulletin every morning, read by a presenter", sample: "Morning bulletin" },
   { id: "docu", icon: "🎞️", name: "Documentaries", short: "A narrated film in chapters, from photos and archive", sample: "Kuno Salsti: Eritrean braids" },
   { id: "ad", icon: "📣", name: "Ads", short: "15, 30 or 60-second ads in every language", sample: "Mesob Store weekend offer" },
+  { id: "voice", icon: "🎙️", name: "Voice", short: "Text to speech: your text read aloud in our voices", sample: "voice-over" },
 ];
 
 // The six steps every project goes through (shown while the demo "makes" it).
@@ -44,6 +46,8 @@ export const STEPS = [
   "Adding the voices and subtitles",
   "Joining the episode",
 ];
+// Voice only is quicker: no pictures or video.
+export const VOICE_STEPS = ["Reading your text", "Choosing the voice", "Making the audio"];
 
 // Example storyboards. Each scene: a picture idea (shown as a placeholder), then the line in Tigrinya, Amharic
 // and English. Other languages show the English line until their scripts and voices are ready.
@@ -73,6 +77,11 @@ export const DEMOS = {
     { pic: "☕", sky: "from-[#3b3020] to-[#3a1f3d]", shot: "Close-up: coffee pouring, fresh injera.", ti: "ቡንን እንጀራን፡ ሓድሽን ጥዑምን።", am: "ቡናና እንጀራ፣ ትኩስና ጣፋጭ።", en: "Coffee and injera, fresh and delicious." },
     { pic: "🏷️", sky: "from-[#3d241e] to-[#16305a]", shot: "Big price card: 10% off this weekend.", ti: "ኣብዚ ቀዳመ ሰንበት 10% ቅናሽ!", am: "በዚህ ቅዳሜና እሁድ 10% ቅናሽ!", en: "10% off this weekend!" },
     { pic: "📲", sky: "from-[#16305a] to-[#14304a]", shot: "Website and phone number, logo.", ti: "ሎሚ ኣብ mesobstore.com ዕደጉ።", am: "ዛሬ በ mesobstore.com ይግዙ።", en: "Shop today at mesobstore.com." },
+  ],
+  voice: [
+    { pic: "🎙️", sky: "from-[#16305a] to-[#2a2142]", shot: "Line 1 · audio", ti: "እንቋዕ ብደሓን መጻእኩም። እዚ ናይ ሎሚ ዜና እዩ።", am: "እንኳን ደህና መጣችሁ። ይህ የዛሬ ዜና ነው።", en: "Welcome. This is today's news." },
+    { pic: "🎙️", sky: "from-[#14304a] to-[#1b2e2a]", shot: "Line 2 · audio", ti: "ሃይለ ዕንጨይቲ ኣከበ፡ ብክርቢት ድማ ሓዊ ኣጒደ።", am: "ሃይለ እንጨት ሰበሰበ፣ በክብሪትም እሳት አነደደ።", en: "Haile gathered wood and lit a fire with the match." },
+    { pic: "🎙️", sky: "from-[#3a2f14] to-[#16305a]", shot: "Line 3 · audio", ti: "ስለ ዝተኸታተልኩምና የቐንየልና።", am: "ስለተከታተላችሁን እናመሰግናለን።", en: "Thank you for watching." },
   ],
 };
 

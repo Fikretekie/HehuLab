@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import SiteHeader from "../../components/SiteHeader";
 import {
-  AD_CREDITS, AD_EXTRA_LANG, DEMOS, MODES, PACKS, STEPS, STUDIO_LANGS, STYLES, credits, dollars,
+  AD_CREDITS, AD_EXTRA_LANG, DEMOS, MODES, PACKS, STEPS, STUDIO_LANGS, STYLES, VOICE_STEPS, credits, dollars,
 } from "../../components/studio";
 
 // 🎬 HehuLab Studio (DEMO): movies, daily news, documentaries and ads in Tigrinya, Amharic, Tigre, Bilen, Somali
@@ -21,6 +21,7 @@ export default function Studio() {
     newsMinutes: 4, newsDays: 30,
     topic: "Kuno Salsti: the story of Eritrean braids", docMinutes: 20, docStyle: "picture",
     business: "Mesob Store", offer: "Injera and coffee, 10% off this weekend", adLength: 30, adLangs: ["ti", "am"],
+    voiceText: "እንቋዕ ብደሓን መጻእኩም። እዚ ናይ ሎሚ ዜና እዩ።", voiceMinutes: 10,
   });
   const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
   const [step, setStep] = useState(-1); // -1 nothing yet, 0..5 making, 6 done
@@ -30,15 +31,38 @@ export default function Studio() {
   const timer = useRef(null);
   useEffect(() => () => clearInterval(timer.current), []);
 
+  // The Studio menu links (#series, #news, #docu, #ad, #voice) open that mode.
+  useEffect(() => {
+    const fromHash = () => {
+      const h = window.location.hash.slice(1);
+      if (MODES.some((m) => m.id === h)) {
+        pick(h);
+        document.getElementById("make")?.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+    fromHash();
+    window.addEventListener("hashchange", fromHash);
+    return () => window.removeEventListener("hashchange", fromHash);
+  }, []);
+
+  function pick(id) {
+    clearInterval(timer.current);
+    setMode(id);
+    setStep(-1);
+    setScenes([]);
+  }
+  const steps = mode === "voice" ? VOICE_STEPS : STEPS;
+
   const per = (id) => STYLES.find((s) => s.id === id).perMin;
   const cost =
     mode === "series" ? form.seasons * form.episodes * form.minutes * per(form.style)
     : mode === "news" ? form.newsMinutes * form.newsDays * per("news")
     : mode === "docu" ? form.docMinutes * per(form.docStyle)
+    : mode === "voice" ? form.voiceMinutes * per("voice")
     : AD_CREDITS[form.adLength] + Math.max(0, form.adLangs.length - 1) * AD_EXTRA_LANG;
-  const costLabel = mode === "news" ? "a month" : mode === "series" ? `for ${form.seasons} season${form.seasons > 1 ? "s" : ""}` : mode === "ad" ? "for this ad" : "for this film";
+  const costLabel = mode === "news" ? "a month" : mode === "series" ? `for ${form.seasons} season${form.seasons > 1 ? "s" : ""}` : mode === "ad" ? "for this ad" : mode === "voice" ? "for this audio" : "for this film";
   // The demo makes only a short sample, so it costs little.
-  const sampleCost = mode === "ad" ? AD_CREDITS[form.adLength] : per(mode === "news" ? "news" : mode === "docu" ? form.docStyle : form.style);
+  const sampleCost = mode === "ad" ? AD_CREDITS[form.adLength] : per(mode === "news" ? "news" : mode === "docu" ? form.docStyle : mode === "voice" ? "voice" : form.style);
 
   function make() {
     clearInterval(timer.current);
@@ -49,7 +73,7 @@ export default function Studio() {
     timer.current = setInterval(() => {
       s += 1;
       setStep(s);
-      if (s >= STEPS.length) {
+      if (s >= steps.length) {
         clearInterval(timer.current);
         setScenes(DEMOS[mode].map((x, i) => ({ ...x, id: i, change: "", redone: 0 })));
       }
@@ -73,13 +97,13 @@ export default function Studio() {
 
   return (
     <>
-      <SiteHeader />
+      <SiteHeader area="studio" />
       <main className="wrap pb-24">
         <section className="py-10">
           <p className="eyebrow text-brand">HehuLab Studio · demo</p>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-3xl">
-              <h1 className="text-4xl font-bold md:text-5xl">Movies, news, documentaries and ads in our languages</h1>
+              <h1 className="text-4xl font-bold md:text-5xl">Movies, news, documentaries, ads and voice in our languages</h1>
               <p className="mt-3 text-lg text-muted">
                 Type an idea. The Studio writes the script, draws the pictures, makes the video and reads it with
                 our own voices. Don't like a scene? Type a change and only that scene is redone.
@@ -103,9 +127,9 @@ export default function Studio() {
         </section>
 
         {/* 1. Pick what to make */}
-        <section className="grid gap-4 md:grid-cols-4">
+        <section id="make" className="grid scroll-mt-6 gap-4 md:grid-cols-5">
           {MODES.map((m) => (
-            <button key={m.id} onClick={() => { setMode(m.id); setStep(-1); setScenes([]); }}
+            <button key={m.id} onClick={() => { pick(m.id); history.replaceState(null, "", "#" + m.id); }}
               className={`card p-5 text-left transition ${mode === m.id ? "border-brand ring-2 ring-brand/40" : "hover:border-brand/50"}`}>
               <span className="text-3xl">{m.icon}</span>
               <h2 className="mt-2 text-xl font-bold">{m.name}</h2>
@@ -185,6 +209,15 @@ export default function Studio() {
                 <p className="mt-1 text-sm text-muted">Made tall (9:16) for TikTok, Reels and WhatsApp status, and wide (16:9) for YouTube. Brand kit (logo, colors, photos) is saved once.</p>
               </>
             )}
+            {mode === "voice" && (
+              <>
+                <Field label={`Your text (in ${L.name})`}>
+                  <textarea rows={4} value={form.voiceText} onChange={(e) => set("voiceText", e.target.value)} className="input font-geez" />
+                </Field>
+                <Num label="About how many minutes of audio" v={form.voiceMinutes} min={1} max={120} on={(v) => set("voiceMinutes", v)} />
+                <p className="mt-1 text-sm text-muted">For voice-overs, audiobooks, school lessons and phone messages. You get an MP3 with each line, and you can redo any line.</p>
+              </>
+            )}
           </div>
 
           <aside className="card flex flex-col gap-3 p-6">
@@ -193,7 +226,7 @@ export default function Studio() {
             <p className="text-muted">{dollars(cost)} {costLabel}</p>
             <hr className="border-line" />
             <p className="text-sm text-muted">Try a short sample first: <b className="text-ink">{credits(sampleCost)} credits</b></p>
-            <button onClick={make} disabled={step >= 0 && step < STEPS.length} className="btn-brand w-full disabled:opacity-60">
+            <button onClick={make} disabled={step >= 0 && step < steps.length} className="btn-brand w-full disabled:opacity-60">
               ▶ Make a sample
             </button>
             <p className="text-xs text-muted">Demo: nothing is made or charged yet.</p>
@@ -204,8 +237,8 @@ export default function Studio() {
         {step >= 0 && (
           <section className="card mt-6 p-6">
             <h2 className="text-2xl font-bold">Making your {MODES.find((m) => m.id === mode).sample}</h2>
-            <ol className="mt-4 grid gap-2 sm:grid-cols-3 lg:grid-cols-6">
-              {STEPS.map((s, i) => (
+            <ol className={`mt-4 grid gap-2 sm:grid-cols-3 ${mode === "voice" ? "" : "lg:grid-cols-6"}`}>
+              {steps.map((s, i) => (
                 <li key={s} className={`rounded-2xl border-2 p-3 text-sm font-bold ${i < step ? "border-good bg-good/15" : i === step ? "border-brand bg-brand/15" : "border-line text-muted"}`}>
                   <span className="block text-xs">{i < step ? "✓ Done" : i === step ? "⏳ Working" : `Step ${i + 1}`}</span>
                   {s}
@@ -219,8 +252,8 @@ export default function Studio() {
         {scenes.length > 0 && (
           <section className="mt-6">
             <div className="flex flex-wrap items-end justify-between gap-3">
-              <h2 className="text-2xl font-bold">Your scenes</h2>
-              <span className="chip">🎧 {L.name} voice · English subtitles</span>
+              <h2 className="text-2xl font-bold">{mode === "voice" ? "Your audio lines" : "Your scenes"}</h2>
+              <span className="chip">🎧 {L.name} voice{mode === "voice" ? "" : " · English subtitles"}</span>
             </div>
             {lang !== "ti" && lang !== "am" && (
               <p className="mt-2 text-sm text-muted">The {L.name} script and voice come once there are enough {L.name} recordings; the English line shows for now.</p>
@@ -230,7 +263,7 @@ export default function Studio() {
                 <article key={x.id} className="card overflow-hidden">
                   <div className={`relative flex h-44 items-center justify-center bg-gradient-to-br ${x.sky}`}>
                     <span className="text-6xl">{x.pic}</span>
-                    <span className="absolute left-3 top-3 chip bg-panel/80 text-xs">Scene {x.id + 1} · AI picture (demo)</span>
+                    <span className="absolute left-3 top-3 chip bg-panel/80 text-xs">{mode === "voice" ? `Line ${x.id + 1} · ▶ play (demo)` : `Scene ${x.id + 1} · AI picture (demo)`}</span>
                     {x.redone > 0 && <span className="absolute right-3 top-3 chip bg-good text-xs text-white">Redone ✓</span>}
                   </div>
                   <div className="p-4">
@@ -245,9 +278,9 @@ export default function Studio() {
             </div>
             <div className="card sticky bottom-4 mt-6 flex flex-wrap items-center gap-3 p-3">
               <input value={chat} onChange={(e) => setChat(e.target.value)} onKeyDown={(e) => e.key === "Enter" && changeAll()}
-                placeholder="Change the whole episode: “make it night”, “use a man's voice”, “add music”…" className="input min-w-[240px] flex-1" />
+                placeholder={mode === "voice" ? "Change all lines: “slower”, “use a man's voice”, “happier”…" : "Change the whole episode: “make it night”, “use a man's voice”, “add music”…"} className="input min-w-[240px] flex-1" />
               <button onClick={changeAll} className="btn-brand px-5 py-2.5">Apply to all</button>
-              <button className="btn-line px-5 py-2.5" onClick={() => alert("Demo: the joined MP4 downloads here once the Studio is connected.")}>⬇ Download MP4</button>
+              <button className="btn-line px-5 py-2.5" onClick={() => alert("Demo: the file downloads here once the Studio is connected.")}>⬇ Download {mode === "voice" ? "MP3" : "MP4"}</button>
             </div>
             {notes.length > 0 && <p className="mt-2 text-sm text-muted">Changes so far: {notes.join(" · ")}</p>}
           </section>
@@ -286,7 +319,7 @@ export default function Studio() {
             </table>
           </div>
           <p className="mt-4 text-sm text-muted">Rules: true prices and claims in ads, no fake reviews, no real person's face or voice without their written OK, and every video is labelled “Made with AI”.</p>
-          <p className="mt-2 text-sm"><Link href="/" className="font-bold text-brand">← Back to HehuLab</Link></p>
+          <p className="mt-2 text-sm"><Link href="/" className="font-bold text-brand">📚 Go to HehuLab Education →</Link></p>
         </section>
       </main>
     </>
