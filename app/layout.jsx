@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
           href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Nunito:wght@400;600;700;800&family=Noto+Sans+Ethiopic:wght@500;700&display=swap"
         />
       </head>
-      <body className="bg-white font-body text-ink antialiased">{children}</body>
+      <body className="font-body text-ink antialiased">{children}</body>
     </html>
   );
 }

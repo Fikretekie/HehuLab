@@ -1,4 +1,4 @@
-# HehuLab — open tasks (updated 2026-11-03)
+# HehuLab — open tasks (updated 2026-11-24)
 
 ## Done overnight (branch `overnight-curriculum`, merged and pushed to `main` 2026-11-03)
 - Start screen: who is learning (child / grown-up) and what (learn my language / learn English from my language).
@@ -30,6 +30,23 @@ Next: connect Stripe + PayPal (needs Fik's accounts and a small Lambda), real lo
 3. **More games:** different games for Grade 3 (not just faster), more exciting ones like car racing; keep Memory match.
 4. **Somali + bedtime "Watch":** Somali as a language (Latin letters, words from `somali-lines/`); stories get a
    Watch mode with moving pictures, narrated by Aki (Kokob) once she records the script.
+
+## Overnight 2026-11-24 (branch `overnight-studio`, not merged to `main`; production build passes)
+Fik asked (unattended): dark background, Amharic + Tigrinya test voices, and the movie / news / documentary / ads feature.
+- ✅ **Dark theme, whole site:** colors are now variables in `app/globals.css` (`:root`), read by `tailwind.config.js`.
+  Light pastel boxes get dark tints; printing (the certificate) switches back to light colors. Fik checks every page.
+- ✅ **🎬 Studio demo** at `/studio/` (link "🎬 Studio" in the top menu): 4 modes (series and movies, daily news,
+  documentaries, ads), 6 languages, live price in credits, "Make a sample" runs the 6 steps, then a storyboard of
+  scenes; change one scene or the whole episode by typing; credit packs + Studio plan. DEMO: nothing is generated or
+  charged. Data in `components/studio.js`. Plan: Fik's doc "HehuLab Studio — Movie, News, Documentary & Ads Plan".
+- ✅ **Amharic test voice (mikal) + Tigrinya refresh (Adiam):** `scripts/kids_voices_export.sh` (run in CloudShell)
+  zips their approved recordings + `ti.json` / `am.json` to `s3://hehulab-voices-data/exports/kids_voices.zip`.
+  Fik downloads it and attaches it in the chat; Claude unzips into `public/voices/` (private, not on GitHub) and
+  merges `ti.json` (keeps the old lines, adds the new ones). `Voice.jsx` now plays any file type (`<recId>.mp4`) and has
+  Amharic teacher phrases (they play only if mikal recorded exactly that text). Keep task 26 in mind: no real family
+  voice goes public before the voice changer.
+- Next for Studio: Fik switches on the Bedrock picture + video models (Luma Ray2, a picture model), then the 1-minute
+  Haile test with real pictures, one AI clip and Adiam's voice.
 
 ## A. Kids/learners website (this repo)
 1. ✅ Screen 4 lesson: approved, committed and pushed to `main`.

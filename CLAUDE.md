@@ -22,8 +22,9 @@ The owner is Fik (GitHub: Fikretekie). He is learning, so explain simply.
 - Next.js 14 (App Router), React 18, Tailwind 3. Static export (`output: "export"`, `trailingSlash: true`) so it can
   be hosted on **S3 + CloudFront** (not set up yet; CI/CD with GitHub Actions later).
 - `next.config.mjs`: `PREVIEW=1` only changes the asset folder for Claude's cloud preview. Ignore it locally.
-- **Ocean Blue** theme (`tailwind.config.js`): brand #1760CF, accent #B8441C, soft #EEF5FF, ink #102542,
-  muted #4D5E78, line #DCE7F7, sun #FFC93C, good #1F8A4C. Fonts: Quicksand (headings), Nunito, Noto Sans Ethiopic.
+- **Ocean Blue, dark** theme (2026-11-24): the color values are CSS variables in `app/globals.css` (`:root`), read by
+  `tailwind.config.js`; printing uses the old light values (brand #1760CF, accent #B8441C, soft #EEF5FF, ink #102542,
+  muted #4D5E78, line #DCE7F7, sun #FFC93C, good #1F8A4C). Fonts: Quicksand (headings), Nunito, Noto Sans Ethiopic.
 - Curriculum: `components/courses.js` (learners kid/adult, tracks native/english, levels → units → lessons).
 - Shared pieces in `components/`: `KidState.jsx` (language, teacher, math, name, gender kept in localStorage),
   `KidTopBar.jsx` (kids' menu), `Avatars.jsx` (Rodas photo + Goat, Sheep, Camel, Kokob drawings, `TEACHERS`),
@@ -46,6 +47,7 @@ The owner is Fik (GitHub: Fikretekie). He is learning, so explain simply.
 | 7 | Homework / practice sheets | `/app/homework/` | todo |
 | 8 | Settings (grown-ups) | `/app/settings/` | todo |
 | 9 | Friday parent report email — family picks the language (English, Tigrinya, Tigre, Bilen, Saho, Amharic) | `/app/report/` | ✅ page built (sending needs the server) |
+| 10 | 🎬 Studio (demo): movies, daily news, documentaries, ads in our languages; credits | `/studio/` | ✅ demo (branch overnight-studio) |
 
 Design reference (all 9 screens, 3 themes; Fik chose Ocean Blue): https://claude.ai/artifact/2qTtaBW5jJgG8yJHbNSnEi
 
